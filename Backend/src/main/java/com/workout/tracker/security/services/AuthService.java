@@ -2,6 +2,7 @@ package com.workout.tracker.security.services;
 
 import com.workout.tracker.security.entity.UserEntity;
 import com.workout.tracker.security.exception.CustomAuthenticationException;
+import com.workout.tracker.security.exception.UserAlreadyExistsException;
 import com.workout.tracker.security.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -21,7 +22,7 @@ public class AuthService {
 
     public UserEntity signUp(String username, String password) {
         if (userRepository.findByUsername(username).isPresent()) {
-            throw new CustomAuthenticationException("User already exists.");
+            throw new UserAlreadyExistsException("User already exists.");
         }
 
         UserEntity user = new UserEntity();

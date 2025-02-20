@@ -1,10 +1,11 @@
+@if(showLoading){<app-loading></app-loading>} @else {
 <div class="login-container">
   <div class="login-card">
     <div class="icon-container">
       <img src="favicon.ico" alt="" class="imgicon" />
     </div>
 
-    <h1>Log in to Workout Tracker</h1>
+    <h1>Log in to <br />Workout Tracker</h1>
 
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
@@ -12,9 +13,11 @@
           type="text"
           formControlName="username"
           placeholder="Username"
+          autocomplete="username"
           [class.invalid]="
             loginForm.get('username')?.invalid &&
-            loginForm.get('username')?.touched
+            loginForm.get('username')?.touched &&
+            touchedSubmit
           "
         />
       </div>
@@ -24,25 +27,33 @@
           type="password"
           formControlName="password"
           placeholder="Password"
+          autocomplete="current-password"
           [class.invalid]="
             loginForm.get('password')?.invalid &&
-            loginForm.get('password')?.touched
+            loginForm.get('password')?.touched &&
+            touchedSubmit
           "
         />
       </div>
 
-      <button type="submit" [disabled]="loginForm.invalid">LOGIN</button>
+      <div class="alert-container" *ngIf="error">
+        <i class="fa-solid fa-circle-exclamation"></i>
+        <h6>{{ errorMsg }}</h6>
+      </div>
+
+      <button type="submit">LOGIN</button>
     </form>
 
     <div class="forgot-link">
-      <a href="#">Forgot Username / Password?</a>
+      <a>Forgot Username / Password?</a>
     </div>
 
     <div class="create-account">
-      <a href="#">
+      <a routerLink="/signup">
         Create your Account
         <i class="fas fa-chevron-right"></i>
       </a>
     </div>
   </div>
 </div>
+}

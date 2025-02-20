@@ -1,6 +1,6 @@
 @if(showLoading){<app-loading></app-loading>} @else {
 <div class="login-container">
-  <div class="login-card">
+  <div [@bounce]="isBounce ? 'bounce' : 'normal'" class="login-card">
     <div class="icon-container">
       <img src="favicon.ico" alt="" class="imgicon" />
     </div>

@@ -9,6 +9,13 @@ import { AuthService } from '../../services/auth.service';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { LoadingComponent } from '../../components/loading/loading.component';
+import {
+  animate,
+  state,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
 
 @Component({
   selector: 'app-login',
@@ -16,13 +23,23 @@ import { LoadingComponent } from '../../components/loading/loading.component';
   imports: [ReactiveFormsModule, CommonModule, RouterLink, LoadingComponent],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css', '../styles/forms.css'],
+  animations: [
+    trigger('bounce', [
+      state('normal', style({ transform: 'translateY(-700px)' })),
+      state('bounce', style({ transform: 'translateY(0px)' })),
+      transition('normal => bounce', [
+        animate('0.3s ease-in-out', style({ transform: 'translateY(0)' })),
+      ]),
+    ]),
+  ],
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   touchedSubmit: boolean = false;
   error: boolean = false;
   errorMsg = 'Error. ';
-  showLoading: boolean;
+  showLoading: boolean = false;
+  isBounce: boolean = false;
 
   private readonly router = inject(Router);
   constructor(private fb: FormBuilder, private authService: AuthService) {
@@ -30,14 +47,14 @@ export class LoginComponent implements OnInit {
       username: ['', [Validators.required, Validators.minLength(4)]],
       password: ['', Validators.required],
     });
-
-    this.showLoading = true;
   }
 
   ngOnInit() {
     this.authService.getUsernameFromToken() != null
       ? this.router.navigateByUrl('/home')
       : (this.showLoading = false);
+
+    setTimeout(() => (this.isBounce = true), 10);
   }
 
   onSubmit() {

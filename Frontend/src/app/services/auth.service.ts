@@ -8,7 +8,7 @@ import { catchError, Observable, throwError } from 'rxjs';
 })
 export class AuthService {
   private apiUrl = 'http://localhost:8080/auth';
-  private username = '';
+  private tokenName = 'workoutTrackerJwt';
 
   constructor(private http: HttpClient) {}
 
@@ -40,12 +40,20 @@ export class AuthService {
     return this.http.post<any>(`${this.apiUrl}/signup`, postData);
   }
 
+  signout(): void {
+    this.deleteToken();
+  }
+
   saveToken(token: string): void {
-    localStorage.setItem('token', token);
+    localStorage.setItem(this.tokenName, token);
   }
 
   getToken(): string | null {
-    return localStorage.getItem('token');
+    return localStorage.getItem(this.tokenName);
+  }
+
+  deleteToken(): void {
+    localStorage.removeItem(this.tokenName);
   }
 
   getUsernameFromToken(): string | null {

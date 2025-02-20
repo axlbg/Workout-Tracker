@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -9,7 +9,6 @@ import { AuthService } from '../../services/auth.service';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { LoadingComponent } from '../../components/loading/loading.component';
-import { delay } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -18,12 +17,12 @@ import { delay } from 'rxjs';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css', '../styles/forms.css'],
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   touchedSubmit: boolean = false;
   error: boolean = false;
   errorMsg = 'Error. ';
-  showLoading: boolean = false;
+  showLoading: boolean;
 
   private readonly router = inject(Router);
   constructor(private fb: FormBuilder, private authService: AuthService) {
@@ -31,6 +30,14 @@ export class LoginComponent {
       username: ['', [Validators.required, Validators.minLength(4)]],
       password: ['', Validators.required],
     });
+
+    this.showLoading = true;
+  }
+
+  ngOnInit() {
+    this.authService.getUsernameFromToken() != null
+      ? this.router.navigateByUrl('/home')
+      : (this.showLoading = false);
   }
 
   onSubmit() {

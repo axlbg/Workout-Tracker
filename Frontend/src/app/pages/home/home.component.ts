@@ -1,23 +1,14 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
+import { NavbarComponent } from '../../components/navbar/navbar.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [],
+  imports: [NavbarComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
 export class HomeComponent {
-  username: string = '';
-  constructor(private authService: AuthService) {
-    this.getUsername();
-  }
-
-  getUsername() {
-    const username = this.authService.getUsernameFromToken();
-    if (username != null) {
-      this.username = username;
-    }
-  }
+  constructor(private authService: AuthService) {}
 }

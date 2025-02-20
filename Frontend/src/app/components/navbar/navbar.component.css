@@ -1,0 +1,19 @@
+.button-login {
+  color: white;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  background-color: var(--success-color);
+  border-radius: var(--border-radius-md);
+}
+.button-login:hover {
+  background-color: #16a34a;
+}
+
+@media (min-width: 1024px) {
+  .nav-container {
+    padding: 0 20em 0 15em;
+    background-color: #f8f9fa;
+  }
+}

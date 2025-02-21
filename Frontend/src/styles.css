@@ -94,3 +94,9 @@ a {
 a:hover {
   color: var(--text-primary);
 }
+
+.def-container {
+  background: linear-gradient(135deg, #185ff8, #4599f8);
+  height: 100vh;
+  width: 100vw;
+}

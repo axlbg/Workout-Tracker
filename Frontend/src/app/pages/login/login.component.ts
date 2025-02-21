@@ -22,7 +22,7 @@ import {
   standalone: true,
   imports: [ReactiveFormsModule, CommonModule, RouterLink, LoadingComponent],
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css', '../styles/forms.css'],
+  styleUrls: ['./login.component.css', '../../styles/forms.css'],
   animations: [
     trigger('bounce', [
       state('normal', style({ transform: 'translateY(-700px)' })),

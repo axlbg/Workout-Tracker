@@ -6,13 +6,10 @@ import com.workout.tracker.security.entity.UserEntity;
 import com.workout.tracker.security.services.AuthService;
 import com.workout.tracker.security.services.JwtService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/auth")
-@CrossOrigin(origins = "http://localhost:4200")
 public class AuthController {
 
     @Autowired

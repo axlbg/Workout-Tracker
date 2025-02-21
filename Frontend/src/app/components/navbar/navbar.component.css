@@ -11,7 +11,14 @@
   background-color: #16a34a;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 992px) {
+  .nav-container {
+    padding: 0 5em;
+    background-color: #f8f9fa;
+  }
+}
+
+@media (min-width: 1380px) {
   .nav-container {
     padding: 0 20em 0 15em;
     background-color: #f8f9fa;

@@ -12,6 +12,8 @@ import com.workout.tracker.repository.WorkoutRepository;
 import com.workout.tracker.security.entity.UserEntity;
 import com.workout.tracker.security.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -26,10 +28,12 @@ public class WorkoutService {
     @Autowired
     private UserRepository userRepository;
 
-    public WorkoutDto createWorkout(WorkoutDto dto) {
-        final long userId = dto.getUserId();
+    public WorkoutDto createWorkout(@AuthenticationPrincipal UserDetails userDetails, WorkoutDto dto) {
+        UserEntity user = userRepository.findById(1L)
+                .orElseThrow(() -> new ResourceNotFoundException("Invalid auth"));
+       /* final long userId = dto.getUserId();
         UserEntity user = userRepository.findById(userId)
-                .orElseThrow(() -> new ResourceNotFoundException("User not found with id: " + userId));
+                .orElseThrow(() -> new ResourceNotFoundException("User not found with id: " + userId));*/
 
         Workout workout = new Workout();
         workout.setUser(user);

@@ -1,0 +1,31 @@
+<div class="def-container">
+  <app-navbar></app-navbar>
+
+  <div class="page-container">
+    <div class="container">
+      <h2 class="h2">Create your Workout Plan</h2>
+      @if(true){
+      <app-create-daily></app-create-daily>
+      } @else {
+      <form [formGroup]="workoutForm" (ngSubmit)="onSubmit()">
+        <div class="form-floating mb-3">
+          <input
+            type="text"
+            class="form-control"
+            formControlName="name"
+            id="floatingInput"
+            placeholder="Workout name"
+            [class.invalid]="
+              workoutForm.get('name')?.invalid &&
+              workoutForm.get('name')?.touched &&
+              touchedSubmit
+            "
+          />
+          <label for="floatingInput">Workout Name</label>
+        </div>
+        <button type="submit">Next</button>
+      </form>
+      }
+    </div>
+  </div>
+</div>

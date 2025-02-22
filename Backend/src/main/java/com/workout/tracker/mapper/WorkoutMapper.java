@@ -44,6 +44,21 @@ public class WorkoutMapper {
         return dto;
     }
 
+    public static WorkoutPerDay toWorkoutPerDay(WorkoutPerDayDto dto, Workout workout) {
+        WorkoutPerDay workoutPerDay = new WorkoutPerDay();
+        workoutPerDay.setDayOfWeek(dto.getDayOfWeek());
+        workoutPerDay.setWorkout(workout);
+
+        if (dto.getExercises() != null) {
+            List<Exercise> exercises = dto.getExercises().stream()
+                    .map(ex -> WorkoutMapper.toExercise(ex, workoutPerDay))
+                    .collect(Collectors.toList());
+            workoutPerDay.setExercises(exercises);
+        }
+
+        return workoutPerDay;
+    }
+
     public static ExerciseDto toExerciseDto(Exercise exercise) {
         ExerciseDto dto = new ExerciseDto();
         dto.setId(exercise.getId());
@@ -57,4 +72,19 @@ public class WorkoutMapper {
         dto.setWorkoutPerDayId(exercise.getWorkoutPerDay().getId());
         return dto;
     }
+
+    public static Exercise toExercise(ExerciseDto dto, WorkoutPerDay workoutPerDay) {
+        Exercise exercise = new Exercise();
+        exercise.setName(dto.getName());
+        exercise.setSets(dto.getSets());
+        exercise.setReps(dto.getReps());
+        exercise.setWeight(dto.getWeight());
+        exercise.setRir(dto.getRir());
+        exercise.setCompleted(dto.isCompleted());
+        exercise.setMuscleGroup(dto.getMuscleGroup());
+        exercise.setWorkoutPerDay(workoutPerDay);
+
+        return exercise;
+    }
+
 }

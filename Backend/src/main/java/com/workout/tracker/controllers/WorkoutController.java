@@ -17,9 +17,9 @@ public class WorkoutController {
     private WorkoutService workoutService;
 
     @PostMapping
-    public WorkoutDto createWorkout(@AuthenticationPrincipal UserDetails userDetails, @RequestBody WorkoutDto workoutDto)
+    public WorkoutDto createWorkout(@RequestHeader("Authorization") String token, @RequestBody WorkoutDto workoutDto)
     {
-        return workoutService.createWorkout(userDetails,workoutDto);
+        return workoutService.createWorkout(token,workoutDto);
     }
 
     @GetMapping

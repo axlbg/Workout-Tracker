@@ -15,30 +15,36 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestHeader;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
+import com.workout.tracker.security.services.AuthService;
 
 @Service
 public class WorkoutService {
 
     @Autowired
+    private AuthService authService;
+    @Autowired
     private WorkoutRepository workoutRepository;
     @Autowired
     private UserRepository userRepository;
 
-    public WorkoutDto createWorkout(@AuthenticationPrincipal UserDetails userDetails, WorkoutDto dto) {
-        UserEntity user = userRepository.findById(1L)
-                .orElseThrow(() -> new ResourceNotFoundException("Invalid auth"));
-       /* final long userId = dto.getUserId();
-        UserEntity user = userRepository.findById(userId)
-                .orElseThrow(() -> new ResourceNotFoundException("User not found with id: " + userId));*/
+    public WorkoutDto createWorkout(@RequestHeader("Authorization") String token, WorkoutDto dto) {
+        String jwtToken = token.replace("Bearer ", "");
+        UserEntity user = authService.getUserFromToken(jwtToken);
 
         Workout workout = new Workout();
         workout.setUser(user);
         workout.setName(dto.getName());
         workout.setWorkoutPerDays(new ArrayList<>());
+
+       // if (dto.getWorkoutPerDays() == null || dto.getWorkoutPerDays().isEmpty())
+
 
         return WorkoutMapper.toWorkoutDto(workoutRepository.save(workout));
     }

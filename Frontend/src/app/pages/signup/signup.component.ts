@@ -18,20 +18,19 @@ import {
 } from '@angular/animations';
 
 @Component({
-  selector: 'app-signup',
-  standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, RouterLink, LoadingComponent],
-  templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css', '../../styles/forms.css'],
-  animations: [
-    trigger('bounce', [
-      state('normal', style({ transform: 'translateY(-700px)' })),
-      state('bounce', style({ transform: 'translateY(0px)' })),
-      transition('normal => bounce', [
-        animate('0.3s ease-in-out', style({ transform: 'translateY(0)' })),
-      ]),
-    ]),
-  ],
+    selector: 'app-signup',
+    imports: [ReactiveFormsModule, CommonModule, RouterLink, LoadingComponent],
+    templateUrl: './signup.component.html',
+    styleUrls: ['./signup.component.css', '../../styles/forms.css'],
+    animations: [
+        trigger('bounce', [
+            state('normal', style({ transform: 'translateY(-700px)' })),
+            state('bounce', style({ transform: 'translateY(0px)' })),
+            transition('normal => bounce', [
+                animate('0.3s ease-in-out', style({ transform: 'translateY(0)' })),
+            ]),
+        ]),
+    ]
 })
 export class SignupComponent implements OnInit {
   loginForm: FormGroup;

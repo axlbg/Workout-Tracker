@@ -9,9 +9,11 @@
   justify-content: center;
   padding: 1rem;
   background: linear-gradient(135deg, #185ff8, #4599f8);
+  color: black;
 }
 
 .login-card {
+  color: black;
   background: white;
   border-radius: 8px;
   padding: 2rem;
@@ -91,6 +93,7 @@ h1 {
 }
 
 .form-group input {
+  color: black;
   width: 100%;
   background: #f3f4f6;
   border: 1px solid transparent;

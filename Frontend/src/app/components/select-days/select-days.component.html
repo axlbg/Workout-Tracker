@@ -1,0 +1,11 @@
+<div class="container" style="display: flex; flex-wrap: wrap">
+  <div *ngFor="let day of days" style="margin: 10px; width: 150px">
+    <div
+      class="card"
+      [class.selected]="day.selected"
+      (click)="day.selected = !day.selected; clickDay()"
+    >
+      {{ day.name }}
+    </div>
+  </div>
+</div>

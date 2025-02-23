@@ -41,10 +41,16 @@ public class WorkoutService {
         Workout workout = new Workout();
         workout.setUser(user);
         workout.setName(dto.getName());
-        workout.setWorkoutPerDays(new ArrayList<>());
 
-       // if (dto.getWorkoutPerDays() == null || dto.getWorkoutPerDays().isEmpty())
-
+        if (dto.getWorkoutPerDays() == null || dto.getWorkoutPerDays().isEmpty()) {
+            workout.setWorkoutPerDays(new ArrayList<>());
+        }
+        else {
+            List<WorkoutPerDay> workoutPerDayList = dto.getWorkoutPerDays().stream()
+                    .map(wpdDto -> WorkoutMapper.toWorkoutPerDay(wpdDto, workout))
+                    .collect(Collectors.toList());
+            workout.setWorkoutPerDays(workoutPerDayList);
+        }
 
         return WorkoutMapper.toWorkoutDto(workoutRepository.save(workout));
     }

@@ -71,11 +71,9 @@ export class CreateComponent {
 
   finish(): void {
     this.workout.workoutPerDays = this.workoutPerDays;
-    console.log(this.workout);
-    console.log('JSON JSON JSON JSON JSON ');
-    console.log(JSON.stringify(this.workout));
+    const workoutJson = JSON.stringify(this.workout); // convert class to json
 
-    this.apiWorkout.createWorkout(this.workout).subscribe((response: any) => {
+    this.apiWorkout.createWorkout(workoutJson).subscribe((response: any) => {
       console.log(response);
     });
   }

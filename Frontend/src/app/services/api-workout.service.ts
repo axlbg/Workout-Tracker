@@ -21,4 +21,15 @@ export class ApiWorkoutService {
 
     return this.http.post(`${this.apiUrl}/workout`, postData, { headers });
   }
+
+  getWorkouts(): Observable<any> {
+    const token = this.authService.getToken();
+
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    });
+
+    return this.http.get(`${this.apiUrl}/workout`, { headers });
+  }
 }

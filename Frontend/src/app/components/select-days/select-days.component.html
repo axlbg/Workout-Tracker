@@ -5,7 +5,7 @@
       [class.selected]="day.selected"
       (click)="day.selected = !day.selected; clickDay()"
     >
-      {{ day.name }}
+      {{ day.value | dayOfWeek }}
     </div>
   </div>
 </div>

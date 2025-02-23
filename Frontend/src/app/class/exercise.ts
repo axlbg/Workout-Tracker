@@ -10,16 +10,16 @@ export enum MuscleGroup {
 }
 
 export class Exercise {
-  private name: string;
+  public name: string;
 
-  private sets: number;
+  public sets: number;
 
-  private reps: number | null;
-  private weight: number | null;
-  private rir: number | null;
-  private completed: boolean;
+  public reps: number | null;
+  public weight: number | null;
+  public rir: number | null;
+  public completed: boolean;
 
-  private muscleGroup: MuscleGroup;
+  public muscleGroup: MuscleGroup;
 
   public constructor(
     name: string,

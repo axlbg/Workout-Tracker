@@ -1,0 +1,26 @@
+.container {
+  min-height: 40vh;
+  min-width: 60vw;
+  width: 100%;
+
+  display: flex;
+  flex-flow: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 5em;
+
+  padding-top: 8em;
+}
+
+.card {
+  min-height: 150px;
+  min-width: 150px;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: scale(120%);
+}

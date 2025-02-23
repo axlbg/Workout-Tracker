@@ -1,104 +1,102 @@
-<div class="def-container">
-  <app-navbar></app-navbar>
+<app-navbar></app-navbar>
 
-  <div class="page-container">
-    <div class="container">
-      <h2 class="h2">Create your Workout Plan</h2>
-      <p-stepper [value]="1" class="basis-[50rem]" [linear]="true">
-        <p-step-list>
-          <p-step [value]="1">Header I</p-step>
-          <p-step [value]="2">Header II</p-step>
-          <p-step [value]="3">Header II</p-step>
-        </p-step-list>
-        <p-step-panels>
-          <p-step-panel [value]="1">
-            <ng-template #content let-activateCallback="activateCallback">
-              <form [formGroup]="workoutForm" (ngSubmit)="onSubmit()">
-                <div class="form-floating mb-3">
-                  <p-floatlabel variant="on">
-                    <input
-                      pInputText
-                      id="on_label"
-                      formControlName="name"
-                      autocomplete="off"
-                      [class.invalid]="
-                        workoutForm.get('name')?.invalid && touchedSubmit
-                      "
-                    />
-                    <label for="on_label">Workout Name</label>
-                  </p-floatlabel>
-                </div>
-
-                <div class="flex pt-6 justify-end">
-                  <p-button
-                    type="submit"
-                    label="Next"
-                    icon="pi pi-arrow-right"
-                    iconPos="right"
-                    (onClick)="checkForm() ? activateCallback(2) : ''"
+<div class="page-container">
+  <div class="container">
+    <h2 class="h2">Create your Workout Plan</h2>
+    <p-stepper [value]="1" class="basis-[50rem]" [linear]="true">
+      <p-step-list>
+        <p-step [value]="1">Header I</p-step>
+        <p-step [value]="2">Header II</p-step>
+        <p-step [value]="3">Header II</p-step>
+      </p-step-list>
+      <p-step-panels>
+        <p-step-panel [value]="1">
+          <ng-template #content let-activateCallback="activateCallback">
+            <form [formGroup]="workoutForm" (ngSubmit)="onSubmit()">
+              <div class="form-floating mb-3">
+                <p-floatlabel variant="on">
+                  <input
+                    pInputText
+                    id="on_label"
+                    formControlName="name"
+                    autocomplete="off"
+                    [class.invalid]="
+                      workoutForm.get('name')?.invalid && touchedSubmit
+                    "
                   />
-                </div>
-              </form>
-            </ng-template>
-          </p-step-panel>
+                  <label for="on_label">Workout Name</label>
+                </p-floatlabel>
+              </div>
 
-          <p-step-panel [value]="2">
-            <ng-template #content let-activateCallback="activateCallback">
-              <app-select-days
-                (daysChange)="eventDaysChange($event)"
-              ></app-select-days>
-              <div class="flex pt-6 justify-between">
+              <div class="flex pt-6 justify-end">
                 <p-button
-                  label="Back"
-                  severity="secondary"
-                  icon="pi pi-arrow-left"
-                  (onClick)="activateCallback(1)"
-                />
-                <p-button
+                  type="submit"
                   label="Next"
                   icon="pi pi-arrow-right"
                   iconPos="right"
-                  (onClick)="activateCallback(3)"
+                  (onClick)="checkForm() ? activateCallback(2) : ''"
                 />
               </div>
-            </ng-template>
-          </p-step-panel>
+            </form>
+          </ng-template>
+        </p-step-panel>
 
-          <p-step-panel [value]="3">
-            <ng-template #content let-activateCallback="activateCallback">
-              <div class="flex flex-col h-48">
-                <p-carousel
-                  [value]="days"
-                  [numVisible]="1"
-                  [numScroll]="1"
-                  [circular]="false"
-                >
-                  <ng-template let-day #item>
-                    <app-create-daily
-                      [day]="day"
-                      (refreshWorkoutPerDay)="refreshWorkoutPerDay($event)"
-                    ></app-create-daily
-                  ></ng-template>
-                </p-carousel>
-              </div>
-              <div class="flex pt-6 justify-between">
-                <p-button
-                  label="Back"
-                  severity="secondary"
-                  icon="pi pi-arrow-left"
-                  (onClick)="activateCallback(2)"
-                />
-                <p-button
-                  label="Finish"
-                  icon="pi pi-check"
-                  iconPos="right"
-                  (onClick)="finish()"
-                />
-              </div>
-            </ng-template>
-          </p-step-panel>
-        </p-step-panels>
-      </p-stepper>
-    </div>
+        <p-step-panel [value]="2">
+          <ng-template #content let-activateCallback="activateCallback">
+            <app-select-days
+              (daysChange)="eventDaysChange($event)"
+            ></app-select-days>
+            <div class="flex pt-6 justify-between">
+              <p-button
+                label="Back"
+                severity="secondary"
+                icon="pi pi-arrow-left"
+                (onClick)="activateCallback(1)"
+              />
+              <p-button
+                label="Next"
+                icon="pi pi-arrow-right"
+                iconPos="right"
+                (onClick)="activateCallback(3)"
+              />
+            </div>
+          </ng-template>
+        </p-step-panel>
+
+        <p-step-panel [value]="3">
+          <ng-template #content let-activateCallback="activateCallback">
+            <div class="flex flex-col h-48">
+              <p-carousel
+                [value]="days"
+                [numVisible]="1"
+                [numScroll]="1"
+                [circular]="false"
+              >
+                <ng-template let-day #item>
+                  <app-create-daily
+                    [day]="day"
+                    (refreshWorkoutPerDay)="refreshWorkoutPerDay($event)"
+                  ></app-create-daily
+                ></ng-template>
+              </p-carousel>
+            </div>
+            <div class="flex pt-6 justify-between">
+              <p-button
+                label="Back"
+                severity="secondary"
+                icon="pi pi-arrow-left"
+                (onClick)="activateCallback(2)"
+              />
+              <p-button
+                label="Finish"
+                icon="pi pi-check"
+                iconPos="right"
+                (onClick)="finish()"
+              />
+            </div>
+          </ng-template>
+        </p-step-panel>
+      </p-step-panels>
+    </p-stepper>
   </div>
 </div>

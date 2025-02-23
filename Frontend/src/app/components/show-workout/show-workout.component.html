@@ -1,0 +1,47 @@
+<div class="workout-container">
+  <h1 class="workout-title">{{ workout.name }}</h1>
+
+  <div class="days-container">
+    <div *ngFor="let day of workout.workoutPerDays" class="day-card">
+      <div class="day-header">
+        <h2>{{ day.dayOfWeek }}</h2>
+      </div>
+
+      <div class="exercises-list">
+        <div *ngFor="let exercise of day.exercises" class="exercise-card">
+          <div class="exercise-header">
+            <h3>{{ exercise.name }}</h3>
+            <span class="muscle-group">{{ exercise.muscleGroup }}</span>
+          </div>
+
+          <div class="exercise-details">
+            <div class="detail-item">
+              <span class="label">Series:</span>
+              <span class="value">{{ exercise.sets }}</span>
+            </div>
+            <div class="detail-item">
+              <span class="label">Reps:</span>
+              <span class="value">{{ exercise.reps }}</span>
+            </div>
+            <div class="detail-item">
+              <span class="label">Peso:</span>
+              <span class="value">{{ exercise.weight }}kg</span>
+            </div>
+            <div class="detail-item">
+              <span class="label">RIR:</span>
+              <span class="value">{{ exercise.rir }}</span>
+            </div>
+          </div>
+
+          <div class="exercise-status">
+            <label class="checkbox-container">
+              Completado
+              <input type="checkbox" [(ngModel)]="exercise.completed" />
+              <span class="checkmark"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+<div class="def-container">
+  <app-navbar></app-navbar>
+
+  @if(workouts.length === 0) {
+  <div class="container">no hay nada</div>
+  } @else { @if(!show){
+  <div class="container fluid">
+    <div class="card" *ngFor="let w of workouts" (click)="openWorkout(w)">
+      id:{{ w.id }}<br />{{ w.name }}
+    </div>
+  </div>
+  } @else { <app-show-workout [workout]="workoutToShow"></app-show-workout> } }
+</div>

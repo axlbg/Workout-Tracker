@@ -2,10 +2,11 @@ import { CommonModule } from '@angular/common';
 import { Component, output } from '@angular/core';
 import { CardModule } from 'primeng/card';
 import { Day, DayOfWeek } from '../../class/workoutPerDay';
+import { DayOfWeekPipe } from '../../pipes/day-of-week.pipe';
 
 @Component({
   selector: 'app-select-days',
-  imports: [CardModule, CommonModule],
+  imports: [CardModule, CommonModule, DayOfWeekPipe],
   templateUrl: './select-days.component.html',
   styleUrl: './select-days.component.css',
 })

@@ -9,13 +9,13 @@
 
 html,
 body {
-  height: 100%;
   font-family: "Poppins", sans-serif;
   font-size: 16px;
   line-height: 1.5;
   color: #1f2937;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(135deg, #185ff8, #4599f8);
 }
 
 :root {
@@ -92,10 +92,4 @@ a {
 
 a:hover {
   color: var(--text-primary);
-}
-
-.def-container {
-  background: linear-gradient(135deg, #185ff8, #4599f8);
-  height: 100vh;
-  width: 100vw;
 }

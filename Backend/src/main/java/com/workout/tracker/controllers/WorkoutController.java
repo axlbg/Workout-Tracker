@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/workout")
+@CrossOrigin(origins = "http://localhost:4200")
 public class WorkoutController {
     @Autowired
     private WorkoutService workoutService;

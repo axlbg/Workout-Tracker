@@ -3,10 +3,6 @@ import Aura from '@primeng/themes/aura';
 
 export const MyPreset = definePreset(Aura, {
   semantic: {
-    surface: {
-      ground: '{teal.100}', // Fondo general
-      section: '{teal.100}', // Fondo de secciones y componentes
-    },
     primary: {
       50: '{teal.50}',
       100: '{teal.100}',
@@ -119,6 +115,25 @@ export const MyPreset = definePreset(Aura, {
       },
       iconOnly: {
         fontSize: '1rem',
+      },
+    },
+    select: {
+      background: '#ffffff',
+      borderColor: '#d1d5db',
+      color: 'black',
+      filledBackground: '#ffffff',
+      overlayBackground: '#ffffff',
+      overlay: {
+        color: 'black',
+      },
+      option: {
+        focusBackground: '{primary.color}',
+        selectedBackground: '#ffffff',
+        color: 'black',
+        selected: {
+          color: 'black',
+          focusColor: 'black',
+        },
       },
     },
   },

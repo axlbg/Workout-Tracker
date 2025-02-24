@@ -1,0 +1,11 @@
+.img-icon {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--text-primary);
+  box-shadow: 0 10px 14px rgba(0, 0, 0, 0.1);
+}
+.selected-icon {
+  border: 4px solid var(--success-color);
+}

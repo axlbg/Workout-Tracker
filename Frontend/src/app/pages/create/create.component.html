@@ -1,5 +1,6 @@
 <app-navbar></app-navbar>
 
+@if(showLoading){<app-loading></app-loading>} @else {
 <div class="page-container">
   <div class="container">
     <h2 class="h2">Create your Workout Plan</h2>
@@ -15,54 +16,54 @@
             <form
               class="panel-container"
               [formGroup]="workoutForm"
-              (ngSubmit)="onSubmit()"
+              (ngSubmit)="onSubmitFirstStep()"
             >
               <div class="panel">
                 <p-floatlabel variant="in">
                   <input
                     pInputText
-                    id="on_label"
+                    id="in_label"
                     formControlName="name"
                     autocomplete="off"
                     style="width: 20rem"
                   />
-                  <label for="on_label">Workout Name</label>
+                  <label for="in_label">Workout Name</label>
                 </p-floatlabel>
 
                 <div class="icons-container">
                   <img
-                    src="/icons/bodybuilder.png"
+                    [src]="iconService.getIconUrl(0)"
                     alt=""
-                    class="img"
-                    [class.selected]="selectedIndex === 0"
+                    class="img-icon"
+                    [class.selected-icon]="selectedIndex === 0"
                     (click)="selectIcon(0)"
                   />
                   <img
-                    src="/icons/dumbbell.png"
+                    [src]="iconService.getIconUrl(1)"
                     alt=""
-                    class="img"
-                    [class.selected]="selectedIndex === 1"
+                    class="img-icon"
+                    [class.selected-icon]="selectedIndex === 1"
                     (click)="selectIcon(1)"
                   />
                   <img
-                    src="/icons/octopus.png"
+                    [src]="iconService.getIconUrl(2)"
                     alt=""
-                    class="img"
-                    [class.selected]="selectedIndex === 2"
+                    class="img-icon"
+                    [class.selected-icon]="selectedIndex === 2"
                     (click)="selectIcon(2)"
                   />
                   <img
-                    src="/icons/training.png"
+                    [src]="iconService.getIconUrl(3)"
                     alt=""
-                    class="img"
-                    [class.selected]="selectedIndex === 3"
+                    class="img-icon"
+                    [class.selected-icon]="selectedIndex === 3"
                     (click)="selectIcon(3)"
                   />
                   <img
-                    src="/icons/weightlifting.png"
+                    [src]="iconService.getIconUrl(4)"
                     alt=""
-                    class="img"
-                    [class.selected]="selectedIndex === 4"
+                    class="img-icon"
+                    [class.selected-icon]="selectedIndex === 4"
                     (click)="selectIcon(4)"
                   />
                 </div>
@@ -82,9 +83,37 @@
         <p-step-panel [value]="2">
           <ng-template #content let-activateCallback="activateCallback">
             <div class="panel-container">
-              <app-select-days
-                (daysChange)="eventDaysChange($event)"
-              ></app-select-days>
+              <div class="panel">
+                <app-select-days
+                  (daysChange)="eventDaysChange($event)"
+                ></app-select-days>
+
+                <div class="panel-input">
+                  <p-floatlabel variant="in">
+                    <p-datepicker
+                      [(ngModel)]="selectedDate"
+                      [iconDisplay]="'input'"
+                      [showIcon]="true"
+                      [minDate]="minDate"
+                      [readonlyInput]="true"
+                      inputId="date_label"
+                    />
+
+                    <label for="date_label">Start date</label>
+                  </p-floatlabel>
+
+                  <p-floatlabel variant="in">
+                    <p-select
+                      [options]="durationOptions"
+                      [(ngModel)]="selectedDuration"
+                      inputId="duration_label"
+                      optionLabel="label"
+                    />
+
+                    <label for="duration_label">Duration</label>
+                  </p-floatlabel>
+                </div>
+              </div>
               <div class="buttons-container">
                 <p-button
                   label="Back"
@@ -115,7 +144,7 @@
                   <ng-template let-day #item>
                     <app-create-daily
                       [day]="day"
-                      (refreshWorkoutPerDay)="refreshWorkoutPerDay($event)"
+                      (refreshWorkoutPerDay)="eventRefreshWorkoutPerDay($event)"
                     ></app-create-daily
                   ></ng-template>
                 </p-carousel>
@@ -130,7 +159,7 @@
                 <p-button
                   label="Finish"
                   icon="pi pi-check"
-                  (onClick)="finish()"
+                  (onClick)="clickFinishCreate()"
                 />
               </div>
             </div>
@@ -140,3 +169,4 @@
     </p-stepper>
   </div>
 </div>
+}

@@ -4,6 +4,7 @@ import { WorkoutPerDay } from './workoutPerDay';
 export class createWorkoutRequest {
   public id: number | null;
   public name: string;
+  public icon: number;
   public startDate: string;
   public endDate: string;
   public daysOfWeek: number[];
@@ -17,6 +18,8 @@ export class createWorkoutRequest {
   ) {
     this.id = workout.id ? workout.id : null;
     this.name = workout.name;
+    this.icon = workout.icon;
+
     this.workoutPerDays = workout.workoutPerDays
       ? workout.workoutPerDays
       : null;

@@ -6,6 +6,7 @@
   } @else { @if(!show){
   <div class="container fluid">
     <div class="card" *ngFor="let w of workouts" (click)="openWorkout(w)">
+      <img [src]="iconService.getIconUrl(w.icon)" alt="icon" class="img-icon" />
       id:{{ w.id }}<br />{{ w.name }}
     </div>
   </div>

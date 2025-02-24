@@ -1,13 +1,5 @@
-.workout-container {
-  padding: 20px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.workout-title {
-  text-align: center;
-  color: #333;
-  margin-bottom: 30px;
+.container {
+  padding-top: 4em;
 }
 
 .days-container {

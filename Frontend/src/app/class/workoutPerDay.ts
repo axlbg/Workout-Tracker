@@ -18,9 +18,15 @@ export interface Day {
 export class WorkoutPerDay {
   public dayOfWeek: DayOfWeek;
   public exercises: Exercise[] | null;
+  public date: Date | undefined;
 
-  public constructor(dayOfWeek: DayOfWeek, exercises: Exercise[] = []) {
+  public constructor(
+    dayOfWeek: DayOfWeek,
+    exercises: Exercise[] = [],
+    date?: Date
+  ) {
     this.dayOfWeek = dayOfWeek;
     this.exercises = exercises;
+    this.date = date;
   }
 }

@@ -33,4 +33,9 @@ export const routes: Routes = [
         (c) => c.MyWorkoutsComponent
       ),
   },
+  {
+    path: 'daily',
+    loadComponent: () =>
+      import('./pages/daily/daily.component').then((c) => c.DailyComponent),
+  },
 ];

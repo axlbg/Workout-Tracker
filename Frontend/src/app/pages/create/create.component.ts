@@ -18,6 +18,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { FloatLabelModule } from 'primeng/floatlabel';
 import { WorkoutPerDay, Day, DayOfWeek } from '../../class/workoutPerDay';
 import { Workout } from '../../class/workout';
+import { createWorkoutRequest } from '../../class/createWorkoutRequest';
 
 @Component({
   selector: 'app-create',
@@ -54,7 +55,6 @@ export class CreateComponent {
 
   eventDaysChange(days: Day[]): void {
     this.days = days;
-    console.log(this.days);
   }
 
   onSubmit() {
@@ -71,11 +71,30 @@ export class CreateComponent {
 
   finish(): void {
     this.workout.workoutPerDays = this.workoutPerDays;
-    const workoutJson = JSON.stringify(this.workout); // convert class to json
+    const startDate = new Date('2023-10-01');
+    const endDate = new Date('2023-10-31');
+    // Format to ISO (YYYY-MM-DD)
+    const startDateISO = startDate.toISOString().split('T')[0];
+    const endDateISO = endDate.toISOString().split('T')[0];
 
-    this.apiWorkout.createWorkout(workoutJson).subscribe((response: any) => {
-      console.log(response);
-    });
+    const tryDays: DayOfWeek[] = this.days.map((day) => day.dayOfWeek);
+
+    // Create request
+    const workoutRequest = new createWorkoutRequest(
+      this.workout,
+      startDateISO,
+      endDateISO,
+      tryDays
+    );
+    const workoutRequestJson = JSON.stringify(workoutRequest); // convert class to json
+
+    console.log(workoutRequest);
+
+    this.apiWorkout
+      .createWorkout(workoutRequestJson)
+      .subscribe((response: any) => {
+        console.log(response);
+      });
   }
 
   refreshWorkoutPerDay(workoutPerDay: WorkoutPerDay) {
@@ -89,7 +108,5 @@ export class CreateComponent {
     } else {
       this.workoutPerDays.push(workoutPerDay);
     }
-
-    console.log('Daily Workouts actualizados:', this.workoutPerDays);
   }
 }

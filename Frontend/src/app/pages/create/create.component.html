@@ -5,24 +5,21 @@
     <h2 class="h2">Create your Workout Plan</h2>
     <p-stepper [value]="1" class="basis-[50rem]" [linear]="true">
       <p-step-list>
-        <p-step [value]="1">Header I</p-step>
-        <p-step [value]="2">Header II</p-step>
-        <p-step [value]="3">Header II</p-step>
+        <p-step [value]="1">Name & Icon</p-step>
+        <p-step [value]="2">Choose Days</p-step>
+        <p-step [value]="3">Daily Routine</p-step>
       </p-step-list>
       <p-step-panels>
         <p-step-panel [value]="1">
           <ng-template #content let-activateCallback="activateCallback">
             <form [formGroup]="workoutForm" (ngSubmit)="onSubmit()">
               <div class="form-floating mb-3">
-                <p-floatlabel variant="on">
+                <p-floatlabel variant="in">
                   <input
                     pInputText
                     id="on_label"
                     formControlName="name"
                     autocomplete="off"
-                    [class.invalid]="
-                      workoutForm.get('name')?.invalid && touchedSubmit
-                    "
                   />
                   <label for="on_label">Workout Name</label>
                 </p-floatlabel>
@@ -33,7 +30,6 @@
                   type="submit"
                   label="Next"
                   icon="pi pi-arrow-right"
-                  iconPos="right"
                   (onClick)="checkForm() ? activateCallback(2) : ''"
                 />
               </div>
@@ -56,7 +52,6 @@
               <p-button
                 label="Next"
                 icon="pi pi-arrow-right"
-                iconPos="right"
                 (onClick)="activateCallback(3)"
               />
             </div>
@@ -90,7 +85,6 @@
               <p-button
                 label="Finish"
                 icon="pi pi-check"
-                iconPos="right"
                 (onClick)="finish()"
               />
             </div>

@@ -63,7 +63,7 @@ export class CreateDailyComponent implements OnInit {
     this.refreshWorkoutPerDayExercises();
   }
 
-  addNew(): void {
+  addExercise(): void {
     let exercise = new Exercise('New exercise', {});
     this.exercises.push(exercise);
     this.refreshWorkoutPerDayExercises();

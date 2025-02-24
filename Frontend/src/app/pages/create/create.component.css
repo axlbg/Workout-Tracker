@@ -1,13 +1,14 @@
+/* Estilos del contenedor que no necesitan ::ng-deep */
 .page-container {
-  padding-top: 5em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  margin: auto;
+  min-height: 100vh;
+  padding: 1.5rem;
 }
 
-.container {
-  padding: 1em 3em 2em;
-  background-color: #f8f9fa;
+.page-container .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }

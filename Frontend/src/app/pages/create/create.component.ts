@@ -77,15 +77,12 @@ export class CreateComponent {
     const startDateISO = startDate.toISOString().split('T')[0];
     const endDateISO = endDate.toISOString().split('T')[0];
 
-    //const tryDays: DayOfWeek[] = this.days.map((day) => day.dayOfWeek);
-    const tryDays = this.days;
-
     // Create request
     const workoutRequest = new createWorkoutRequest(
       this.workout,
       startDateISO,
       endDateISO,
-      tryDays
+      this.days
     );
     const workoutRequestJson = JSON.stringify(workoutRequest); // convert class to json
 

@@ -129,7 +129,7 @@ button {
 }
 
 button:hover {
-  background: #16a34a;
+  background: var(--success-color-hover);
 }
 
 button:disabled {

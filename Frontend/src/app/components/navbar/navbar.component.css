@@ -8,7 +8,7 @@
   border-radius: var(--border-radius-md);
 }
 .button-login:hover {
-  background-color: #16a34a;
+  background-color: var(--success-color-hover);
 }
 
 @media (min-width: 992px) {

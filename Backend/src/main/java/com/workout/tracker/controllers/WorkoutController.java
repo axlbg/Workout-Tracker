@@ -1,5 +1,6 @@
 package com.workout.tracker.controllers;
 
+import com.workout.tracker.dto.CreateWorkoutRequest;
 import com.workout.tracker.dto.WorkoutDto;
 import com.workout.tracker.entity.Workout;
 import com.workout.tracker.services.WorkoutService;
@@ -18,9 +19,9 @@ public class WorkoutController {
     private WorkoutService workoutService;
 
     @PostMapping
-    public WorkoutDto createWorkout(@RequestHeader("Authorization") String token, @RequestBody WorkoutDto workoutDto)
+    public WorkoutDto createWorkout(@RequestHeader("Authorization") String token, @RequestBody CreateWorkoutRequest workoutRequest)
     {
-        return workoutService.createWorkout(token,workoutDto);
+        return workoutService.createWorkout(token,workoutRequest);
     }
 
     @GetMapping

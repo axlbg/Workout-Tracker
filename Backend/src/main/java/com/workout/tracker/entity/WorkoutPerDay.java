@@ -1,9 +1,10 @@
 package com.workout.tracker.entity;
 
-import com.workout.tracker.model.DayOfWeek;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.util.List;
 
 @Data
@@ -14,9 +15,8 @@ public class WorkoutPerDay {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private DayOfWeek dayOfWeek;
+    private LocalDate date;
 
     @ManyToOne
     @JoinColumn(name = "workout_id", nullable = false)
@@ -24,4 +24,5 @@ public class WorkoutPerDay {
 
     @OneToMany(mappedBy = "workoutPerDay", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Exercise> exercises;
+
 }

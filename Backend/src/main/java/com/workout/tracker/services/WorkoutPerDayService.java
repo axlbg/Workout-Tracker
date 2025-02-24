@@ -1,8 +1,6 @@
 package com.workout.tracker.services;
 
-import com.workout.tracker.dto.ExerciseDto;
 import com.workout.tracker.dto.WorkoutPerDayDto;
-import com.workout.tracker.entity.Exercise;
 import com.workout.tracker.entity.Workout;
 import com.workout.tracker.entity.WorkoutPerDay;
 import com.workout.tracker.exception.ResourceNotFoundException;
@@ -13,8 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class WorkoutPerDayService {
@@ -29,7 +25,7 @@ public class WorkoutPerDayService {
                 .orElseThrow(() -> new ResourceNotFoundException("Workout not found with id: " + workoutId));
 
         WorkoutPerDay workoutPerDay = new WorkoutPerDay();
-        workoutPerDay.setDayOfWeek(dto.getDayOfWeek());
+        workoutPerDay.setDate(dto.getDate());
         workoutPerDay.setWorkout(workout);
         workoutPerDay.setExercises(new ArrayList<>());
 

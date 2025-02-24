@@ -10,11 +10,6 @@ export enum DayOfWeek {
   SUNDAY,
 }
 
-export interface Day {
-  name: string;
-  dayOfWeek: DayOfWeek;
-}
-
 export class WorkoutPerDay {
   public dayOfWeek: DayOfWeek;
   public exercises: Exercise[] | null;

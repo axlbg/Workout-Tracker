@@ -16,7 +16,7 @@ import { StepperModule } from 'primeng/stepper';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { FloatLabelModule } from 'primeng/floatlabel';
-import { WorkoutPerDay, Day, DayOfWeek } from '../../class/workoutPerDay';
+import { WorkoutPerDay, DayOfWeek } from '../../class/workoutPerDay';
 import { Workout } from '../../class/workout';
 import { createWorkoutRequest } from '../../class/createWorkoutRequest';
 
@@ -41,7 +41,7 @@ export class CreateComponent {
   workoutForm: FormGroup;
   touchedSubmit: boolean = false;
 
-  days!: Day[];
+  days!: DayOfWeek[];
   workout: Workout;
   workoutPerDays: WorkoutPerDay[] = [];
 
@@ -53,7 +53,7 @@ export class CreateComponent {
     this.workout = new Workout('', null);
   }
 
-  eventDaysChange(days: Day[]): void {
+  eventDaysChange(days: DayOfWeek[]): void {
     this.days = days;
   }
 
@@ -77,7 +77,8 @@ export class CreateComponent {
     const startDateISO = startDate.toISOString().split('T')[0];
     const endDateISO = endDate.toISOString().split('T')[0];
 
-    const tryDays: DayOfWeek[] = this.days.map((day) => day.dayOfWeek);
+    //const tryDays: DayOfWeek[] = this.days.map((day) => day.dayOfWeek);
+    const tryDays = this.days;
 
     // Create request
     const workoutRequest = new createWorkoutRequest(

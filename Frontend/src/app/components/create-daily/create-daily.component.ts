@@ -6,7 +6,8 @@ import { Exercise, MuscleGroup } from '../../class/exercise';
 import { MuscleGroupPipe } from '../../pipes/muscle-group.pipe';
 import { FormsModule } from '@angular/forms';
 import { SelectModule } from 'primeng/select';
-import { WorkoutPerDay, Day, DayOfWeek } from '../../class/workoutPerDay';
+import { DayOfWeek, WorkoutPerDay } from '../../class/workoutPerDay';
+import { DayOfWeekPipe } from '../../pipes/day-of-week.pipe';
 
 @Component({
   selector: 'app-create-daily',
@@ -17,12 +18,13 @@ import { WorkoutPerDay, Day, DayOfWeek } from '../../class/workoutPerDay';
     MuscleGroupPipe,
     FormsModule,
     SelectModule,
+    DayOfWeekPipe,
   ],
   templateUrl: './create-daily.component.html',
   styleUrl: './create-daily.component.css',
 })
 export class CreateDailyComponent implements OnInit {
-  @Input({ required: true }) day!: Day;
+  @Input({ required: true }) day!: DayOfWeek;
   @Output() refreshWorkoutPerDay = new EventEmitter<WorkoutPerDay>();
 
   workoutPerDay!: WorkoutPerDay;
@@ -48,7 +50,7 @@ export class CreateDailyComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    this.workoutPerDay = new WorkoutPerDay(this.day.dayOfWeek);
+    this.workoutPerDay = new WorkoutPerDay(this.day);
   }
 
   refreshWorkoutPerDayExercises(): void {

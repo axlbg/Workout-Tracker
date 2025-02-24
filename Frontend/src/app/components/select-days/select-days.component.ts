@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, output } from '@angular/core';
 import { CardModule } from 'primeng/card';
-import { Day, DayOfWeek } from '../../class/workoutPerDay';
+import { DayOfWeek } from '../../class/workoutPerDay';
 import { DayOfWeekPipe } from '../../pipes/day-of-week.pipe';
 
 @Component({
@@ -12,20 +12,20 @@ import { DayOfWeekPipe } from '../../pipes/day-of-week.pipe';
 })
 export class SelectDaysComponent {
   days = [
-    { name: 'Monday', selected: false, value: DayOfWeek.MONDAY },
-    { name: 'Tuesday', selected: false, value: DayOfWeek.TUESDAY },
-    { name: 'Wednesday', selected: false, value: DayOfWeek.WEDNESDAY },
-    { name: 'Thursday', selected: false, value: DayOfWeek.THURSDAY },
-    { name: 'Friday', selected: false, value: DayOfWeek.FRIDAY },
-    { name: 'Saturday', selected: false, value: DayOfWeek.SATURDAY },
-    { name: 'Sunday', selected: false, value: DayOfWeek.SUNDAY },
+    { selected: false, value: DayOfWeek.MONDAY },
+    { selected: false, value: DayOfWeek.TUESDAY },
+    { selected: false, value: DayOfWeek.WEDNESDAY },
+    { selected: false, value: DayOfWeek.THURSDAY },
+    { selected: false, value: DayOfWeek.FRIDAY },
+    { selected: false, value: DayOfWeek.SATURDAY },
+    { selected: false, value: DayOfWeek.SUNDAY },
   ];
-  daysChange = output<Day[]>();
+  daysChange = output<DayOfWeek[]>();
 
   clickDay(): void {
-    const selectedDays: Day[] = this.days
+    const selectedDays: DayOfWeek[] = this.days
       .filter((day) => day.selected)
-      .map(({ name, value }) => ({ name, dayOfWeek: value }));
+      .map((day) => day.value);
     this.daysChange.emit(selectedDays);
   }
 }

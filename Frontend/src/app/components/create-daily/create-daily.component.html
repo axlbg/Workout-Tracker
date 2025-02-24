@@ -3,6 +3,8 @@
   [value]="exercises"
   [reorderableColumns]="true"
   [tableStyle]="{ 'min-width': '20rem' }"
+  [scrollable]="true"
+  scrollHeight="45vh"
 >
   <ng-template #header>
     <tr>
@@ -140,4 +142,9 @@
   </ng-template>
 </p-table>
 
-<p-button label="Add exercise" icon="pi pi-plus" class="mr-2" (onClick)="addExercise()" />
+<p-button
+  label="Add exercise"
+  icon="pi pi-plus"
+  class="mr-2"
+  (onClick)="addExercise()"
+/>

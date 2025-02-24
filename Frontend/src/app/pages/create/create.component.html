@@ -12,20 +12,62 @@
       <p-step-panels>
         <p-step-panel [value]="1">
           <ng-template #content let-activateCallback="activateCallback">
-            <form [formGroup]="workoutForm" (ngSubmit)="onSubmit()">
-              <div class="form-floating mb-3">
+            <form
+              class="panel-container"
+              [formGroup]="workoutForm"
+              (ngSubmit)="onSubmit()"
+            >
+              <div class="panel">
                 <p-floatlabel variant="in">
                   <input
                     pInputText
                     id="on_label"
                     formControlName="name"
                     autocomplete="off"
+                    style="width: 20rem"
                   />
                   <label for="on_label">Workout Name</label>
                 </p-floatlabel>
-              </div>
 
-              <div class="flex pt-6 justify-end">
+                <div class="icons-container">
+                  <img
+                    src="/icons/bodybuilder.png"
+                    alt=""
+                    class="img"
+                    [class.selected]="selectedIndex === 0"
+                    (click)="selectIcon(0)"
+                  />
+                  <img
+                    src="/icons/dumbbell.png"
+                    alt=""
+                    class="img"
+                    [class.selected]="selectedIndex === 1"
+                    (click)="selectIcon(1)"
+                  />
+                  <img
+                    src="/icons/octopus.png"
+                    alt=""
+                    class="img"
+                    [class.selected]="selectedIndex === 2"
+                    (click)="selectIcon(2)"
+                  />
+                  <img
+                    src="/icons/training.png"
+                    alt=""
+                    class="img"
+                    [class.selected]="selectedIndex === 3"
+                    (click)="selectIcon(3)"
+                  />
+                  <img
+                    src="/icons/weightlifting.png"
+                    alt=""
+                    class="img"
+                    [class.selected]="selectedIndex === 4"
+                    (click)="selectIcon(4)"
+                  />
+                </div>
+              </div>
+              <div class="buttons-container right">
                 <p-button
                   type="submit"
                   label="Next"
@@ -39,54 +81,58 @@
 
         <p-step-panel [value]="2">
           <ng-template #content let-activateCallback="activateCallback">
-            <app-select-days
-              (daysChange)="eventDaysChange($event)"
-            ></app-select-days>
-            <div class="flex pt-6 justify-between">
-              <p-button
-                label="Back"
-                severity="secondary"
-                icon="pi pi-arrow-left"
-                (onClick)="activateCallback(1)"
-              />
-              <p-button
-                label="Next"
-                icon="pi pi-arrow-right"
-                (onClick)="activateCallback(3)"
-              />
+            <div class="panel-container">
+              <app-select-days
+                (daysChange)="eventDaysChange($event)"
+              ></app-select-days>
+              <div class="buttons-container">
+                <p-button
+                  label="Back"
+                  severity="secondary"
+                  icon="pi pi-arrow-left"
+                  (onClick)="activateCallback(1)"
+                />
+                <p-button
+                  label="Next"
+                  icon="pi pi-arrow-right"
+                  (onClick)="activateCallback(3)"
+                />
+              </div>
             </div>
           </ng-template>
         </p-step-panel>
 
         <p-step-panel [value]="3">
           <ng-template #content let-activateCallback="activateCallback">
-            <div class="flex flex-col h-48">
-              <p-carousel
-                [value]="days"
-                [numVisible]="1"
-                [numScroll]="1"
-                [circular]="false"
-              >
-                <ng-template let-day #item>
-                  <app-create-daily
-                    [day]="day"
-                    (refreshWorkoutPerDay)="refreshWorkoutPerDay($event)"
-                  ></app-create-daily
-                ></ng-template>
-              </p-carousel>
-            </div>
-            <div class="flex pt-6 justify-between">
-              <p-button
-                label="Back"
-                severity="secondary"
-                icon="pi pi-arrow-left"
-                (onClick)="activateCallback(2)"
-              />
-              <p-button
-                label="Finish"
-                icon="pi pi-check"
-                (onClick)="finish()"
-              />
+            <div class="panel-container">
+              <div class="carousel">
+                <p-carousel
+                  [value]="days"
+                  [numVisible]="1"
+                  [numScroll]="1"
+                  [circular]="false"
+                >
+                  <ng-template let-day #item>
+                    <app-create-daily
+                      [day]="day"
+                      (refreshWorkoutPerDay)="refreshWorkoutPerDay($event)"
+                    ></app-create-daily
+                  ></ng-template>
+                </p-carousel>
+              </div>
+              <div class="buttons-container">
+                <p-button
+                  label="Back"
+                  severity="secondary"
+                  icon="pi pi-arrow-left"
+                  (onClick)="activateCallback(2)"
+                />
+                <p-button
+                  label="Finish"
+                  icon="pi pi-check"
+                  (onClick)="finish()"
+                />
+              </div>
             </div>
           </ng-template>
         </p-step-panel>

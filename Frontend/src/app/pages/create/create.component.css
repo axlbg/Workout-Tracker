@@ -1,14 +1,79 @@
 /* Estilos del contenedor que no necesitan ::ng-deep */
 .page-container {
-  min-height: 100vh;
-  padding: 1.5rem;
+  min-height: 90vh;
+  padding: 1.4rem;
+  padding-bottom: 0;
 }
 
 .page-container .container {
+  height: 85vh;
   max-width: 1200px;
+
   margin: 0 auto;
-  background: white;
+  background: var(--background-color);
   border-radius: 12px;
   padding: 2rem;
+  padding-bottom: 0;
+
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+
+  overflow: hidden;
+}
+
+.panel-container {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: space-between;
+
+  height: 65vh;
+  max-width: 1200px;
+}
+
+.panel {
+  margin: 2rem auto;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4rem;
+}
+
+.buttons-container {
+  width: 95%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.right {
+  align-items: right;
+  justify-content: right;
+}
+
+.carousel {
+  width: 100%;
+}
+
+.icons-container {
+  gap: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--text-primary);
+  box-shadow: 0 10px 14px rgba(0, 0, 0, 0.1);
+}
+.img:hover {
+  transform: scale(110%);
+  cursor: pointer;
+}
+.selected {
+  border: 4px solid var(--success-color);
 }

@@ -45,12 +45,18 @@ export class CreateComponent {
   workout: Workout;
   workoutPerDays: WorkoutPerDay[] = [];
 
+  selectedIndex: number = 0;
+
   private readonly router = inject(Router);
   constructor(private fb: FormBuilder, private apiWorkout: ApiWorkoutService) {
     this.workoutForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(3)]],
     });
     this.workout = new Workout('', null);
+  }
+
+  selectIcon(index: number) {
+    this.selectedIndex = index;
   }
 
   eventDaysChange(days: DayOfWeek[]): void {

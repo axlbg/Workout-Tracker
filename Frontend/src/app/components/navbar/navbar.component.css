@@ -14,13 +14,13 @@
 @media (min-width: 992px) {
   .nav-container {
     padding: 0 5em;
-    background-color: #f8f9fa;
+    background-color: var(--background-color);
   }
 }
 
 @media (min-width: 1380px) {
   .nav-container {
     padding: 0 20em 0 15em;
-    background-color: #f8f9fa;
+    background-color: var(--background-color);
   }
 }

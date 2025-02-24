@@ -16,6 +16,7 @@ public class WorkoutMapper {
         WorkoutDto dto = new WorkoutDto();
         dto.setId(workout.getId());
         dto.setName(workout.getName());
+        dto.setIcon(workout.getIcon());
 
         if (workout.getWorkoutPerDays() != null) {
             List<WorkoutPerDayDto> workoutPerDayDtoList = workout.getWorkoutPerDays().stream()

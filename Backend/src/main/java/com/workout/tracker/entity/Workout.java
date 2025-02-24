@@ -16,6 +16,9 @@ public class Workout {
     @Column(nullable = false)
     private String name;
 
+    @Column(nullable = false)
+    private Integer icon;
+
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private UserEntity user;

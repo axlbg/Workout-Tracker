@@ -9,6 +9,7 @@ import java.util.List;
 @Data
 public class CreateWorkoutRequest {
     private String name;
+    private Integer icon;
     private LocalDate startDate;
     private LocalDate endDate;
     private List<DayOfWeek> daysOfWeek;

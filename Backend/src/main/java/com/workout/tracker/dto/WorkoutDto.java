@@ -8,5 +8,6 @@ import java.util.List;
 public class WorkoutDto {
     private Long id;
     private String name;
+    private Integer icon;
     private List<WorkoutPerDayDto> workoutPerDays;
 }

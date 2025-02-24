@@ -39,6 +39,7 @@ public class WorkoutService {
         Workout workout = new Workout();
         workout.setUser(user);
         workout.setName(request.getName());
+        workout.setIcon(request.getIcon());
 
         List<WorkoutPerDay> workoutPerDayList = new ArrayList<>();
         if (    request.getWorkoutPerDays() != null && !request.getWorkoutPerDays().isEmpty()

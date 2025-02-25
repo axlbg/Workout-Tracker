@@ -6,7 +6,7 @@
 }
 
 .card:hover {
-  background-color: var(--p-teal-400);
+  background-color: var(--success-color-hover);
 }
 
 .selected {

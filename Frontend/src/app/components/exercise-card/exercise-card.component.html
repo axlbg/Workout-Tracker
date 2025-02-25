@@ -1,0 +1,37 @@
+<div
+  class="exercise-card"
+  [ngClass]="exercise.completed ? 'exercise-completed' : ''"
+  (click)="toggleOnCard && toggleCompletion(exercise)"
+>
+  <div class="exercise-title">
+    {{ exercise.name }}
+  </div>
+  <div class="exercise-details">
+    <div class="detail-item">
+      <span class="detail-label">Weight</span>
+      <span class="detail-value">{{ exercise.weight }}</span>
+    </div>
+    <div class="detail-item">
+      <span class="detail-label">Sets</span>
+      <span class="detail-value">{{ exercise.sets }}</span>
+    </div>
+    <div class="detail-item">
+      <span class="detail-label">Reps</span>
+      <span class="detail-value">{{ exercise.reps }}</span>
+    </div>
+  </div>
+  <div class="muscle-group">{{ exercise.muscleGroup }}</div>
+  <div class="completion-icon">
+    <i class="pi pi-pen-to-square" (click)="editExercise($event, exercise)"></i>
+    <i
+      *ngIf="exercise.completed"
+      class="pi pi-check-circle"
+      (click)="!toggleOnCard ? toggleCompletion(exercise) : null"
+    ></i>
+    <i
+      *ngIf="!exercise.completed"
+      class="pi pi-circle"
+      (click)="!toggleOnCard ? toggleCompletion(exercise) : null"
+    ></i>
+  </div>
+</div>

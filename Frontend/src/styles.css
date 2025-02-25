@@ -20,12 +20,12 @@ body {
 
 :root {
   /* Colores principales */
-  --primary-color: #8b5cf6;
   --error-color: #ef4444;
   --background-color: #f8f9fa;
 
   --success-color: var(--p-teal-500);
   --success-color-hover: var(--p-teal-400);
+  --success-color-light: var(--p-teal-100);
 
   /* Colores de texto */
   --text-primary: #1f2937;

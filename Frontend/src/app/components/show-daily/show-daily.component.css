@@ -1,99 +1,97 @@
 .container {
   padding-top: 4em;
 }
-
-.days-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
-}
-
-.day-card {
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-}
-
-.day-header {
-  background: #2c3e50;
-  color: white;
+.workout-container {
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: var(--background-color);
+  border-radius: 12px;
   padding: 15px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  align-items: center;
+  justify-content: center;
   text-align: center;
 }
 
-.day-header h2 {
-  margin: 0;
-  font-size: 1.2rem;
-}
-
-.exercises-list {
-  padding: 15px;
-}
-
 .exercise-card {
-  background: #f8f9fa;
-  border-radius: 8px;
-  padding: 15px;
-  margin-bottom: 15px;
-}
-
-.exercise-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  background-color: white;
+  border-radius: 12px;
   margin-bottom: 10px;
+  padding: 10px 15px;
+  position: relative;
+  border: 2px solid var(--success-color);
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  text-align: start;
+}
+.exercise-card:hover {
+  transform: scale(1.01);
+  transition: transform 0.2s;
 }
 
-.exercise-header h3 {
-  margin: 0;
-  color: #2c3e50;
-}
-
-.muscle-group {
-  background: #e9ecef;
-  padding: 4px 8px;
-  border-radius: 4px;
-  font-size: 0.8rem;
-  color: #495057;
+.exercise-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 4px;
 }
 
 .exercise-details {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
-  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.exercise-completed {
+  background-color: var(--success-color);
 }
 
 .detail-item {
-  display: flex;
-  align-items: center;
-  gap: 5px;
+  display: inline-block;
+  margin-right: 20px;
 }
 
-.label {
-  color: #6c757d;
-  font-size: 0.9rem;
-}
-
-.value {
+.detail-label {
   font-weight: bold;
-  color: #2c3e50;
+  font-size: 16px;
+  color: #000;
+  display: inline-block;
+  margin-right: 5px;
 }
 
-.exercise-status {
-  display: flex;
-  justify-content: flex-end;
+.detail-value {
+  font-size: 16px;
+  color: #777;
+  font-weight: bold;
 }
 
-.checkbox-container {
+.muscle-group {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: var(--success-color-light);
+  color: #777;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.completion-icon {
   display: flex;
-  align-items: center;
-  gap: 5px;
+  position: absolute;
+  bottom: 10px;
+  right: 15px;
+  gap: 10px;
+  line-height: 1;
+}
+
+.completion-icon .pi {
   cursor: pointer;
-  user-select: none;
+  font-size: 1.2rem;
 }
 
-.checkbox-container input {
-  margin: 0;
+.completion-icon .pi:hover {
+  transform: scale(1.2);
+  transition: transform 0.2s;
 }

@@ -1,47 +1,44 @@
 <div class="container">
-  <div class="days-container">
-    @if( day != null){
-    <div class="day-card">
-      <div class="day-header">
-        <h2>{{ day.dayOfWeek | dayOfWeek }} {{ day.date | date }}</h2>
-      </div>
+  @if( day != null){
 
-      <div class="exercises-list">
-        <div *ngFor="let exercise of day.exercises" class="exercise-card">
-          <div class="exercise-header">
-            <h3>{{ exercise.name }}</h3>
-            <span class="muscle-group">{{ exercise.muscleGroup }}</span>
-          </div>
-
-          <div class="exercise-details">
-            <div class="detail-item">
-              <span class="label">Series:</span>
-              <span class="value">{{ exercise.sets }}</span>
-            </div>
-            <div class="detail-item">
-              <span class="label">Reps:</span>
-              <span class="value">{{ exercise.reps }}</span>
-            </div>
-            <div class="detail-item">
-              <span class="label">Peso:</span>
-              <span class="value">{{ exercise.weight }}kg</span>
-            </div>
-            <div class="detail-item">
-              <span class="label">RIR:</span>
-              <span class="value">{{ exercise.rir }}</span>
-            </div>
-          </div>
-
-          <div class="exercise-status">
-            <label class="checkbox-container">
-              Completado
-              <input type="checkbox" [(ngModel)]="exercise.completed" />
-              <span class="checkmark"></span>
-            </label>
-          </div>
+  <div class="workout-container">
+    <h2>{{ day.dayOfWeek | dayOfWeek }} {{ day.date | date }}</h2>
+    <div
+      class="exercise-card"
+      [ngClass]="exercise.completed ? 'exercise-completed' : ''"
+      *ngFor="let exercise of day.exercises"
+      (click)="toggleCompletion(exercise)"
+    >
+      <div class="exercise-title">{{ exercise.name }}</div>
+      <div class="exercise-details">
+        <div class="detail-item">
+          <span class="detail-label">Weight</span>
+          <span class="detail-value">{{ exercise.weight }}</span>
+        </div>
+        <div class="detail-item">
+          <span class="detail-label">Sets</span>
+          <span class="detail-value">{{ exercise.sets }}</span>
+        </div>
+        <div class="detail-item">
+          <span class="detail-label">Reps</span>
+          <span class="detail-value">{{ exercise.reps }}</span>
+        </div>
+        <div class="detail-item">
+          <span class="detail-label">RIR</span>
+          <span class="detail-value">{{ exercise.rir }}</span>
         </div>
       </div>
+      <div class="muscle-group">{{ exercise.muscleGroup }}</div>
+      <div class="completion-icon">
+        <i
+          class="pi pi-pen-to-square"
+          (click)="editExercise($event, exercise)"
+        ></i>
+        <i *ngIf="exercise.completed" class="pi pi-check-circle"></i>
+        <i *ngIf="!exercise.completed" class="pi pi-circle"></i>
+      </div>
     </div>
-    } @else { lo siento chavalin }
   </div>
+
+  } @else { Rest day. }
 </div>

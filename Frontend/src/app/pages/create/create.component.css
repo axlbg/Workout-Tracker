@@ -1,4 +1,3 @@
-/* Estilos del contenedor que no necesitan ::ng-deep */
 .page-container {
   min-height: 90vh;
   padding: 1.4rem;
@@ -76,5 +75,5 @@
 }
 
 .p-select {
-  width: 220px;
+  width: 16rem;
 }

@@ -21,20 +21,16 @@ export class DailyComponent {
   findWorkouts() {
     this.apiWorkout.getWorkouts().subscribe((workouts) => {
       if (workouts) this.day = this.filterByToday(workouts);
-      console.log(workouts);
-      console.log(this.day);
     });
   }
 
   filterByToday(workouts: Workout[]): WorkoutPerDay | null {
     let today = new Date();
     let returnWpd = null;
-    console.log(today);
     for (const w of workouts) {
       if (w.workoutPerDays) {
         for (const wpd of w.workoutPerDays) {
           if (wpd.date && this.isSameDay(new Date(wpd.date), today)) {
-            console.log('VICTORIAAAAAAAAAAAAA');
             returnWpd = wpd;
             break;
           }

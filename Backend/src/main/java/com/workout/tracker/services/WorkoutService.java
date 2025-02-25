@@ -49,13 +49,14 @@ public class WorkoutService {
             LocalDate currentDate = request.getStartDate();
             while (!currentDate.isAfter(request.getEndDate())) { // startDate to EndDate
                 if (request.getDaysOfWeek().contains(currentDate.getDayOfWeek())) { // check if day is selected
-
                     WorkoutPerDay workoutPerDay = new WorkoutPerDay();
                     workoutPerDay.setDate(currentDate);
                     workoutPerDay.setWorkout(workout);
 
 
+                    LocalDate finalCurrentDate = currentDate;
                     List<Exercise> exercises = request.getWorkoutPerDays().stream()
+                            .filter(wpd -> wpd.getDayOfWeek() == finalCurrentDate.getDayOfWeek())
                             .flatMap(wpd -> wpd.getExercises().stream())
                             .map(exDto -> WorkoutMapper.toExercise(exDto, workoutPerDay))
                             .collect(Collectors.toList());

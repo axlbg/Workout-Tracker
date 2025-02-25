@@ -3,12 +3,15 @@
 
   @if(workouts.length === 0) {
   <div class="container">no hay nada</div>
-  } @else { @if(!show){
-  <div class="container fluid">
+  } @else {
+  <div class="container fluid" *ngIf="!showOneWorkout; else showWorkout">
     <div class="card" *ngFor="let w of workouts" (click)="openWorkout(w)">
       <img [src]="iconService.getIconUrl(w.icon)" alt="icon" class="img-icon" />
-      id:{{ w.id }}<br />{{ w.name }}
+      {{ w.name }}
     </div>
   </div>
-  } @else { <app-show-workout [workout]="workoutToShow"></app-show-workout> } }
+  <ng-template #showWorkout>
+    <app-show-workout [workout]="workoutToShow"></app-show-workout>
+  </ng-template>
+  }
 </div>

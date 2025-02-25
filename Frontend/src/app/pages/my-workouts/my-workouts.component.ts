@@ -15,7 +15,7 @@ import { IconService } from '../../services/icon.service';
 export class MyWorkoutsComponent {
   workouts: Workout[] = [];
   workoutToShow!: Workout;
-  show = false;
+  showOneWorkout = false;
 
   public iconService = inject(IconService);
   constructor(private apiWorkout: ApiWorkoutService) {
@@ -25,12 +25,11 @@ export class MyWorkoutsComponent {
   findWorkouts() {
     this.apiWorkout.getWorkouts().subscribe((data) => {
       this.workouts = data;
-      console.log(this.workouts);
     });
   }
 
   openWorkout(workout: Workout) {
     this.workoutToShow = workout;
-    this.show = true;
+    this.showOneWorkout = true;
   }
 }

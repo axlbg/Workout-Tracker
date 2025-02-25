@@ -78,6 +78,8 @@ export class CreateComponent {
       name: ['', [Validators.required, Validators.minLength(3)]],
     });
     this.workout = new Workout('', null);
+
+    this.minDate.setDate(this.minDate.getDate() - 1);
   }
 
   eventDaysChange(days: DayOfWeek[]): void {

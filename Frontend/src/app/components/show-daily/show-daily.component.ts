@@ -11,5 +11,5 @@ import { DayOfWeekPipe } from '../../pipes/day-of-week.pipe';
   styleUrl: './show-daily.component.css',
 })
 export class ShowDailyComponent {
-  @Input({ required: true }) day!: WorkoutPerDay;
+  @Input({ required: true }) day!: WorkoutPerDay | null;
 }

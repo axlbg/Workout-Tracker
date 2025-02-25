@@ -69,7 +69,7 @@ h1 {
 
 .form-group input:focus {
   outline: none;
-  border-color: blue;
+  border-color: var(--success-color);
   box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
 }
 
@@ -114,7 +114,7 @@ button:disabled {
 }
 
 .forgot-link a:hover {
-  color: blue;
+  color: var(--success-color-hover);
 }
 
 .create-account {
@@ -131,7 +131,7 @@ button:disabled {
 }
 
 .create-account a:hover {
-  color: blue;
+  color: var(--success-color-hover);
 }
 
 .create-account i {

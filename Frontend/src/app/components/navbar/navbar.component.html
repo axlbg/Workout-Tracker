@@ -47,9 +47,22 @@
               {{ username }}
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item disabled" href="#">Profile</a></li>
+              <li>
+                <a class="dropdown-item disabled" href="#">
+                  <i class="pi pi-user"></i>Profile</a
+                >
+              </li>
+              <li>
+                <a class="dropdown-item disabled" href="#">
+                  <i class="pi pi-cog"></i>Settings</a
+                >
+              </li>
               <li><hr class="dropdown-divider" /></li>
-              <li><a class="dropdown-item" (click)="signOut()">Sign Out</a></li>
+              <li>
+                <a class="dropdown-item" (click)="signOut()"
+                  ><i class="pi pi-sign-out"></i>Sign Out</a
+                >
+              </li>
             </ul>
           </li>
           } @else {

@@ -11,6 +11,13 @@
   background-color: var(--success-color-hover);
 }
 
+.dropdown-menu a {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 15px;
+}
+
 @media (min-width: 992px) {
   .nav-container {
     padding: 0 5em;

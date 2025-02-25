@@ -7,6 +7,7 @@
   background-color: var(--background-color);
   border-radius: 12px;
   padding: 15px;
+  border: 1px solid var(--text-light);
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   align-items: center;
   justify-content: center;
@@ -19,20 +20,29 @@
   margin-bottom: 10px;
   padding: 10px 15px;
   position: relative;
-  border: 2px solid var(--success-color);
+  border: 1px solid var(--text-light);
   display: flex;
   flex-direction: column;
   cursor: pointer;
   text-align: start;
+  background: linear-gradient(to right, rgba(30, 144, 255, 0.1), transparent);
 }
 .exercise-card:hover {
   transform: scale(1.01);
   transition: transform 0.2s;
 }
 
+.exercise-completed {
+  background: linear-gradient(
+    to right,
+    var(--success-color),
+    var(--success-color-hover)
+  );
+}
+
 .exercise-title {
   font-size: 24px;
-  font-weight: bold;
+  font-weight: 600;
   color: #000;
   margin-bottom: 4px;
 }
@@ -42,17 +52,12 @@
   align-items: center;
 }
 
-.exercise-completed {
-  background-color: var(--success-color);
-}
-
 .detail-item {
   display: inline-block;
   margin-right: 20px;
 }
 
 .detail-label {
-  font-weight: bold;
   font-size: 16px;
   color: #000;
   display: inline-block;
@@ -62,7 +67,6 @@
 .detail-value {
   font-size: 16px;
   color: #777;
-  font-weight: bold;
 }
 
 .muscle-group {

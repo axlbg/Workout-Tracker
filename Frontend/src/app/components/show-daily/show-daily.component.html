@@ -2,7 +2,9 @@
   @if( day != null){
 
   <div class="workout-container">
-    <h2>{{ day.dayOfWeek | dayOfWeek }} {{ day.date | date }}</h2>
+    <div class="container-header">
+      <h2>{{ day.dayOfWeek | dayOfWeek }} {{ day.date | date }}</h2>
+    </div>
     <div
       class="exercise-card"
       [ngClass]="exercise.completed ? 'exercise-completed' : ''"

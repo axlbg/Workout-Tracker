@@ -15,7 +15,7 @@ body {
   color: #1f2937;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: linear-gradient(135deg, #185ff8, #4599f8);
+  background: var(--p-blue-600);
 }
 
 :root {
@@ -23,9 +23,9 @@ body {
   --error-color: #ef4444;
   --background-color: #f8f9fa;
 
-  --success-color: var(--p-teal-500);
-  --success-color-hover: var(--p-teal-400);
-  --success-color-light: var(--p-teal-100);
+  --success-color: var(--p-blue-500);
+  --success-color-hover: var(--p-blue-400);
+  --success-color-light: var(--p-blue-100);
 
   /* Colores de texto */
   --text-primary: #1f2937;

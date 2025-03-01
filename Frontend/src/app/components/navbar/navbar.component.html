@@ -1,80 +1,13 @@
-<div class="nav-container">
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid">
-      <a class="navbar-brand flex-grow-1" href="#">
-        <img
-          src="favicon.ico"
-          alt="Icon"
-          width="50"
-          height="50"
-          class="d-inline-block align-text"
-        />Workout Tracker
-      </a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarNavAltMarkup"
-        aria-controls="navbarNavAltMarkup"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <ul class="navbar-nav w-100 gap-3">
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/create">Create </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/my-workouts">My Workouts</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/daily">Daily</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled">Statistics</a>
-          </li>
-          @if(isLoggedIn){
-          <li class="nav-item dropdown ms-lg-auto">
-            <a
-              class="nav-link dropdown-toggle"
-              href="#"
-              role="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              {{ username }}
-            </a>
-            <ul class="dropdown-menu">
-              <li>
-                <a class="dropdown-item disabled" href="#">
-                  <i class="pi pi-user"></i>Profile</a
-                >
-              </li>
-              <li>
-                <a class="dropdown-item disabled" href="#">
-                  <i class="pi pi-cog"></i>Settings</a
-                >
-              </li>
-              <li><hr class="dropdown-divider" /></li>
-              <li>
-                <a class="dropdown-item" (click)="signOut()"
-                  ><i class="pi pi-sign-out"></i>Sign Out</a
-                >
-              </li>
-            </ul>
-          </li>
-          } @else {
-          <li class="nav-item ms-lg-auto">
-            <a class="nav-link button-login" routerLink="/login">Log In</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/signup">SignUp</a>
-          </li>
-          }
-        </ul>
-      </div>
-    </div>
-  </nav>
+<div class="menubar-container">
+  <p-menubar [model]="items">
+    <ng-template #start>
+      <img
+        src="favicon.ico"
+        alt="Icon"
+        width="50"
+        height="50"
+        class="img"
+        display="none"
+    /></ng-template>
+  </p-menubar>
 </div>

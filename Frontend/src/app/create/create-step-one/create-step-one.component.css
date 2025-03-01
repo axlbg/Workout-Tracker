@@ -1,0 +1,22 @@
+.panel-flex {
+  margin: 2rem auto;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4rem;
+}
+
+.img-icon:hover {
+  transform: scale(110%);
+  cursor: pointer;
+}
+
+.icons-container {
+  gap: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  max-width: 20rem;
+}

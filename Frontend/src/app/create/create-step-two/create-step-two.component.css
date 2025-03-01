@@ -1,0 +1,28 @@
+.page-container {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: space-evenly;
+
+  margin: auto;
+  gap: 1.8rem;
+}
+
+.panel-input {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-evenly;
+  gap: 4rem;
+  text-align: start;
+}
+
+.checkbox-container {
+  display: flex;
+  flex-flow: column;
+  align-items: start;
+  gap: 1rem;
+}
+
+label {
+  cursor: pointer;
+}

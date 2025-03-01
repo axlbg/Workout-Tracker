@@ -1,0 +1,52 @@
+<form class="panel-flex" [formGroup]="form" (ngSubmit)="onSubmitFirstStep()">
+  <div class="panel-flex">
+    <p-floatlabel variant="in">
+      <input
+        pInputText
+        id="in_label"
+        formControlName="name"
+        autocomplete="off"
+        style="width: 15rem"
+      />
+      <label for="in_label">Workout Name</label>
+    </p-floatlabel>
+
+    <div class="icons-container">
+      <img
+        [src]="iconService.getIconUrl(0)"
+        alt=""
+        class="img-icon"
+        [class.selected-icon]="selectedIndex === 0"
+        (click)="selectIcon(0)"
+      />
+      <img
+        [src]="iconService.getIconUrl(1)"
+        alt=""
+        class="img-icon"
+        [class.selected-icon]="selectedIndex === 1"
+        (click)="selectIcon(1)"
+      />
+      <img
+        [src]="iconService.getIconUrl(2)"
+        alt=""
+        class="img-icon"
+        [class.selected-icon]="selectedIndex === 2"
+        (click)="selectIcon(2)"
+      />
+      <img
+        [src]="iconService.getIconUrl(3)"
+        alt=""
+        class="img-icon"
+        [class.selected-icon]="selectedIndex === 3"
+        (click)="selectIcon(3)"
+      />
+      <img
+        [src]="iconService.getIconUrl(4)"
+        alt=""
+        class="img-icon"
+        [class.selected-icon]="selectedIndex === 4"
+        (click)="selectIcon(4)"
+      />
+    </div>
+  </div>
+</form>

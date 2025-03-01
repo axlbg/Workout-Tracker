@@ -1,150 +1,153 @@
 <h2 style="color: black">{{ day | dayOfWeek }}</h2>
-<p-table
-  [value]="exercises"
-  [reorderableColumns]="true"
-  [tableStyle]="{ 'min-width': '20rem' }"
-  [scrollable]="true"
-  scrollHeight="45vh"
->
-  <ng-template #header>
-    <tr>
-      <th style="width: 3rem"></th>
-      <th style="width: 25%">Muscle Group</th>
-      <th style="width: 35%">Name</th>
-      <th style="width: 10%">Sets</th>
-      <th style="width: 10%">Reps</th>
-      <th style="width: 10%">Weight</th>
-      <th style="width: 10%">RIR</th>
-      <th style="width: 3rem"></th>
-    </tr>
-  </ng-template>
-  <ng-template #body let-exercise let-editing="editing" let-index="rowIndex">
-    <tr [pReorderableRow]="index">
-      <td>
-        <span class="pi pi-bars" pReorderableRowHandle></span>
-      </td>
-      <td
-        [pEditableColumn]="exercise.muscleGroup"
-        pEditableColumnField="muscleGroup"
-      >
-        <p-cellEditor>
-          <ng-template #input
-            ><p-select
-              [options]="muscleGroups"
-              [(ngModel)]="exercise.muscleGroup"
-              (ngModelChange)="refreshWorkoutPerDayExercises()"
-              placeholder="Select muscle"
-              class="w-full md:w-56"
-              optionLabel="label"
-              optionValue="value"
-              appendTo="body"
-              autoDisplay="true"
-            />
-          </ng-template>
-          <ng-template #output>
-            {{ exercise.muscleGroup | muscleGroup }}
-          </ng-template>
-        </p-cellEditor>
-      </td>
-      <td [pEditableColumn]="exercise.name" pEditableColumnField="name">
-        <p-cellEditor>
-          <ng-template #input>
-            <input
-              pInputText
-              type="text"
-              [(ngModel)]="exercise.name"
-              (ngModelChange)="refreshWorkoutPerDayExercises()"
-              required
-            />
-          </ng-template>
-          <ng-template #output>
-            {{ exercise.name }}
-          </ng-template>
-        </p-cellEditor>
-      </td>
-      <td [pEditableColumn]="exercise.sets" pEditableColumnField="sets">
-        <p-cellEditor>
-          <ng-template #input>
-            <input
-              pInputText
-              type="number"
-              [(ngModel)]="exercise.sets"
-              (ngModelChange)="refreshWorkoutPerDayExercises()"
-              required
-              style="max-width: 3rem"
-            />
-          </ng-template>
-          <ng-template #output>
-            {{ exercise.sets }}
-          </ng-template>
-        </p-cellEditor>
-      </td>
-      <td [pEditableColumn]="exercise.reps" pEditableColumnField="reps">
-        <p-cellEditor>
-          <ng-template #input>
-            <input
-              pInputText
-              type="number"
-              [(ngModel)]="exercise.reps"
-              (ngModelChange)="refreshWorkoutPerDayExercises()"
-              required
-              style="max-width: 3rem"
-            />
-          </ng-template>
-          <ng-template #output>
-            {{ exercise.reps }}
-          </ng-template>
-        </p-cellEditor>
-      </td>
-      <td [pEditableColumn]="exercise.weight" pEditableColumnField="weight">
-        <p-cellEditor>
-          <ng-template #input>
-            <input
-              pInputText
-              type="number"
-              [(ngModel)]="exercise.weight"
-              (ngModelChange)="refreshWorkoutPerDayExercises()"
-              required
-              style="max-width: 5rem"
-            />
-          </ng-template>
-          <ng-template #output>
-            {{ exercise.weight }} {{ exercise.weight > 0 ? "kg" : "" }}
-          </ng-template>
-        </p-cellEditor>
-      </td>
-      <td [pEditableColumn]="exercise.rir" pEditableColumnField="rir">
-        <p-cellEditor>
-          <ng-template #input>
-            <input
-              pInputText
-              type="number"
-              [(ngModel)]="exercise.rir"
-              (ngModelChange)="refreshWorkoutPerDayExercises()"
-              required
-              style="max-width: 3rem"
-            />
-          </ng-template>
-          <ng-template #output>
-            {{ exercise.rir }}
-          </ng-template>
-        </p-cellEditor>
-      </td>
-      <td>
-        <p-button
-          icon="pi pi-trash"
-          (click)="deleteExercise(exercise)"
-          severity="secondary"
-          rounded
-        />
-      </td>
-    </tr>
-  </ng-template>
-</p-table>
-
-<p-button
-  label="Add exercise"
-  icon="pi pi-plus"
-  class="mr-2"
-  (onClick)="addExercise()"
-/>
+<div class="table-container">
+  <p-table
+    [value]="exercises"
+    [reorderableColumns]="true"
+    [tableStyle]="{ 'min-width': '20rem' }"
+    [scrollable]="true"
+    scrollHeight="40vh"
+  >
+    <ng-template #header>
+      <tr>
+        <th style="width: 3rem"></th>
+        <th style="width: 25%">Muscle Group</th>
+        <th style="width: 35%">Name</th>
+        <th style="width: 10%">Sets</th>
+        <th style="width: 10%">Reps</th>
+        <th style="width: 10%">Weight</th>
+        <th style="width: 10%">RIR</th>
+        <th style="width: 3rem"></th>
+      </tr>
+    </ng-template>
+    <ng-template #body let-exercise let-editing="editing" let-index="rowIndex">
+      <tr [pReorderableRow]="index">
+        <td>
+          <span class="pi pi-bars" pReorderableRowHandle></span>
+        </td>
+        <td
+          [pEditableColumn]="exercise.muscleGroup"
+          pEditableColumnField="muscleGroup"
+        >
+          <p-cellEditor>
+            <ng-template #input
+              ><p-select
+                [options]="muscleGroups"
+                [(ngModel)]="exercise.muscleGroup"
+                (ngModelChange)="refreshWorkoutPerDayExercises()"
+                placeholder="Select muscle"
+                class="w-full md:w-56"
+                optionLabel="label"
+                optionValue="value"
+                appendTo="body"
+                autoDisplay="true"
+              />
+            </ng-template>
+            <ng-template #output>
+              {{ exercise.muscleGroup | muscleGroup }}
+            </ng-template>
+          </p-cellEditor>
+        </td>
+        <td [pEditableColumn]="exercise.name" pEditableColumnField="name">
+          <p-cellEditor>
+            <ng-template #input>
+              <input
+                pInputText
+                type="text"
+                [(ngModel)]="exercise.name"
+                (ngModelChange)="refreshWorkoutPerDayExercises()"
+                required
+              />
+            </ng-template>
+            <ng-template #output>
+              {{ exercise.name }}
+            </ng-template>
+          </p-cellEditor>
+        </td>
+        <td [pEditableColumn]="exercise.sets" pEditableColumnField="sets">
+          <p-cellEditor>
+            <ng-template #input>
+              <input
+                pInputText
+                type="number"
+                [(ngModel)]="exercise.sets"
+                (ngModelChange)="refreshWorkoutPerDayExercises()"
+                required
+                style="max-width: 3rem"
+              />
+            </ng-template>
+            <ng-template #output>
+              {{ exercise.sets }}
+            </ng-template>
+          </p-cellEditor>
+        </td>
+        <td [pEditableColumn]="exercise.reps" pEditableColumnField="reps">
+          <p-cellEditor>
+            <ng-template #input>
+              <input
+                pInputText
+                type="number"
+                [(ngModel)]="exercise.reps"
+                (ngModelChange)="refreshWorkoutPerDayExercises()"
+                required
+                style="max-width: 3rem"
+              />
+            </ng-template>
+            <ng-template #output>
+              {{ exercise.reps }}
+            </ng-template>
+          </p-cellEditor>
+        </td>
+        <td [pEditableColumn]="exercise.weight" pEditableColumnField="weight">
+          <p-cellEditor>
+            <ng-template #input>
+              <input
+                pInputText
+                type="number"
+                [(ngModel)]="exercise.weight"
+                (ngModelChange)="refreshWorkoutPerDayExercises()"
+                required
+                style="max-width: 5rem"
+              />
+            </ng-template>
+            <ng-template #output>
+              {{ exercise.weight }} {{ exercise.weight > 0 ? "kg" : "" }}
+            </ng-template>
+          </p-cellEditor>
+        </td>
+        <td [pEditableColumn]="exercise.rir" pEditableColumnField="rir">
+          <p-cellEditor>
+            <ng-template #input>
+              <input
+                pInputText
+                type="number"
+                [(ngModel)]="exercise.rir"
+                (ngModelChange)="refreshWorkoutPerDayExercises()"
+                required
+                style="max-width: 3rem"
+              />
+            </ng-template>
+            <ng-template #output>
+              {{ exercise.rir }}
+            </ng-template>
+          </p-cellEditor>
+        </td>
+        <td>
+          <p-button
+            icon="pi pi-trash"
+            (click)="deleteExercise(exercise)"
+            severity="secondary"
+            rounded
+          />
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+<div [ngStyle]="{ 'text-align': 'start' }">
+  <p-button
+    label="Add exercise"
+    icon="pi pi-plus"
+    class="mr-2"
+    (onClick)="addExercise()"
+  />
+</div>

@@ -1,0 +1,40 @@
+<!-- <app-select-days (daysChange)="eventDaysChange($event)"></app-select-days> -->
+<div class="page-container">
+  <div class="checkbox-container">
+    <div *ngFor="let option of optionsDays">
+      <p-checkbox
+        [inputId]="option.name"
+        name="group"
+        [value]="option.value"
+        [(ngModel)]="selectedDays"
+        size="large"
+      />
+      <label [for]="option.name" class="ml-2"> {{ option.name }} </label>
+    </div>
+  </div>
+  <div class="panel-input">
+    <p-floatlabel variant="in">
+      <p-datepicker
+        [(ngModel)]="selectedDate"
+        [iconDisplay]="'input'"
+        [showIcon]="true"
+        [minDate]="minDate"
+        [readonlyInput]="true"
+        inputId="date_label"
+      />
+
+      <label for="date_label">Start date</label>
+    </p-floatlabel>
+
+    <p-floatlabel variant="in">
+      <p-select
+        [options]="optionsDuration"
+        [(ngModel)]="selectedDuration"
+        inputId="duration_label"
+        optionLabel="label"
+      />
+
+      <label for="duration_label">Duration</label>
+    </p-floatlabel>
+  </div>
+</div>

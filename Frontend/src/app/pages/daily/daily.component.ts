@@ -7,6 +7,7 @@ import { Workout } from '../../class/workout';
 
 @Component({
   selector: 'app-daily',
+  standalone: true,
   imports: [ShowDailyComponent, NavbarComponent],
   templateUrl: './daily.component.html',
   styleUrl: './daily.component.css',

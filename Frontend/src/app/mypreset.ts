@@ -19,10 +19,10 @@ export const MyPreset = definePreset(Aura, {
     colorScheme: {
       light: {
         surface: {
-          0: '#ffffff',
-          50: '{zinc.50}',
-          100: '{zinc.100}',
-          200: '{zinc.200}',
+          0: '{zinc.50}',
+          50: '{zinc.100}',
+          100: '{zinc.200}',
+          200: '{zinc.300}',
           300: '{zinc.300}',
           400: '{zinc.400}',
           500: '{zinc.500}',

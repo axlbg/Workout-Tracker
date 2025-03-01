@@ -1,0 +1,51 @@
+<p-card header="Create new Workout Plan" class="p-card">
+  <p-steps
+    [model]="stepsItems"
+    [readonly]="false"
+    [activeIndex]="stepsActiveIndex"
+    (activeIndexChange)="onActiveIndexChange($event)"
+  />
+  <container-element [ngSwitch]="stepsActiveIndex">
+    <div class="panel-flex" *ngSwitchCase="0">
+      <app-create-step-one
+        (eventRefreshWorkout)="eventRefreshWorkout($event)"
+        [workout]="workout"
+      ></app-create-step-one>
+    </div>
+    <div class="panel-flex" *ngSwitchCase="1">
+      <app-create-step-two></app-create-step-two>
+    </div>
+    <div class="panel-flex" *ngSwitchCase="2">
+      <p-carousel
+        [value]="days"
+        [numVisible]="1"
+        [numScroll]="1"
+        [circular]="false"
+      >
+        <ng-template let-day #item>
+          <app-create-daily
+            [day]="day"
+            (refreshWorkoutPerDay)="eventRefreshWorkoutPerDay($event)"
+          >
+          </app-create-daily
+        ></ng-template>
+      </p-carousel>
+    </div>
+  </container-element>
+  <div class="buttons-flex">
+    <p-button
+      label="Back"
+      severity="secondary"
+      icon="pi pi-arrow-left"
+      (onClick)="clickBack()"
+    />
+    @if (stepsActiveIndex!=2){
+    <p-button label="Next" icon="pi pi-arrow-right" (onClick)="clickNext()" />
+    } @else {
+    <p-button
+      label="Finish"
+      icon="pi pi-check"
+      (onClick)="clickFinishCreate()"
+    />}
+  </div>
+</p-card>

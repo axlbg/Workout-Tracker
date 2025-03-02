@@ -1,15 +1,17 @@
-import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
-import { IconService } from '../../services/icon.service';
-import { Workout } from '../../class/workout';
+import { IconService } from '../../../services/icon.service';
 import { FloatLabelModule } from 'primeng/floatlabel';
+import { MessageModule } from 'primeng/message';
 import {
   FormBuilder,
+  FormControl,
   FormGroup,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-create-step-one',
@@ -19,17 +21,13 @@ import { InputTextModule } from 'primeng/inputtext';
     FloatLabelModule,
     ReactiveFormsModule,
     InputTextModule,
+    CommonModule,
+    MessageModule,
   ],
   templateUrl: './create-step-one.component.html',
-  styleUrls: [
-    './create-step-one.component.css',
-    '../../styles/forms.css',
-    '../../styles/icon.css',
-  ],
+  styleUrls: ['./create-step-one.component.css', '../../../styles/icon.css'],
 })
 export class CreateStepOneComponent {
-  @Input({ required: true }) workout!: Workout;
-  @Output() eventRefreshWorkout = new EventEmitter<Workout>();
   form: FormGroup;
   touchedSubmit: boolean = false;
 
@@ -37,32 +35,21 @@ export class CreateStepOneComponent {
   constructor(private fb: FormBuilder) {
     this.form = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(3)]],
+      icon: [0, [Validators.required]],
     });
   }
 
-  selectedIndex: number = 0;
   selectIcon(index: number) {
-    this.selectedIndex = index;
-    this.workout.icon = index;
+    this.form.patchValue({ icon: index });
   }
 
-  onSubmitFirstStep() {
+  isValid(): boolean {
     this.touchedSubmit = true;
-  }
-
-  checkForm(): boolean {
-    if (this.form.valid) {
-      this.workout.name = this.form.value.name;
-      this.eventRefreshWorkout.emit(this.workout);
-      return true;
-    }
-    return false;
+    return this.form.valid;
   }
 
   getData() {
+    this.touchedSubmit = true;
     return this.form.value;
-  }
-  isValid(): boolean {
-    return this.form.valid;
   }
 }

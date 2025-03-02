@@ -2,15 +2,16 @@ import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
-import { Exercise, MuscleGroup } from '../../class/exercise';
-import { MuscleGroupPipe } from '../../pipes/muscle-group.pipe';
+import { Exercise, MuscleGroup } from '../../../class/exercise';
+import { MuscleGroupPipe } from '../../../pipes/muscle-group.pipe';
 import { FormsModule } from '@angular/forms';
 import { SelectModule } from 'primeng/select';
-import { DayOfWeek, WorkoutPerDay } from '../../class/workoutPerDay';
-import { DayOfWeekPipe } from '../../pipes/day-of-week.pipe';
+import { DayOfWeek, WorkoutPerDay } from '../../../class/workoutPerDay';
+import { DayOfWeekPipe } from '../../../pipes/day-of-week.pipe';
 
 @Component({
   selector: 'app-create-daily',
+  standalone: true,
   imports: [
     TableModule,
     CommonModule,

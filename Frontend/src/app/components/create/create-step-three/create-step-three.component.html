@@ -1,0 +1,9 @@
+<p-carousel [value]="days" [numVisible]="1" [numScroll]="1" [circular]="false">
+  <ng-template let-day #item>
+    <app-create-daily
+      [day]="day"
+      (refreshWorkoutPerDay)="eventRefreshWorkoutPerDay($event)"
+    >
+    </app-create-daily
+  ></ng-template>
+</p-carousel>

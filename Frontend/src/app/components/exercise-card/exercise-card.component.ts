@@ -5,6 +5,7 @@ import { ApiWorkoutService } from '../../services/api-workout.service';
 
 @Component({
   selector: 'app-exercise-card',
+  standalone: true,
   imports: [CommonModule],
   templateUrl: './exercise-card.component.html',
   styleUrl: './exercise-card.component.css',

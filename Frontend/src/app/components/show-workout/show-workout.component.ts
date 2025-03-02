@@ -6,6 +6,7 @@ import { ExerciseCardComponent } from '../exercise-card/exercise-card.component'
 
 @Component({
   selector: 'app-show-workout',
+  standalone: true,
   imports: [FormsModule, CommonModule, ExerciseCardComponent],
   templateUrl: './show-workout.component.html',
   styleUrls: ['./show-workout.component.css'],

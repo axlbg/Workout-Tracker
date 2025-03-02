@@ -18,5 +18,8 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  max-width: 20rem;
+}
+
+.invalid {
+  color: var(--p-inputtext-invalid-border-color);
 }

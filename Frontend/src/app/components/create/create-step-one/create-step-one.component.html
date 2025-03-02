@@ -1,0 +1,38 @@
+<form class="panel-flex" [formGroup]="form">
+  <div class="panel-flex">
+    <div class="floatlabel">
+      <p-floatlabel variant="in">
+        <input
+          id="in_label"
+          formControlName="name"
+          pInputText
+          style="width: 15rem"
+          [ngClass]="{
+            'ng-invalid': touchedSubmit && form.controls['name'].invalid,
+            'ng-dirty': touchedSubmit
+          }"
+          class="ng-dirty"
+        />
+        <label for="in_label">Workout Name</label>
+      </p-floatlabel>
+      <p-message
+        *ngIf="touchedSubmit && form.controls['name'].invalid"
+        severity="error"
+        variant="simple"
+        size="small"
+        >Name must have at least 3 letters</p-message
+      >
+    </div>
+
+    <div class="icons-container">
+      <img
+        *ngFor="let index of [0, 1, 2, 3, 4]"
+        [src]="iconService.getIconUrl(index)"
+        alt="icon"
+        class="img-icon"
+        [class.selected-icon]="form.value.icon === index"
+        (click)="selectIcon(index)"
+      />
+    </div>
+  </div>
+</form>

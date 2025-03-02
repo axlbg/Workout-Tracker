@@ -1,13 +1,16 @@
-<!-- <app-select-days (daysChange)="eventDaysChange($event)"></app-select-days> -->
-<div class="page-container">
+<form class="page-container" [formGroup]="form">
   <div class="checkbox-container">
     <div *ngFor="let option of optionsDays">
       <p-checkbox
-        [inputId]="option.name"
+        formControlName="days"
         name="group"
+        [inputId]="option.name"
         [value]="option.value"
-        [(ngModel)]="selectedDays"
         size="large"
+        [ngClass]="{
+          'ng-invalid': touchedSubmit && form.controls['days'].invalid,
+          'ng-dirty': touchedSubmit
+        }"
       />
       <label [for]="option.name" class="ml-2"> {{ option.name }} </label>
     </div>
@@ -15,7 +18,7 @@
   <div class="panel-input">
     <p-floatlabel variant="in">
       <p-datepicker
-        [(ngModel)]="selectedDate"
+        formControlName="startDate"
         [iconDisplay]="'input'"
         [showIcon]="true"
         [minDate]="minDate"
@@ -28,13 +31,18 @@
 
     <p-floatlabel variant="in">
       <p-select
+        formControlName="duration"
         [options]="optionsDuration"
-        [(ngModel)]="selectedDuration"
         inputId="duration_label"
         optionLabel="label"
+        optionValue="value"
+        [ngClass]="{
+          'ng-invalid': touchedSubmit && form.controls['duration'].invalid,
+          'ng-dirty': touchedSubmit
+        }"
       />
 
       <label for="duration_label">Duration</label>
     </p-floatlabel>
   </div>
-</div>
+</form>

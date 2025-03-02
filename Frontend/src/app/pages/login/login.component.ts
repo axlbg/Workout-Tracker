@@ -8,7 +8,7 @@ import {
 import { AuthService } from '../../services/auth.service';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
-import { LoadingComponent } from '../../components/loading/loading.component';
+import { LoadingComponent } from '../../components/shared/loading/loading.component';
 import {
   animate,
   state,
@@ -18,19 +18,20 @@ import {
 } from '@angular/animations';
 
 @Component({
-    selector: 'app-login',
-    imports: [ReactiveFormsModule, CommonModule, RouterLink, LoadingComponent],
-    templateUrl: './login.component.html',
-    styleUrls: ['./login.component.css', '../../styles/forms.css'],
-    animations: [
-        trigger('bounce', [
-            state('normal', style({ transform: 'translateY(-700px)' })),
-            state('bounce', style({ transform: 'translateY(0px)' })),
-            transition('normal => bounce', [
-                animate('0.3s ease-in-out', style({ transform: 'translateY(0)' })),
-            ]),
-        ]),
-    ]
+  selector: 'app-login',
+  standalone: true,
+  imports: [ReactiveFormsModule, CommonModule, RouterLink, LoadingComponent],
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css', '../../styles/forms.css'],
+  animations: [
+    trigger('bounce', [
+      state('normal', style({ transform: 'translateY(-700px)' })),
+      state('bounce', style({ transform: 'translateY(0px)' })),
+      transition('normal => bounce', [
+        animate('0.3s ease-in-out', style({ transform: 'translateY(0)' })),
+      ]),
+    ]),
+  ],
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;

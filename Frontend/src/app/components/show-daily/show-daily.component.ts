@@ -8,6 +8,7 @@ import { ExerciseCardComponent } from '../exercise-card/exercise-card.component'
 
 @Component({
   selector: 'app-show-daily',
+  standalone: true,
   imports: [
     FormsModule,
     CommonModule,

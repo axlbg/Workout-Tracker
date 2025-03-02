@@ -8,6 +8,7 @@ import { IconService } from '../../services/icon.service';
 
 @Component({
   selector: 'app-my-workouts',
+  standalone: true,
   imports: [NavbarComponent, CommonModule, ShowWorkoutComponent],
   templateUrl: './my-workouts.component.html',
   styleUrls: ['./my-workouts.component.css', '../../styles/icon.css'],

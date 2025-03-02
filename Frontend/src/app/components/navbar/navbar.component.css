@@ -4,7 +4,7 @@
 
 @media (min-width: 960px) {
   .menubar-container {
-    padding: 0 15%;
+    padding: 5px 15%;
   }
   .img {
     display: block;
@@ -13,6 +13,6 @@
 
 @media (min-width: 1240px) {
   .menubar-container {
-    padding: 0 20%;
+    padding: 5px 20%;
   }
 }

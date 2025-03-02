@@ -12,9 +12,9 @@
 
 .buttons-flex {
   display: flex;
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
+  padding: 1.5rem 0;
   gap: 0.5rem;
+  justify-content: space-evenly;
 }
 
 .p-carousel {

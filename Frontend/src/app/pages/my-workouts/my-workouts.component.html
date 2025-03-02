@@ -1,17 +1,18 @@
-<div class="def-container">
-  <app-navbar></app-navbar>
+<app-navbar></app-navbar>
 
-  @if(workouts.length === 0) {
-  <div class="container">no hay nada</div>
-  } @else {
-  <div class="container fluid" *ngIf="!showOneWorkout; else showWorkout">
-    <div class="card" *ngFor="let w of workouts" (click)="openWorkout(w)">
+@if(workouts.length === 0) {
+<div class="container">no hay nada</div>
+
+} @else {
+<div class="container" *ngIf="!showOneWorkout; else showWorkout">
+  <p-card class="card" *ngFor="let w of workouts" (click)="openWorkout(w)">
+    <div class="card-content">
       <img [src]="iconService.getIconUrl(w.icon)" alt="icon" class="img-icon" />
       {{ w.name }}
     </div>
-  </div>
-  <ng-template #showWorkout>
-    <app-show-workout [workout]="workoutToShow"></app-show-workout>
-  </ng-template>
-  }
+  </p-card>
 </div>
+<ng-template #showWorkout>
+  <app-show-workout [workout]="workoutToShow"></app-show-workout>
+</ng-template>
+}

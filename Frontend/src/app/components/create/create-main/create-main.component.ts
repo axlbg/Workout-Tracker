@@ -55,7 +55,7 @@ export class CreateMainComponent {
   startDate!: string;
   endDate!: string;
 
-  days: DayOfWeek[] = [DayOfWeek.FRIDAY, DayOfWeek.MONDAY];
+  days: DayOfWeek[] = [];
   workout: Workout;
 
   private readonly router = inject(Router);
@@ -118,6 +118,7 @@ export class CreateMainComponent {
     this.startDate = startDateISO;
     this.endDate = endDateISO;
     this.days = data.days;
+    this.days.sort((a, b) => a - b);
 
     return true;
   }
@@ -166,8 +167,7 @@ export class CreateMainComponent {
     /* ------------------------------------------------- */
 
     this.apiWorkout.createWorkout(workoutRequestJson).subscribe({
-      next: (response: any) => {
-        console.log(response);
+      next: () => {
         this.showLoading = false;
         this.router.navigateByUrl('/my-workouts');
       },

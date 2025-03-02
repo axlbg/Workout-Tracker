@@ -37,13 +37,13 @@ export class CreateStepTwoComponent {
   ];
 
   optionsDays = [
-    { name: 'Lunes', value: DayOfWeek.MONDAY },
-    { name: 'Martes', value: DayOfWeek.TUESDAY },
-    { name: 'Miércoles', value: DayOfWeek.WEDNESDAY },
-    { name: 'Jueves', value: DayOfWeek.THURSDAY },
-    { name: 'Viernes', value: DayOfWeek.FRIDAY },
-    { name: 'Sábado', value: DayOfWeek.SATURDAY },
-    { name: 'Domingo', value: DayOfWeek.SUNDAY },
+    { name: 'Monday', value: DayOfWeek.MONDAY },
+    { name: 'Tuesday', value: DayOfWeek.TUESDAY },
+    { name: 'Wednesday', value: DayOfWeek.WEDNESDAY },
+    { name: 'Thursday', value: DayOfWeek.THURSDAY },
+    { name: 'Friday', value: DayOfWeek.FRIDAY },
+    { name: 'Saturday', value: DayOfWeek.SATURDAY },
+    { name: 'Sunday', value: DayOfWeek.SUNDAY },
   ];
 
   form: FormGroup;

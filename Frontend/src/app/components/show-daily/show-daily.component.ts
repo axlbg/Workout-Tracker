@@ -4,7 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { WorkoutPerDay } from '../../class/workoutPerDay';
 import { DayOfWeekPipe } from '../../pipes/day-of-week.pipe';
 import { ButtonModule } from 'primeng/button';
-import { ExerciseCardComponent } from '../exercise-card/exercise-card.component';
+import { ExerciseCardComponent } from '../shared/exercise-card/exercise-card.component';
+import { CardModule } from 'primeng/card';
 
 @Component({
   selector: 'app-show-daily',
@@ -15,6 +16,7 @@ import { ExerciseCardComponent } from '../exercise-card/exercise-card.component'
     DayOfWeekPipe,
     ButtonModule,
     ExerciseCardComponent,
+    CardModule,
   ],
   templateUrl: './show-daily.component.html',
   styleUrl: './show-daily.component.css',

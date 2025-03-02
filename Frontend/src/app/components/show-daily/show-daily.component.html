@@ -1,17 +1,25 @@
 <div class="container">
   @if( day != null){
 
-  <div class="workout-container">
-    <div class="container-header">
-      <h2>{{ day.dayOfWeek | dayOfWeek }} {{ day.date | date }}</h2>
-    </div>
-
+  <p-card
+    header="{{ day.dayOfWeek | dayOfWeek }} {{ day.date | date }}"
+    class="p-card"
+  >
     <div *ngFor="let exercise of day.exercises">
       <app-exercise-card
         [exercise]="exercise"
         [toggleOnCard]="true"
       ></app-exercise-card>
     </div>
-  </div>
+    <ng-template #footer>
+      <div class="footer">
+        <p-button
+          icon="pi pi-check"
+          label="Mark all as completed"
+          [outlined]="true"
+        />
+      </div>
+    </ng-template>
+  </p-card>
   } @else { Rest day. }
 </div>

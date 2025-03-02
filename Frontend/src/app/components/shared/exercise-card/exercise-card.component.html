@@ -1,6 +1,10 @@
 <div
   class="exercise-card"
-  [ngClass]="exercise.completed ? 'exercise-completed' : ''"
+  [ngStyle]="toggleOnCard ? { cursor: 'pointer' } : {}"
+  [ngClass]="{
+    'card-hover': toggleOnCard,
+    'exercise-completed': exercise.completed
+  }"
   (click)="toggleOnCard && toggleCompletion(exercise)"
 >
   <div class="exercise-title">

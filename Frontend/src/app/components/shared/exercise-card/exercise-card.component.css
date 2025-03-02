@@ -4,24 +4,19 @@
   margin-bottom: 10px;
   padding: 10px 15px;
   position: relative;
-  border: 1px solid var(--text-light);
+  border: 1px solid var(--p-surface-500);
   display: flex;
   flex-direction: column;
-  cursor: pointer;
   text-align: start;
-  background: linear-gradient(to right, rgba(30, 144, 255, 0.1), transparent);
+  background: linear-gradient(to right, var(--p-blue-200), transparent);
 }
-.exercise-card:hover {
+.card-hover:hover {
   transform: scale(1.01);
   transition: transform 0.2s;
 }
 
 .exercise-completed {
-  background: linear-gradient(
-    to right,
-    var(--success-color),
-    var(--success-color-hover)
-  );
+  background: linear-gradient(to right, var(--p-primary-color), transparent);
 }
 
 .exercise-title {
@@ -57,7 +52,6 @@
   position: absolute;
   top: 5px;
   right: 10px;
-  background-color: var(--success-color-light);
   color: #777;
   padding: 4px 10px;
   border-radius: 4px;

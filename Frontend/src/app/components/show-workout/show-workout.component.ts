@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Workout } from '../../class/workout';
-import { ExerciseCardComponent } from '../exercise-card/exercise-card.component';
+import { ExerciseCardComponent } from '../shared/exercise-card/exercise-card.component';
 
 @Component({
   selector: 'app-show-workout',

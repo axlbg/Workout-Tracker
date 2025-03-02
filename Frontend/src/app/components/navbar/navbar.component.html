@@ -1,5 +1,5 @@
 <div class="menubar-container">
-  <p-menubar [model]="items">
+  <p-menubar [model]="itemsNav">
     <ng-template #start>
       <img
         src="favicon.ico"
@@ -9,5 +9,29 @@
         class="img"
         display="none"
     /></ng-template>
+
+    @if (isLoggedIn){
+    <ng-template #end>
+      <p-splitbutton
+        label="{{ username }}"
+        [model]="itemsLogged"
+        severity="secondary"
+        text
+      />
+    </ng-template>
+    } @else {
+    <p-button
+      label="Log in"
+      [raised]="true"
+      size="large"
+      (click)="router.navigateByUrl('/login')"
+    />&nbsp;
+    <p-button
+      label="Sign up"
+      severity="secondary"
+      variant="outlined"
+      (click)="router.navigateByUrl('/signup')"
+    />
+    }
   </p-menubar>
 </div>

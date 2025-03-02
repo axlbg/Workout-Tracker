@@ -1,61 +1,50 @@
 @if(showLoading){<app-loading></app-loading>} @else {
 <div class="login-container">
-  <div [@bounce]="isBounce ? 'bounce' : 'normal'" class="login-card">
-    <div class="icon-container">
-      <img src="favicon.ico" alt="" class="imgicon" />
-    </div>
-
-    <h1>Log in to <br />Workout Tracker</h1>
-
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-      <div class="form-group">
-        <input
-          class="input"
-          type="text"
-          formControlName="username"
-          placeholder="Username"
-          autocomplete="username"
-          [class.invalid]="
-            loginForm.get('username')?.invalid &&
-            loginForm.get('username')?.touched &&
-            touchedSubmit
-          "
-        />
+  <p-card [@bounce]="isBounce ? 'bounce' : 'normal'">
+    <div class="login-card">
+      <div class="icon-container">
+        <img src="favicon.ico" alt="" class="imgicon" />
       </div>
 
-      <div class="form-group">
+      <h1>Log in to <br />Workout Tracker</h1>
+
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form">
         <input
-          class="input"
-          type="password"
+          pInputText
+          placeholder="Username"
+          autocomplete="username"
+          formControlName="username"
+          fluid
+        />
+        <p-password
           formControlName="password"
           placeholder="Password"
           autocomplete="current-password"
-          [class.invalid]="
-            loginForm.get('password')?.invalid &&
-            loginForm.get('password')?.touched &&
-            touchedSubmit
-          "
+          [toggleMask]="true"
+          [feedback]="false"
+          fluid
         />
+
+        <p-message
+          severity="error"
+          icon="pi pi-times-circle"
+          *ngIf="error || getErrorMessage()"
+          >{{ errorMsg }}</p-message
+        >
+
+        <p-button label="LOGIN" type="submit" fluid [raised]="true" />
+      </form>
+
+      <div class="forgot-link">
+        <a>Forgot Username / Password?</a>
       </div>
 
-      <div class="alert-container" *ngIf="error">
-        <i class="fa-solid fa-circle-exclamation"></i>
-        <h6>{{ errorMsg }}</h6>
-      </div>
-
-      <button type="submit">LOGIN</button>
-    </form>
-
-    <div class="forgot-link">
-      <a>Forgot Username / Password?</a>
-    </div>
-
-    <div class="create-account">
-      <a routerLink="/signup">
-        Create your Account
-        <i class="fas fa-chevron-right"></i>
-      </a>
-    </div>
-  </div>
+      <div class="create-account">
+        <a routerLink="/signup"
+          ><u>Create your account here</u>
+          <i class="pi pi-angle-right"></i>
+        </a>
+      </div></div
+  ></p-card>
 </div>
 }

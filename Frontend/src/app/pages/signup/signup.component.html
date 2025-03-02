@@ -1,55 +1,58 @@
 @if(showLoading){<app-loading></app-loading>} @else {
 <div class="login-container">
-  <div [@bounce]="isBounce ? 'bounce' : 'normal'" class="login-card">
-    <div class="icon-container">
-      <img src="favicon.ico" alt="" class="imgicon" />
-    </div>
-
-    <h1>Sign Up <br />Workout Tracker</h1>
-
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-      <div class="form-group">
-        <input
-          type="text"
-          formControlName="username"
-          placeholder="Username"
-          autocomplete="username"
-          [class.invalid]="
-            loginForm.get('username')?.invalid &&
-            loginForm.get('username')?.touched &&
-            touchedSubmit
-          "
-        />
+  <p-card [@bounce]="isBounce ? 'bounce' : 'normal'">
+    <div class="login-card">
+      <div class="icon-container">
+        <img src="favicon.ico" alt="" class="imgicon" />
       </div>
 
-      <div class="form-group">
+      <h1>Sign Up <br />Workout Tracker</h1>
+
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form">
         <input
-          type="password"
+          pInputText
+          placeholder="Username"
+          autocomplete="username"
+          formControlName="username"
+          fluid
+        /><p-message
+          severity="error"
+          variant="simple"
+          size="small"
+          *ngIf="getErrorMessage('username')"
+        >
+          {{ getErrorMessage("username") }}
+        </p-message>
+
+        <p-password
           formControlName="password"
           placeholder="Password"
           autocomplete="current-password"
-          [class.invalid]="
-            loginForm.get('password')?.invalid &&
-            loginForm.get('password')?.touched &&
-            touchedSubmit
-          "
+          [toggleMask]="true"
+          [feedback]="false"
+          fluid
         />
-      </div>
+        <p-message
+          severity="error"
+          variant="simple"
+          size="small"
+          *ngIf="getErrorMessage('password')"
+          >{{ getErrorMessage("password") }}</p-message
+        >
 
-      <div class="alert-container" *ngIf="error">
-        <i class="fa-solid fa-circle-exclamation"></i>
-        <h6>{{ errorMsg }}</h6>
-      </div>
+        <p-message severity="error" icon="pi pi-times-circle" *ngIf="error">{{
+          errorMsg
+        }}</p-message>
 
-      <button type="submit">SIGN UP</button>
-    </form>
+        <p-button label="SIGN UP" type="submit" fluid [raised]="true" />
+      </form>
 
-    <div class="create-account">
-      <a routerLink="/login">
-        Already have an account? Log In
-        <i class="fas fa-chevron-right"></i>
-      </a>
-    </div>
-  </div>
+      <div class="create-account">
+        <a routerLink="/login"
+          ><u> Already have an account? Log In</u>
+          <i class="pi pi-angle-right"></i>
+        </a>
+      </div></div
+  ></p-card>
 </div>
 }

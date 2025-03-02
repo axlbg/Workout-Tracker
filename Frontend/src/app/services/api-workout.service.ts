@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
+import { Exercise } from '../class/exercise';
 
 @Injectable({
   providedIn: 'root',
@@ -31,5 +32,9 @@ export class ApiWorkoutService {
     });
 
     return this.http.get(`${this.apiUrl}/workout`, { headers });
+  }
+
+  updateExercisesCompleted(exercise: Exercise, completed: boolean) {
+    //
   }
 }

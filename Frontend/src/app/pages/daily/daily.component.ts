@@ -25,7 +25,16 @@ export class DailyComponent {
     });
   }
 
-  filterByToday(workouts: Workout[]): WorkoutPerDay | null {
+  markAllExercisesAsCompleted() {
+    if (this.day && this.day.exercises) {
+      this.day.exercises.forEach((exercise) => {
+        exercise.completed = true;
+        this.apiWorkout.updateExercisesCompleted(exercise, true);
+      });
+    }
+  }
+
+  private filterByToday(workouts: Workout[]): WorkoutPerDay | null {
     let today = new Date();
     let returnWpd = null;
     for (const w of workouts) {

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { WorkoutPerDay } from '../../class/workoutPerDay';
 import { DayOfWeekPipe } from '../../pipes/day-of-week.pipe';
@@ -23,4 +23,9 @@ import { CardModule } from 'primeng/card';
 })
 export class ShowDailyComponent {
   @Input({ required: true }) day!: WorkoutPerDay | null;
+  markAllAsCompleted = output();
+
+  emitMarkAllAsCompleted() {
+    this.markAllAsCompleted.emit();
+  }
 }

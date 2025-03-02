@@ -1,2 +1,5 @@
 <app-navbar></app-navbar>
-<app-show-daily [day]="day"></app-show-daily>
+<app-show-daily
+  [day]="day"
+  (markAllAsCompleted)="markAllExercisesAsCompleted()"
+></app-show-daily>

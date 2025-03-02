@@ -18,16 +18,16 @@ export class ExerciseCardComponent {
 
   toggleCompletion(exercise: Exercise): void {
     exercise.completed = !exercise.completed;
-    this.updateExercise(exercise);
+    this.updateExercise(exercise, exercise.completed);
   }
 
   editExercise(event: Event, exercise: Exercise): void {
     event.stopPropagation(); // stop propagation of event to DOM
-    this.updateExercise(exercise);
+    // edit every attribute
+    // soon...
   }
 
-  updateExercise(exercise: Exercise): void {
-    // this.apiWorkoutService
-    // update exercise;
+  updateExercise(exercise: Exercise, completed: boolean): void {
+    this.apiWorkoutService.updateExercisesCompleted(exercise, completed);
   }
 }

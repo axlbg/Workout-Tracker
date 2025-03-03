@@ -60,7 +60,7 @@ export class CreateMainComponent {
 
   private readonly router = inject(Router);
   constructor(private apiWorkout: ApiWorkoutService) {
-    this.workout = new Workout('', null);
+    this.workout = new Workout('', []);
   }
 
   onActiveIndexChange(index: any) {

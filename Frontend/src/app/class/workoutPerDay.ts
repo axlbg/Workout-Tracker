@@ -12,7 +12,7 @@ export enum DayOfWeek {
 
 export class WorkoutPerDay {
   public dayOfWeek: DayOfWeek;
-  public exercises: Exercise[] | null;
+  public exercises: Exercise[];
   public date: Date | undefined;
 
   public constructor(

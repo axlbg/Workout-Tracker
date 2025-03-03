@@ -14,9 +14,9 @@ export class Exercise {
 
   public sets: number;
 
-  public reps: number | null;
-  public weight: number | null;
-  public rir: number | null;
+  public reps: number;
+  public weight: number;
+  public rir: number;
   public completed: boolean;
 
   public muscleGroup: MuscleGroup;
@@ -33,9 +33,9 @@ export class Exercise {
     }: {
       muscleGroup?: MuscleGroup;
       sets?: number;
-      reps?: number | null;
-      weight?: number | null;
-      rir?: number | null;
+      reps?: number;
+      weight?: number;
+      rir?: number;
       completed?: boolean;
     }
   ) {

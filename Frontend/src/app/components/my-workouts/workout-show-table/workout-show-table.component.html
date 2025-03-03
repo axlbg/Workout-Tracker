@@ -1,0 +1,54 @@
+<p-table
+  [value]="workout.workoutPerDays"
+  [resizableColumns]="true"
+  [tableStyle]="{ width: '1000px' }"
+  rowGroupMode="rowspan"
+  groupRowsBy="dayOfWeek"
+  sortField="dayOfWeek"
+  sortMode="single"
+  [size]="'small'"
+>
+  <ng-template #header>
+    <tr>
+      <th pResizableColumn>dayOfWeek</th>
+      <th pResizableColumn>date</th>
+      <th pResizableColumn>exercises</th>
+    </tr>
+  </ng-template>
+  <ng-template #body let-day let-rowgroup="rowgroup" let-rowspan="rowspan">
+    <tr>
+      <td *ngIf="rowgroup" [attr.rowspan]="rowspan">{{ day.dayOfWeek }}</td>
+      <td>{{ day.date }}</td>
+      <td>
+        <p-table
+          [value]="day.exercises"
+          [size]="'small'"
+          stripedRows
+          showGridlines
+          [tableStyle]="{ width: '700px' }"
+        >
+          <ng-template #header>
+            <tr>
+              <th style="width: 15%">Muscle</th>
+              <th style="width: 35%">Name</th>
+              <th style="width: 10%">Sets</th>
+              <th style="width: 10%">Reps</th>
+              <th style="width: 10%">Weight</th>
+              <th style="width: 10%">RIR</th>
+            </tr>
+          </ng-template>
+          <ng-template #body let-ex>
+            <tr [ngStyle]="rowStyle(ex)">
+              <td>{{ ex.muscleGroup }}</td>
+              <td>{{ ex.name }}</td>
+              <td>{{ ex.sets }}</td>
+              <td>{{ ex.reps }}</td>
+              <td>{{ ex.weight }}</td>
+              <td>{{ ex.rir }}</td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>

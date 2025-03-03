@@ -4,6 +4,7 @@
 <div class="container">no hay nada</div>
 
 } @else {
+
 <div class="container" *ngIf="!showOneWorkout; else showWorkout">
   <p-card class="card" *ngFor="let w of workouts" (click)="openWorkout(w)">
     <div class="card-content">
@@ -13,6 +14,6 @@
   </p-card>
 </div>
 <ng-template #showWorkout>
-  <app-show-workout [workout]="workoutToShow"></app-show-workout>
+  <app-show-workout [workoutToShow]="workoutToShow"></app-show-workout>
 </ng-template>
 }

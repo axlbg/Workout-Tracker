@@ -3,7 +3,7 @@ import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { ApiWorkoutService } from '../../services/api-workout.service';
 import { Workout } from '../../class/workout';
 import { CommonModule } from '@angular/common';
-import { ShowWorkoutComponent } from '../../components/show-workout/show-workout.component';
+import { ShowWorkoutComponent } from '../../components/my-workouts/show-workout/show-workout.component';
 import { IconService } from '../../services/icon.service';
 import { CardModule } from 'primeng/card';
 

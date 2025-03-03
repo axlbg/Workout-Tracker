@@ -1,0 +1,23 @@
+<p-selectbutton
+  [options]="optionsView"
+  [(ngModel)]="currentView"
+  optionValue="value"
+  optionDisabled="constant"
+  size="small"
+  (onChange)="changeView($event)"
+>
+  <ng-template #item let-item>
+    <i [class]="item.icon"></i>
+  </ng-template>
+</p-selectbutton>
+
+<app-direction-arrow-button-component></app-direction-arrow-button-component>
+<div [ngSwitch]="currentView">
+  <div *ngSwitchCase="0">
+    <app-workout-show-table [workoutToShow]="workout"></app-workout-show-table>
+  </div>
+  <div *ngSwitchCase="2">option three</div>
+  <div *ngSwitchDefault>
+    <app-workout-show-cards [workoutToShow]="workout"></app-workout-show-cards>
+  </div>
+</div>

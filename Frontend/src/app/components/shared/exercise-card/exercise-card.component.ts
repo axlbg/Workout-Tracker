@@ -1,4 +1,4 @@
-import { Component, Inject, Input } from '@angular/core';
+import { Component, Inject, Input, output } from '@angular/core';
 import { Exercise } from '../../../class/exercise';
 import { CommonModule } from '@angular/common';
 import { ApiWorkoutService } from '../../../services/api-workout.service';
@@ -13,6 +13,7 @@ import { ApiWorkoutService } from '../../../services/api-workout.service';
 export class ExerciseCardComponent {
   @Input({ required: true }) exercise!: Exercise;
   @Input({ required: false }) toggleOnCard: boolean = true;
+  onClickEditExercise = output<Exercise>();
 
   constructor(public apiWorkoutService: ApiWorkoutService) {}
 
@@ -22,9 +23,8 @@ export class ExerciseCardComponent {
   }
 
   editExercise(event: Event, exercise: Exercise): void {
-    event.stopPropagation(); // stop propagation of event to DOM
-    // edit every attribute
-    // soon...
+    event.stopPropagation(); // stop propagation of event to DOM (to not click completed)
+    this.onClickEditExercise.emit(exercise);
   }
 
   updateExercise(exercise: Exercise, completed: boolean): void {

@@ -1,12 +1,12 @@
 export enum MuscleGroup {
-  BACK,
-  CHEST,
-  SHOULDERS,
-  BICEPS,
-  TRICEPS,
-  LEGS,
-  CORE,
-  CARDIO,
+  BACK = 'BACK',
+  CHEST = 'CHEST',
+  SHOULDERS = 'SHOULDERS',
+  BICEPS = 'BICEPS',
+  TRICEPS = 'TRICEPS',
+  LEGS = 'LEGS',
+  CORE = 'CORE',
+  CARDIO = 'CARDIO',
 }
 
 export class Exercise {
@@ -23,21 +23,12 @@ export class Exercise {
 
   public constructor(
     name: string,
-    {
-      muscleGroup = MuscleGroup.BACK,
-      sets = 0,
-      reps = 0,
-      weight = 0,
-      rir = 0,
-      completed = false,
-    }: {
-      muscleGroup?: MuscleGroup;
-      sets?: number;
-      reps?: number;
-      weight?: number;
-      rir?: number;
-      completed?: boolean;
-    }
+    muscleGroup = MuscleGroup.BACK,
+    sets = 0,
+    reps = 0,
+    weight = 0,
+    rir = 0,
+    completed = false
   ) {
     this.name = name;
     this.muscleGroup = muscleGroup;

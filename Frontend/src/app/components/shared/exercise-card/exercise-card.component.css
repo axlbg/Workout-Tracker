@@ -8,7 +8,8 @@
   display: flex;
   flex-direction: column;
   text-align: start;
-  background: linear-gradient(to right, var(--p-blue-200), transparent);
+  background: linear-gradient(to right, var(--p-blue-200), 10%, transparent);
+  width: 100%;
 }
 .card-hover:hover {
   transform: scale(1.01);
@@ -16,7 +17,12 @@
 }
 
 .exercise-completed {
-  background: linear-gradient(to right, var(--p-primary-color), transparent);
+  background: linear-gradient(
+    to right,
+    var(--p-primary-color),
+    70%,
+    transparent
+  );
 }
 
 .exercise-title {

@@ -31,22 +31,10 @@ export class CreateDailyComponent implements OnInit {
   workoutPerDay!: WorkoutPerDay;
   exercises: Exercise[] = [];
 
-  MuscleGroupLabels: Record<MuscleGroup, string> = {
-    [MuscleGroup.BACK]: 'Back',
-    [MuscleGroup.CHEST]: 'Chest',
-    [MuscleGroup.SHOULDERS]: 'Shoulders',
-    [MuscleGroup.BICEPS]: 'Biceps',
-    [MuscleGroup.TRICEPS]: 'Triceps',
-    [MuscleGroup.LEGS]: 'Legs',
-    [MuscleGroup.CORE]: 'Core',
-    [MuscleGroup.CARDIO]: 'Cardio',
-  };
-  muscleGroups = Object.values(MuscleGroup)
-    .filter((value) => typeof value === 'number')
-    .map((value) => ({
-      label: this.MuscleGroupLabels[value as MuscleGroup],
-      value,
-    }));
+  muscleGroups = Object.keys(MuscleGroup).map((key) => ({
+    label: key.charAt(0).toUpperCase() + key.slice(1).toLowerCase(), // Capitalize first letter
+    value: key,
+  }));
 
   constructor() {}
 
@@ -65,7 +53,7 @@ export class CreateDailyComponent implements OnInit {
   }
 
   addExercise(): void {
-    let exercise = new Exercise('New exercise', {});
+    let exercise = new Exercise('New exercise');
     this.exercises.push(exercise);
     this.refreshWorkoutPerDayExercises();
   }

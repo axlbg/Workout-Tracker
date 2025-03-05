@@ -13,12 +13,12 @@ export enum DayOfWeek {
 export class WorkoutPerDay {
   public dayOfWeek: DayOfWeek;
   public exercises: Exercise[];
-  public date: Date | undefined;
+  public date: Date;
 
   public constructor(
     dayOfWeek: DayOfWeek,
     exercises: Exercise[] = [],
-    date?: Date
+    date: Date = new Date()
   ) {
     this.dayOfWeek = dayOfWeek;
     this.exercises = exercises;

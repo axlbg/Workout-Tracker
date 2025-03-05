@@ -6,11 +6,12 @@ import { CommonModule } from '@angular/common';
 import { ShowWorkoutComponent } from '../../components/my-workouts/show-workout/show-workout.component';
 import { IconService } from '../../services/icon.service';
 import { CardModule } from 'primeng/card';
+import { DividerModule } from 'primeng/divider';
 
 @Component({
   selector: 'app-my-workouts',
   standalone: true,
-  imports: [NavbarComponent, CommonModule, ShowWorkoutComponent, CardModule],
+  imports: [NavbarComponent, CommonModule, ShowWorkoutComponent, CardModule,DividerModule],
   templateUrl: './my-workouts.component.html',
   styleUrls: ['./my-workouts.component.css', '../../styles/icon.css'],
 })

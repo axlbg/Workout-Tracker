@@ -1,0 +1,21 @@
+.card-container {
+  width: 360px;
+}
+
+.p-card {
+  text-align: center;
+}
+
+.header {
+  background-color: var(--p-primary-500);
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 1024px) {
+  .card-container {
+    max-width: 500px;
+  }
+}

@@ -1,5 +1,17 @@
 <app-navbar></app-navbar>
 
+<p>
+  <span
+    [ngClass]="showOneWorkout ? 'clickeable' : ''"
+    (click)="showOneWorkout = false"
+  >
+    My workouts </span
+  >@if (showOneWorkout) {<i class="pi pi-chevron-right"></i>
+  {{ workoutToShow.name }}}
+</p>
+
+<p-divider />
+
 @if(workouts.length === 0) {
 <div class="container">no hay nada</div>
 

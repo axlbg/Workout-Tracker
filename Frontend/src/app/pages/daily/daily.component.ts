@@ -4,11 +4,13 @@ import { WorkoutPerDay } from '../../class/workoutPerDay';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { ApiWorkoutService } from '../../services/api-workout.service';
 import { Workout } from '../../class/workout';
+import { DividerModule } from 'primeng/divider';
+import { Exercise } from '../../class/exercise';
 
 @Component({
   selector: 'app-daily',
   standalone: true,
-  imports: [ShowDailyComponent, NavbarComponent],
+  imports: [ShowDailyComponent, NavbarComponent, DividerModule],
   templateUrl: './daily.component.html',
   styleUrl: './daily.component.css',
 })
@@ -32,6 +34,11 @@ export class DailyComponent {
         this.apiWorkout.updateExercisesCompleted(exercise, true);
       });
     }
+  }
+
+  updateExercise(exercise:Exercise)
+  {
+    this.apiWorkout.updateExercise(exercise);
   }
 
   private filterByToday(workouts: Workout[]): WorkoutPerDay | null {

@@ -1,3 +1,9 @@
+@if(showExerciseEdit && exerciseToEdit){<app-exercise-edit-card
+  [exercise]="exerciseToEdit"
+  (onClickSaveExercise)="onClickSaveExercise($event)"
+  (onClickCancel)="onClickCancel()"
+></app-exercise-edit-card
+>} @else {
 <div class="container">
   @if( day != null){
 
@@ -9,6 +15,7 @@
       <app-exercise-card
         [exercise]="exercise"
         [toggleOnCard]="true"
+        (onClickEditExercise)="onClickEditExercise(exercise)"
       ></app-exercise-card>
     </div>
     <ng-template #footer>
@@ -24,3 +31,4 @@
   </p-card>
   } @else { Rest day. }
 </div>
+}

@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { Workout } from '../../../class/workout';
 import { WorkoutShowTableComponent } from '../workout-show-table/workout-show-table.component';
 import { CardModule } from 'primeng/card';
-import { WorkoutShowCardsComponent } from '../workout-show-cards/workout-show-cards.component';
 import { SelectButtonModule } from 'primeng/selectbutton';
-import { DirectionArrowButtonComponentComponent } from '../direction-arrow-button-component/direction-arrow-button-component.component';
+import { WorkoutShowDailyComponent } from '../workout-show-daily/workout-show-daily.component';
+import { WorkoutShowWeeklyComponent } from '../workout-show-weekly/workout-show-weekly.component';
 
 @Component({
   selector: 'app-show-workout',
@@ -16,9 +16,9 @@ import { DirectionArrowButtonComponentComponent } from '../direction-arrow-butto
     CommonModule,
     WorkoutShowTableComponent,
     CardModule,
-    WorkoutShowCardsComponent,
     SelectButtonModule,
-    DirectionArrowButtonComponentComponent,
+    WorkoutShowDailyComponent,
+    WorkoutShowWeeklyComponent,
   ],
   templateUrl: './show-workout.component.html',
   styleUrls: ['./show-workout.component.css'],

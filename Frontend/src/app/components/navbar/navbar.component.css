@@ -2,17 +2,8 @@
   display: none;
 }
 
-@media (min-width: 960px) {
-  .menubar-container {
-    padding: 5px 15%;
-  }
+@media (min-width: 961px) {
   .img {
     display: block;
-  }
-}
-
-@media (min-width: 1240px) {
-  .menubar-container {
-    padding: 5px 20%;
   }
 }

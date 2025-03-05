@@ -1,0 +1,22 @@
+.card-container {
+  height: 70vh;
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  gap: 15px;
+}
+
+.p-floatlabel {
+  width: 100%;
+}
+
+.buttons-container {
+  display: flex;
+  flex-flow: column;
+  gap: 5px;
+}
+
+.p-select {
+  width: 100%;
+}

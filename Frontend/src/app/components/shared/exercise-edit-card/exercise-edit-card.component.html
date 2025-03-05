@@ -1,0 +1,69 @@
+<p-card header="Exercise" class="p-card">
+  <form [formGroup]="form" class="card-container" (submit)="saveExercise()">
+    <p-floatlabel variant="in">
+      <input
+        id="name"
+        pInputText
+        autocomplete="name"
+        formControlName="name"
+        fluid
+      />
+      <label for="name">Name</label>
+    </p-floatlabel>
+
+    <p-floatlabel variant="in">
+      <p-select
+        [options]="muscleGroups"
+        formControlName="muscleGroup"
+        optionLabel="label"
+        optionValue="value"
+        fluid
+        class="p-select"
+      />
+      <label for="muscleGroup">Muscle Group</label>
+    </p-floatlabel>
+
+    <p-floatlabel variant="in">
+      <input id="sets" type="number" pInputText formControlName="sets" fluid />
+      <label for="sets">Sets</label>
+    </p-floatlabel>
+
+    <p-floatlabel variant="in">
+      <input id="reps" type="number" pInputText formControlName="reps" fluid />
+      <label for="reps">Reps</label>
+    </p-floatlabel>
+
+    <p-floatlabel variant="in">
+      <input
+        id="weight"
+        type="number"
+        pInputText
+        formControlName="weight"
+        fluid
+      />
+      <label for="weight">Weight (kg)</label>
+    </p-floatlabel>
+
+    <p-floatlabel variant="in">
+      <input id="rir" type="number" pInputText formControlName="rir" fluid />
+      <label for="rir">RIR</label>
+    </p-floatlabel>
+    <p-message
+      severity="error"
+      size="small"
+      *ngIf="this.touchedSubmit && !this.form.valid"
+      >All camps are required and need to be valid.
+    </p-message>
+
+    <div class="buttons-container">
+      <p-button label="Save" type="submit" fluid [raised]="true" />
+      <p-button
+        label="Cancel"
+        (click)="cancel()"
+        fluid
+        [raised]="true"
+        severity="secondary"
+      />
+    </div>
+  </form>
+</p-card>

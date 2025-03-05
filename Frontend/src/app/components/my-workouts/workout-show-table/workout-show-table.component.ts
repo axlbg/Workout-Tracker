@@ -17,49 +17,11 @@ import { DayOfWeek, WorkoutPerDay } from '../../../class/workoutPerDay';
   styleUrl: './workout-show-table.component.css',
 })
 export class WorkoutShowTableComponent {
-  @Input({ required: true, alias: 'workoutToShow' }) workout: Workout =
-    new Workout(
-      'Default Workout',
-      [
-        new WorkoutPerDay(DayOfWeek.MONDAY, [new Exercise('Push-up', {})]),
-        new WorkoutPerDay(DayOfWeek.TUESDAY, [new Exercise('Squat', {})]),
-      ],
-      0
-    );
+  @Input({ required: true, alias: 'workoutToShow' }) workout!: Workout;
 
   rowStyle(exercise: Exercise) {
-    /*  return {
-      'background-color': exercise.completed ? 'green' : 'red',
-    };*/
-    return {};
+    return {
+      'background-color': exercise.completed ? 'green' : '',
+    };
   }
-
-  /*
-  MuscleGroupLabels: Record<MuscleGroup, string> = {
-    [MuscleGroup.BACK]: 'Back',
-    [MuscleGroup.CHEST]: 'Chest',
-    [MuscleGroup.SHOULDERS]: 'Shoulders',
-    [MuscleGroup.BICEPS]: 'Biceps',
-    [MuscleGroup.TRICEPS]: 'Triceps',
-    [MuscleGroup.LEGS]: 'Legs',
-    [MuscleGroup.CORE]: 'Core',
-    [MuscleGroup.CARDIO]: 'Cardio',
-  };
-  muscleGroups = Object.values(MuscleGroup)
-    .filter((value) => typeof value === 'number')
-    .map((value) => ({
-      label: this.MuscleGroupLabels[value as MuscleGroup],
-      value,
-    }));
-
-  refreshWorkoutPerDayExercises(): void {
-    //this.workoutPerDay.exercises = this.exercises;
-    //this.refreshWorkoutPerDay.emit(this.workoutPerDay);
-  }
-
-  deleteExercise(exercise: any): void {
-    // this.exercises = this.exercises.filter((ex) => ex !== exercise);
-    this.refreshWorkoutPerDayExercises();
-    console.log(this.workout, 2);
-  }*/
 }

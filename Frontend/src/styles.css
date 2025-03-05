@@ -3,12 +3,25 @@
 
 body {
   font-family: "Poppins", sans-serif;
-  margin: 0;
+  margin: 10px;
+  background: linear-gradient(transparent, 75%, var(--p-blue-500));
+  min-height: 100vh;
 }
 
 .p-select,
 .p-floatlabel {
   width: 11rem;
+}
+
+.clickeable {
+  cursor: pointer;
+}
+
+@media (min-width: 961px) {
+  body {
+    margin: 5px 16%;
+    min-height: 99vh;
+  }
 }
 
 @media (min-width: 1000px) {

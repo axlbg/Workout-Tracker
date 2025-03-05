@@ -1,0 +1,8 @@
+<p-card header="{{ header }}" class="p-card">
+  <div *ngFor="let exercise of day.exercises" class="card-container">
+    <app-exercise-card
+      [exercise]="exercise"
+      [toggleOnCard]="false"
+    ></app-exercise-card>
+  </div>
+</p-card>

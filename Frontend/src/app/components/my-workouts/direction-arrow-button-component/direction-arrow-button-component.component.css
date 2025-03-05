@@ -1,0 +1,32 @@
+.button-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.arrow-btn {
+  font-size: 2rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.arrow-btn:hover {
+  transform: scale(1.2);
+}
+
+.message-container {
+  width: 250px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.message {
+  font-size: 1.5rem;
+  font-weight: bold;
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+}

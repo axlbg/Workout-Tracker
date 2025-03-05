@@ -1,0 +1,10 @@
+<div class="page-container">
+  <div class="days-container">
+    <div *ngFor="let day of workout.workoutPerDays" class="day-card">
+      <app-daily-card
+        [day]="day"
+        [header]="generateHeader(day.dayOfWeek.toString(), day.date)"
+      ></app-daily-card>
+    </div>
+  </div>
+</div>

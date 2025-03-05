@@ -37,4 +37,8 @@ export class ApiWorkoutService {
   updateExercisesCompleted(exercise: Exercise, completed: boolean) {
     //
   }
+
+  updateExercise(exercise: Exercise) {
+    //
+  }
 }

@@ -1,7 +1,16 @@
+.page-container {
+  text-align: center;
+}
 .completed {
   background-color: green;
 }
 
 .not-completed {
   background-color: red;
+}
+
+@media (max-width: 1240px) {
+  .page-container {
+    max-width: 100vw;
+  }
 }

@@ -1,0 +1,12 @@
+<div class="page-container">
+  <app-direction-arrow-button-component
+    [message]="message"
+    (changeMsg)="eventChangeMsg($event)"
+  ></app-direction-arrow-button-component>
+  <div [@messageChange]="currentIndex">
+    <app-daily-card
+      [day]="workout.workoutPerDays[currentIndex]"
+      [header]="workout.workoutPerDays[currentIndex].dayOfWeek.toString()"
+    ></app-daily-card>
+  </div>
+</div>

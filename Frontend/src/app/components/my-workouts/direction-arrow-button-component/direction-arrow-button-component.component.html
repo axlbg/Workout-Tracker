@@ -1,0 +1,13 @@
+<div class="button-container">
+  <button (click)="changeMessage('left')" class="arrow-btn">
+    <i class="pi pi-angle-left"></i>
+  </button>
+  <div class="message-container">
+    <div class="message" [@messageChange]="currentIndex">
+      {{ message }}
+    </div>
+  </div>
+  <button (click)="changeMessage('right')" class="arrow-btn">
+    <i class="pi pi-angle-right"></i>
+  </button>
+</div>

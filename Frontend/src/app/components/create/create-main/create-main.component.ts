@@ -17,6 +17,7 @@ import { CreateStepOneComponent } from '../create-step-one/create-step-one.compo
 import { CreateStepTwoComponent } from '../create-step-two/create-step-two.component';
 import { CreateStepThreeComponent } from '../create-step-three/create-step-three.component';
 import { LoadingComponent } from '../../shared/loading/loading.component';
+import { ToastService } from '../../../services/toast.service';
 
 @Component({
   selector: 'app-create-main',
@@ -59,7 +60,10 @@ export class CreateMainComponent {
   workout: Workout;
 
   private readonly router = inject(Router);
-  constructor(private apiWorkout: ApiWorkoutService) {
+  constructor(
+    private apiWorkout: ApiWorkoutService,
+    private toastService: ToastService
+  ) {
     this.workout = new Workout('', []);
   }
 
@@ -156,6 +160,7 @@ export class CreateMainComponent {
 
   finishCreate(): void {
     this.showLoading = true;
+    this.toastService.showLoading();
     // Create request
     const workoutRequest = new createWorkoutRequest(
       this.workout,
@@ -169,11 +174,14 @@ export class CreateMainComponent {
     this.apiWorkout.createWorkout(workoutRequestJson).subscribe({
       next: () => {
         this.showLoading = false;
+        this.toastService.hideLoading();
+        this.toastService.showSuccess('Workout successfully created.');
         this.router.navigateByUrl('/my-workouts');
       },
       error: (error) => {
         console.error(error.message || 'Unexpected error');
         this.showLoading = false;
+        this.toastService.hideLoading();
       },
     });
   }

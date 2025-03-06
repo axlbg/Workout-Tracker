@@ -6,6 +6,7 @@ import { ApiWorkoutService } from '../../services/api-workout.service';
 import { Workout } from '../../class/workout';
 import { DividerModule } from 'primeng/divider';
 import { Exercise } from '../../class/exercise';
+import { ToastService } from '../../services/toast.service';
 
 @Component({
   selector: 'app-daily',
@@ -17,28 +18,33 @@ import { Exercise } from '../../class/exercise';
 export class DailyComponent {
   day: WorkoutPerDay | null = null;
 
-  constructor(private apiWorkout: ApiWorkoutService) {
+  constructor(
+    private apiWorkout: ApiWorkoutService,
+    private toastService: ToastService
+  ) {
     this.findWorkouts();
   }
 
   findWorkouts() {
+    this.toastService.showLoading();
     this.apiWorkout.getWorkouts().subscribe((workouts) => {
       if (workouts) this.day = this.filterByToday(workouts);
+
+      this.toastService.hideLoading();
     });
   }
 
   markAllExercisesAsCompleted() {
     if (this.day && this.day.exercises) {
       this.day.exercises.forEach((exercise) => {
-        exercise.completed = true;
-        this.apiWorkout.updateExercisesCompleted(exercise, true);
+        if (exercise.id != null) {
+          exercise.completed = true;
+          this.apiWorkout
+            .updateExerciseCompleted(exercise.id, true)
+            .subscribe();
+        }
       });
     }
-  }
-
-  updateExercise(exercise:Exercise)
-  {
-    this.apiWorkout.updateExercise(exercise);
   }
 
   private filterByToday(workouts: Workout[]): WorkoutPerDay | null {

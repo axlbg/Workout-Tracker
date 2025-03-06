@@ -1,7 +1,7 @@
 import { WorkoutPerDay } from './workoutPerDay';
 
 export class Workout {
-  public id?: number | null;
+  public id?: number;
   public name: string;
   public icon: number;
   public workoutPerDays: WorkoutPerDay[];

@@ -1,7 +1,7 @@
 @if(showExerciseEdit && exerciseToEdit){<app-exercise-edit-card
   [exercise]="exerciseToEdit"
-  (onClickSaveExercise)="onClickSaveExercise($event)"
-  (onClickCancel)="onClickCancel()"
+  (onClickSaveExercise)="onClickCloseEdit()"
+  (onClickCancel)="onClickCloseEdit()"
 ></app-exercise-edit-card
 >} @else {
 <div class="container">

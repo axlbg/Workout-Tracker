@@ -7,11 +7,18 @@ import { ShowWorkoutComponent } from '../../components/my-workouts/show-workout/
 import { IconService } from '../../services/icon.service';
 import { CardModule } from 'primeng/card';
 import { DividerModule } from 'primeng/divider';
+import { ToastService } from '../../services/toast.service';
 
 @Component({
   selector: 'app-my-workouts',
   standalone: true,
-  imports: [NavbarComponent, CommonModule, ShowWorkoutComponent, CardModule,DividerModule],
+  imports: [
+    NavbarComponent,
+    CommonModule,
+    ShowWorkoutComponent,
+    CardModule,
+    DividerModule,
+  ],
   templateUrl: './my-workouts.component.html',
   styleUrls: ['./my-workouts.component.css', '../../styles/icon.css'],
 })
@@ -21,13 +28,18 @@ export class MyWorkoutsComponent {
   showOneWorkout = false;
 
   public iconService = inject(IconService);
-  constructor(private apiWorkout: ApiWorkoutService) {
+  constructor(
+    private apiWorkout: ApiWorkoutService,
+    private toastService: ToastService
+  ) {
     this.findWorkouts();
   }
 
   findWorkouts() {
+    this.toastService.showLoading();
     this.apiWorkout.getWorkouts().subscribe((data) => {
       this.workouts = data;
+      this.toastService.hideLoading();
     });
   }
 

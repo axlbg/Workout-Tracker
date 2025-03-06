@@ -1,1 +1,20 @@
+<p-toast
+  key="loading"
+  [baseZIndex]="5000"
+  [breakpoints]="{ '920px': { width: '100%', right: '0', left: '0' } }"
+  preventOpenDuplicates
+>
+  <ng-template let-message #headless let-closeFn="closeFn">
+    <div class="message-container">
+      <i class="pi pi-spin pi-spinner" style="font-size: 1.5rem"></i>
+      Loading...
+    </div>
+  </ng-template>
+</p-toast>
+<p-toast
+  key="toasty"
+  [baseZIndex]="5000"
+  [breakpoints]="{ '920px': { width: '100%', right: '0', left: '0' } }"
+/>
+
 <router-outlet />

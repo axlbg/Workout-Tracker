@@ -13,17 +13,31 @@ export class ApiWorkoutService {
   constructor(private http: HttpClient, private authService: AuthService) {}
 
   createWorkout(postData: any): Observable<any> {
-    const token = this.authService.getToken();
-
-    const headers = new HttpHeaders({
-      Authorization: `Bearer ${token}`,
-      'Content-Type': 'application/json',
-    });
+    const headers = this.generateHeader();
 
     return this.http.post(`${this.apiUrl}/workout`, postData, { headers });
   }
 
   getWorkouts(): Observable<any> {
+    const headers = this.generateHeader();
+    return this.http.get(`${this.apiUrl}/workout`, { headers });
+  }
+
+  updateExerciseCompleted(id: number, completed: boolean) {
+    const headers = this.generateHeader();
+    return this.http.patch(`${this.apiUrl}/exercises/${id}`, completed, {
+      headers,
+    });
+  }
+
+  updateExercise(exercise: Exercise) {
+    const headers = this.generateHeader();
+    return this.http.put(`${this.apiUrl}/exercises/${exercise.id}`, exercise, {
+      headers,
+    });
+  }
+
+  private generateHeader(): HttpHeaders {
     const token = this.authService.getToken();
 
     const headers = new HttpHeaders({
@@ -31,14 +45,6 @@ export class ApiWorkoutService {
       'Content-Type': 'application/json',
     });
 
-    return this.http.get(`${this.apiUrl}/workout`, { headers });
-  }
-
-  updateExercisesCompleted(exercise: Exercise, completed: boolean) {
-    //
-  }
-
-  updateExercise(exercise: Exercise) {
-    //
+    return headers;
   }
 }

@@ -10,6 +10,7 @@ export enum MuscleGroup {
 }
 
 export class Exercise {
+  public id?: number;
   public name: string;
 
   public sets: number;
@@ -28,7 +29,8 @@ export class Exercise {
     reps = 0,
     weight = 0,
     rir = 0,
-    completed = false
+    completed = false,
+    id?: number
   ) {
     this.name = name;
     this.muscleGroup = muscleGroup;
@@ -37,5 +39,6 @@ export class Exercise {
     this.weight = weight;
     this.rir = rir;
     this.completed = completed;
+    this.id = id;
   }
 }

@@ -16,6 +16,8 @@ import { FloatLabelModule } from 'primeng/floatlabel';
 import { SelectModule } from 'primeng/select';
 import { ToggleButtonModule } from 'primeng/togglebutton';
 import { MessageModule } from 'primeng/message';
+import { ApiWorkoutService } from '../../../services/api-workout.service';
+import { ToastService } from '../../../services/toast.service';
 
 @Component({
   selector: 'app-exercise-edit-card',
@@ -40,7 +42,7 @@ import { MessageModule } from 'primeng/message';
 })
 export class ExerciseEditCardComponent implements OnInit {
   @Input({ required: false }) exercise!: Exercise;
-  onClickSaveExercise = output<Exercise>();
+  onClickSaveExercise = output();
   onClickCancel = output();
   touchedSubmit = false;
 
@@ -50,7 +52,11 @@ export class ExerciseEditCardComponent implements OnInit {
   }));
 
   form: FormGroup;
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private apiWorkout: ApiWorkoutService,
+    private toastService: ToastService
+  ) {
     this.form = this.fb.group({
       name: ['', [Validators.required]],
       sets: [null, [Validators.required, Validators.min(1)]],
@@ -66,7 +72,6 @@ export class ExerciseEditCardComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.exercise);
     if (this.exercise) {
       this.form.setValue({
         name: this.exercise.name,
@@ -88,7 +93,7 @@ export class ExerciseEditCardComponent implements OnInit {
       this.exercise.rir = this.form.value.rir;
       this.exercise.muscleGroup = this.form.value.muscleGroup;
 
-      this.onClickSaveExercise.emit(this.exercise);
+      this.updateExercise(this.exercise);
     } else {
       this.touchedSubmit = true;
     }
@@ -96,5 +101,13 @@ export class ExerciseEditCardComponent implements OnInit {
 
   cancel() {
     this.onClickCancel.emit();
+  }
+
+  private updateExercise(exercise: Exercise) {
+    this.toastService.showLoading();
+    this.apiWorkout.updateExercise(exercise).subscribe(() => {
+      this.onClickSaveExercise.emit();
+      this.toastService.hideLoading();
+    });
   }
 }

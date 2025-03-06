@@ -1,8 +1,19 @@
+@if(showExerciseEdit && exerciseToEdit){
+<div class="edit-container">
+  <app-exercise-edit-card
+    [exercise]="exerciseToEdit"
+    (onClickSaveExercise)="onClickCloseEdit()"
+    (onClickCancel)="onClickCloseEdit()"
+  ></app-exercise-edit-card>
+</div>
+} @else {
 <p-card header="{{ header }}" class="p-card">
-  <div *ngFor="let exercise of day.exercises" class="card-container">
+  <div *ngFor="let exercise of day.exercises">
     <app-exercise-card
       [exercise]="exercise"
       [toggleOnCard]="false"
+      (onClickEditExercise)="onClickEditExercise(exercise)"
     ></app-exercise-card>
   </div>
 </p-card>
+}

@@ -1,8 +1,6 @@
-.card-container {
-  width: 360px;
-}
-
 .p-card {
+  max-width: 600px;
+  margin: 0 auto;
   text-align: center;
 }
 

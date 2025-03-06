@@ -1,0 +1,6 @@
+.message-container {
+  margin: 10px 20px;
+  gap: 20px;
+  display: flex;
+  align-items: center;
+}

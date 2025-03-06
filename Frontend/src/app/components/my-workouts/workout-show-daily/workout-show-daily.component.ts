@@ -2,10 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Workout } from '../../../class/workout';
 import { CommonModule } from '@angular/common';
 import { CardModule } from 'primeng/card';
-import { ExerciseCardComponent } from '../../shared/exercise-card/exercise-card.component';
 import { DirectionArrowButtonComponentComponent } from '../direction-arrow-button-component/direction-arrow-button-component.component';
-import { DayOfWeekPipe } from '../../../pipes/day-of-week.pipe';
-import { WorkoutPerDay } from '../../../class/workoutPerDay';
 import {
   animate,
   sequence,

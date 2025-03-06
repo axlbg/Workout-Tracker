@@ -41,12 +41,7 @@ export class ShowDailyComponent {
     this.showExerciseEdit = true;
   }
 
-  onClickSaveExercise(exercise: Exercise) {
-    this.showExerciseEdit = false;
-    this.saveExercise.emit(exercise);
-  }
-
-  onClickCancel() {
+  onClickCloseEdit() {
     this.showExerciseEdit = false;
   }
 }

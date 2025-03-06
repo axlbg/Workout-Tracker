@@ -18,8 +18,10 @@ export class ExerciseCardComponent {
   constructor(public apiWorkoutService: ApiWorkoutService) {}
 
   toggleCompletion(exercise: Exercise): void {
-    exercise.completed = !exercise.completed;
-    this.updateExercise(exercise, exercise.completed);
+    if (exercise.id != null) {
+      exercise.completed = !exercise.completed;
+      this.updateExercise(exercise.id, exercise.completed);
+    }
   }
 
   editExercise(event: Event, exercise: Exercise): void {
@@ -27,7 +29,7 @@ export class ExerciseCardComponent {
     this.onClickEditExercise.emit(exercise);
   }
 
-  updateExercise(exercise: Exercise, completed: boolean): void {
-    this.apiWorkoutService.updateExercisesCompleted(exercise, completed);
+  updateExercise(id: number, completed: boolean): void {
+    this.apiWorkoutService.updateExerciseCompleted(id, completed).subscribe();
   }
 }

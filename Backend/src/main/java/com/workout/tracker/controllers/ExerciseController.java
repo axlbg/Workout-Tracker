@@ -23,4 +23,10 @@ public class ExerciseController {
     {
         return exerciseService.updateExercise(id, exerciseDto);
     }
+
+    @PatchMapping("/{id}")
+    public ExerciseDto updateExerciseCompleted(@PathVariable Long id, @RequestBody boolean completed)
+    {
+        return exerciseService.updateExerciseCompleted(id, completed);
+    }
 }

@@ -69,4 +69,14 @@ public class ExerciseService {
 
         return WorkoutMapper.toExerciseDto(exerciseRepository.save(exercise));
     }
+
+
+    public ExerciseDto updateExerciseCompleted(Long id, boolean completed) {
+        Exercise exercise = exerciseRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Exercise not found with id: " + id));
+
+        exercise.setCompleted(completed);
+
+        return WorkoutMapper.toExerciseDto(exerciseRepository.save(exercise));
+    }
 }

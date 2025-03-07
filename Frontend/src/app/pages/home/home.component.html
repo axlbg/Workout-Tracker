@@ -4,7 +4,11 @@
 <p-divider />
 
 <div class="panels">
-  <p-panel *ngFor="let item of workoutItems; let i = index">
+  <p-panel
+    *ngFor="let item of workoutItems; let i = index"
+    pAnimateOnScroll
+    [enterClass]="i % 2 === 0 ? 'animate-enter-left' : 'animate-enter-right'"
+  >
     <div class="panel-container" [ngClass]="{ reverse: i % 2 !== 0 }">
       <div class="panel-text">
         <h1>{{ item.title }}</h1>
@@ -26,11 +30,16 @@
   [responsiveOptions]="responsiveOptions"
 >
   <ng-template let-step #item>
-    <div class="step-container">
+    <div class="step-container" pAnimateOnScroll enterClass="animate-enter">
       <p-panel header="{{ step.header }}">
         <div class="panel">
           {{ step.text }}
-          <img class="img" src="{{ step.image }}" [alt]="step.header" />
+          <img
+            class="img"
+            src="{{ step.image }}"
+            [alt]="step.header"
+            loading="lazy"
+          />
         </div>
       </p-panel>
     </div>

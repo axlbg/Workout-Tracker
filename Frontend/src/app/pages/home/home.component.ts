@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { PanelModule } from 'primeng/panel';
 import { DividerModule } from 'primeng/divider';
 import { CarouselModule } from 'primeng/carousel';
+import { AnimateOnScrollModule } from 'primeng/animateonscroll';
 
 @Component({
   selector: 'app-home',
@@ -17,6 +18,7 @@ import { CarouselModule } from 'primeng/carousel';
     PanelModule,
     DividerModule,
     CarouselModule,
+    AnimateOnScrollModule,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',

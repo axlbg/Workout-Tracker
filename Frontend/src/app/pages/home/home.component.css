@@ -1,6 +1,13 @@
+.panels {
+  display: flex;
+  flex-flow: column;
+  gap: 4rem;
+}
+
 .panel-container {
   display: flex;
   flex-flow: column;
+  padding: 0 15px 15px;
 }
 
 .panel-container.reverse {
@@ -20,6 +27,19 @@
   justify-content: center;
   width: 100%;
   margin: auto;
+}
+
+.step-container {
+  width: 100%;
+  padding: 10px;
+}
+.step-container .panel {
+  height: 280px;
+}
+
+.step-container .panel .img {
+  height: auto;
+  width: 100%;
 }
 
 @media (min-width: 961px) {

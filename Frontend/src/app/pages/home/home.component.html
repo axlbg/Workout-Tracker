@@ -3,12 +3,36 @@
 <p>Keep track of your workouts</p>
 <p-divider />
 
-<p-panel *ngFor="let item of workoutItems; let i = index">
-  <div class="panel-container" [ngClass]="{ reverse: i % 2 !== 0 }">
-    <div class="panel-text">
-      <h1>{{ item.title }}</h1>
-      <p>{{ item.description }}</p>
+<div class="panels">
+  <p-panel *ngFor="let item of workoutItems; let i = index">
+    <div class="panel-container" [ngClass]="{ reverse: i % 2 !== 0 }">
+      <div class="panel-text">
+        <h1>{{ item.title }}</h1>
+        <p>{{ item.description }}</p>
+      </div>
+      <img class="panel-img" [src]="item.image" [alt]="item.alt" />
     </div>
-    <img class="panel-img" [src]="item.image" [alt]="item.alt" />
-  </div>
-</p-panel>
+  </p-panel>
+</div>
+
+<br />
+<p>How it works?</p>
+<p-divider />
+
+<p-carousel
+  [value]="steps"
+  [numVisible]="2"
+  [numScroll]="1"
+  [responsiveOptions]="responsiveOptions"
+>
+  <ng-template let-step #item>
+    <div class="step-container">
+      <p-panel header="{{ step.header }}">
+        <div class="panel">
+          {{ step.text }}
+          <img class="img" src="{{ step.image }}" [alt]="step.header" />
+        </div>
+      </p-panel>
+    </div>
+  </ng-template>
+</p-carousel>

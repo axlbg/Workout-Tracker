@@ -8,6 +8,8 @@ import { ExerciseCardComponent } from '../shared/exercise-card/exercise-card.com
 import { CardModule } from 'primeng/card';
 import { ExerciseEditCardComponent } from '../shared/exercise-edit-card/exercise-edit-card.component';
 import { Exercise } from '../../class/exercise';
+import { CustomDateFormatPipe } from '../../pipes/custom-date-format.pipe';
+import { PanelModule } from 'primeng/panel';
 
 @Component({
   selector: 'app-show-daily',
@@ -15,11 +17,12 @@ import { Exercise } from '../../class/exercise';
   imports: [
     FormsModule,
     CommonModule,
-    DayOfWeekPipe,
     ButtonModule,
     ExerciseCardComponent,
     CardModule,
     ExerciseEditCardComponent,
+    CustomDateFormatPipe,
+    PanelModule,
   ],
   templateUrl: './show-daily.component.html',
   styleUrl: './show-daily.component.css',

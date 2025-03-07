@@ -1,3 +1,14 @@
 <app-navbar></app-navbar>
 
-Hello !
+<p>Keep track of your workouts</p>
+<p-divider />
+
+<p-panel *ngFor="let item of workoutItems; let i = index">
+  <div class="panel-container" [ngClass]="{ reverse: i % 2 !== 0 }">
+    <div class="panel-text">
+      <h1>{{ item.title }}</h1>
+      <p>{{ item.description }}</p>
+    </div>
+    <img class="panel-img" [src]="item.image" [alt]="item.alt" />
+  </div>
+</p-panel>

@@ -13,7 +13,16 @@
 <p-divider />
 
 @if(workouts.length === 0) {
-<div class="container">no hay nada</div>
+<p-panel>
+  <div class="msg-container">
+    Ready to crush your goals? 💥 <br /><br />
+    <a class="clickeable" routerLink="/create"
+      ><u>
+        Click here to create your first workout and take the first step!</u
+      ></a
+    >
+  </div>
+</p-panel>
 
 } @else {
 

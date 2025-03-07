@@ -1,0 +1,28 @@
+@if(showExerciseEdit && exerciseToEdit){
+<div class="edit-container">
+  <app-exercise-edit-card
+    [exercise]="exerciseToEdit"
+    [isCreating]="true"
+    (onClickSaveExercise)="onClickSaveExercise()"
+    (onClickCancel)="onClickCloseEdit()"
+  ></app-exercise-edit-card>
+</div>
+} @else {
+<h2>{{ day | dayOfWeek }}</h2>
+<div *ngFor="let exercise of workoutPerDay.exercises">
+  <app-exercise-card
+    [exercise]="exercise"
+    [toggleOnCard]="false"
+    [deleteable]="true"
+    (onClickEditExercise)="onClickEditExercise(exercise)"
+    (onClickDeleteExercise)="deleteExercise($event)"
+  ></app-exercise-card>
+</div>
+<p-button
+  label="Add exercise"
+  icon="pi pi-plus"
+  class="mr-2"
+  (onClick)="addExercise()"
+/>
+
+}

@@ -18,6 +18,7 @@ import { CreateStepTwoComponent } from '../create-step-two/create-step-two.compo
 import { CreateStepThreeComponent } from '../create-step-three/create-step-three.component';
 import { LoadingComponent } from '../../shared/loading/loading.component';
 import { ToastService } from '../../../services/toast.service';
+import { PanelModule } from 'primeng/panel';
 
 @Component({
   selector: 'app-create-main',
@@ -35,6 +36,7 @@ import { ToastService } from '../../../services/toast.service';
     CreateStepTwoComponent,
     CreateStepThreeComponent,
     LoadingComponent,
+    PanelModule
   ],
   templateUrl: './create-main.component.html',
   styleUrl: './create-main.component.css',
@@ -171,6 +173,7 @@ export class CreateMainComponent {
     const workoutRequestJson = JSON.stringify(workoutRequest); // convert class to json
     /* ------------------------------------------------- */
 
+    console.log(workoutRequestJson);
     this.apiWorkout.createWorkout(workoutRequestJson).subscribe({
       next: () => {
         this.showLoading = false;

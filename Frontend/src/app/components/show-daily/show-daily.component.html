@@ -3,32 +3,32 @@
   (onClickSaveExercise)="onClickCloseEdit()"
   (onClickCancel)="onClickCloseEdit()"
 ></app-exercise-edit-card
->} @else {
-<div class="container">
-  @if( day != null){
+>} @else { @if( day != null){
 
-  <p-card
-    header="{{ day.dayOfWeek | dayOfWeek }} {{ day.date | date }}"
-    class="p-card"
-  >
-    <div *ngFor="let exercise of day.exercises">
-      <app-exercise-card
-        [exercise]="exercise"
-        [toggleOnCard]="true"
-        (onClickEditExercise)="onClickEditExercise(exercise)"
-      ></app-exercise-card>
+<p-panel header="  {{ day.date | customDateFormat : true }}" class="p-card">
+  <div *ngFor="let exercise of day.exercises">
+    <app-exercise-card
+      [exercise]="exercise"
+      [toggleOnCard]="true"
+      (onClickEditExercise)="onClickEditExercise(exercise)"
+    ></app-exercise-card>
+  </div>
+  <ng-template #footer>
+    <div class="footer">
+      <p-button
+        icon="pi pi-check"
+        label="Mark all as completed"
+        (click)="emitMarkAllAsCompleted()"
+        [outlined]="true"
+      />
     </div>
-    <ng-template #footer>
-      <div class="footer">
-        <p-button
-          icon="pi pi-check"
-          label="Mark all as completed"
-          (click)="emitMarkAllAsCompleted()"
-          [outlined]="true"
-        />
-      </div>
-    </ng-template>
-  </p-card>
-  } @else { Rest day. }
-</div>
-}
+  </ng-template>
+</p-panel>
+} @else {
+<p-panel>
+  <div class="msg-container">
+    No workouts today — it’s rest day! 💪 <br /><br />
+    Remember, muscles grow when you rest, not just when you train. Enjoy it!
+  </div>
+</p-panel>
+} }

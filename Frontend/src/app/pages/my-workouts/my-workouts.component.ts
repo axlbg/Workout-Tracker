@@ -8,6 +8,8 @@ import { IconService } from '../../services/icon.service';
 import { CardModule } from 'primeng/card';
 import { DividerModule } from 'primeng/divider';
 import { ToastService } from '../../services/toast.service';
+import { RouterLink } from '@angular/router';
+import { PanelModule } from 'primeng/panel';
 
 @Component({
   selector: 'app-my-workouts',
@@ -18,6 +20,8 @@ import { ToastService } from '../../services/toast.service';
     ShowWorkoutComponent,
     CardModule,
     DividerModule,
+    RouterLink,
+    PanelModule,
   ],
   templateUrl: './my-workouts.component.html',
   styleUrls: ['./my-workouts.component.css', '../../styles/icon.css'],
@@ -37,10 +41,16 @@ export class MyWorkoutsComponent {
 
   findWorkouts() {
     this.toastService.showLoading();
-    this.apiWorkout.getWorkouts().subscribe((data) => {
-      this.workouts = data;
-      this.toastService.hideLoading();
-    });
+    this.apiWorkout.getWorkouts().subscribe(
+      (data) => {
+        this.workouts = data;
+        this.toastService.hideLoading();
+      },
+      (error) => {
+        console.error('Error:', error);
+        this.toastService.hideLoading();
+      }
+    );
   }
 
   openWorkout(workout: Workout) {

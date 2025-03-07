@@ -42,6 +42,8 @@ import { ToastService } from '../../../services/toast.service';
 })
 export class ExerciseEditCardComponent implements OnInit {
   @Input({ required: false }) exercise!: Exercise;
+  @Input({ required: false }) isCreating: boolean = false;
+
   onClickSaveExercise = output();
   onClickCancel = output();
   touchedSubmit = false;
@@ -59,10 +61,10 @@ export class ExerciseEditCardComponent implements OnInit {
   ) {
     this.form = this.fb.group({
       name: ['', [Validators.required]],
-      sets: [null, [Validators.required, Validators.min(1)]],
-      reps: [null, [Validators.required, Validators.min(1)]],
+      sets: [null, [Validators.required, Validators.min(0)]],
+      reps: [null, [Validators.required, Validators.min(0)]],
       weight: [null, [Validators.required, Validators.min(0)]],
-      rir: [null, [Validators.required, Validators.min(0), Validators.max(10)]],
+      rir: [null, [Validators.required, Validators.min(0)]],
       muscleGroup: [MuscleGroup.BACK, [Validators.required]],
     });
 
@@ -104,10 +106,14 @@ export class ExerciseEditCardComponent implements OnInit {
   }
 
   private updateExercise(exercise: Exercise) {
-    this.toastService.showLoading();
-    this.apiWorkout.updateExercise(exercise).subscribe(() => {
+    if (!this.isCreating) {
+      this.toastService.showLoading();
+      this.apiWorkout.updateExercise(exercise).subscribe(() => {
+        this.onClickSaveExercise.emit();
+        this.toastService.hideLoading();
+      });
+    } else {
       this.onClickSaveExercise.emit();
-      this.toastService.hideLoading();
-    });
+    }
   }
 }

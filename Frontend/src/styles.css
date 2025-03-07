@@ -4,7 +4,8 @@
 body {
   font-family: "Poppins", sans-serif;
   margin: 10px;
-  background: linear-gradient(transparent, 75%, var(--p-blue-500));
+  background: linear-gradient(var(--p-blue-500), 1%, transparent);
+  background-attachment: fixed;
   min-height: 100vh;
 }
 
@@ -15,6 +16,10 @@ body {
 
 .clickeable {
   cursor: pointer;
+}
+
+.p-divider {
+  padding-bottom: 10em;
 }
 
 @media (min-width: 961px) {

@@ -13,7 +13,9 @@ import { ApiWorkoutService } from '../../../services/api-workout.service';
 export class ExerciseCardComponent {
   @Input({ required: true }) exercise!: Exercise;
   @Input({ required: false }) toggleOnCard: boolean = true;
+  @Input({ required: false }) deleteable: boolean = false;
   onClickEditExercise = output<Exercise>();
+  onClickDeleteExercise = output<Exercise>();
 
   constructor(public apiWorkoutService: ApiWorkoutService) {}
 
@@ -31,5 +33,9 @@ export class ExerciseCardComponent {
 
   updateExercise(id: number, completed: boolean): void {
     this.apiWorkoutService.updateExerciseCompleted(id, completed).subscribe();
+  }
+
+  deleteExercise(exercise: Exercise) {
+    this.onClickDeleteExercise.emit(exercise);
   }
 }

@@ -1,9 +1,36 @@
-<p-carousel [value]="days" [numVisible]="1" [numScroll]="1" [circular]="false">
-  <ng-template let-day #item>
-    <app-create-daily
-      [day]="day"
-      (refreshWorkoutPerDay)="eventRefreshWorkoutPerDay($event)"
-    >
-    </app-create-daily
-  ></ng-template>
-</p-carousel>
+<ng-container *ngIf="isDesktop; else mobileView">
+  @defer {<p-carousel
+    [value]="days"
+    [numVisible]="1"
+    [numScroll]="1"
+    [circular]="false"
+  >
+    <ng-template let-day #item>
+      <app-create-daily
+        [day]="day"
+        (refreshWorkoutPerDay)="eventRefreshWorkoutPerDay($event)"
+      >
+      </app-create-daily
+    ></ng-template>
+  </p-carousel>
+
+  }
+</ng-container>
+
+<ng-template #mobileView>
+  @defer () {<p-carousel
+    [value]="days"
+    [numVisible]="1"
+    [numScroll]="1"
+    [circular]="false"
+    class="p-carousel"
+  >
+    <ng-template let-day #item>
+      <app-create-daily-mobile
+        [day]="day"
+        (refreshWorkoutPerDay)="eventRefreshWorkoutPerDay($event)"
+      ></app-create-daily-mobile>
+    </ng-template>
+  </p-carousel>
+  }
+</ng-template>

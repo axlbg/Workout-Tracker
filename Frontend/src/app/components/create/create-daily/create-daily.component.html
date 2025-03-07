@@ -5,7 +5,7 @@
     [reorderableColumns]="true"
     [tableStyle]="{ 'min-width': '20rem' }"
     [scrollable]="true"
-    scrollHeight="40vh"
+    scrollHeight="43vh"
   >
     <ng-template #header>
       <tr>
@@ -55,6 +55,7 @@
                 [(ngModel)]="exercise.name"
                 (ngModelChange)="refreshWorkoutPerDayExercises()"
                 required
+                style="font-size: 1rem"
               />
             </ng-template>
             <ng-template #output>
@@ -71,7 +72,7 @@
                 [(ngModel)]="exercise.sets"
                 (ngModelChange)="refreshWorkoutPerDayExercises()"
                 required
-                style="max-width: 3rem"
+                style="max-width: 3rem; font-size: 1rem"
               />
             </ng-template>
             <ng-template #output>
@@ -88,7 +89,7 @@
                 [(ngModel)]="exercise.reps"
                 (ngModelChange)="refreshWorkoutPerDayExercises()"
                 required
-                style="max-width: 3rem"
+                style="max-width: 3rem; font-size: 1rem"
               />
             </ng-template>
             <ng-template #output>
@@ -105,7 +106,7 @@
                 [(ngModel)]="exercise.weight"
                 (ngModelChange)="refreshWorkoutPerDayExercises()"
                 required
-                style="max-width: 5rem"
+                style="max-width: 5rem; font-size: 1rem"
               />
             </ng-template>
             <ng-template #output>
@@ -122,7 +123,7 @@
                 [(ngModel)]="exercise.rir"
                 (ngModelChange)="refreshWorkoutPerDayExercises()"
                 required
-                style="max-width: 3rem"
+                style="max-width: 3rem; font-size: 1rem"
               />
             </ng-template>
             <ng-template #output>

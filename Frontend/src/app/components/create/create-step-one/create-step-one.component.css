@@ -23,3 +23,16 @@
 .invalid {
   color: var(--p-inputtext-invalid-border-color);
 }
+
+.floatlabel {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin: auto;
+  width: 100%;
+  align-items: center;
+}
+
+input {
+  width: 100%;
+}

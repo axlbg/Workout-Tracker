@@ -1,0 +1,9 @@
+.exercises-container {
+  overflow: scroll;
+  height: 43vh;
+  width: 100%;
+}
+
+.exercises-container::-webkit-scrollbar {
+  display: none;
+}

@@ -39,7 +39,7 @@ export class CreateDailyComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    this.workoutPerDay = new WorkoutPerDay(this.day);
+    this.workoutPerDay = new WorkoutPerDay(this.day); // important to be here onInit
   }
 
   refreshWorkoutPerDayExercises(): void {

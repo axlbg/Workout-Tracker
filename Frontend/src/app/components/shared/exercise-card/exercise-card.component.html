@@ -27,6 +27,7 @@
   <div class="muscle-group">{{ exercise.muscleGroup }}</div>
   <div class="completion-icon">
     <i class="pi pi-pen-to-square" (click)="editExercise($event, exercise)"></i>
+    @if(!deleteable){
     <i
       *ngIf="exercise.completed"
       class="pi pi-check-circle"
@@ -37,5 +38,8 @@
       class="pi pi-circle"
       (click)="!toggleOnCard ? toggleCompletion(exercise) : null"
     ></i>
+    } @else {
+    <i class="pi pi-trash" (click)="deleteExercise(exercise)"></i>
+    }
   </div>
 </div>

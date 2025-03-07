@@ -3,9 +3,16 @@
   flex-flow: wrap;
   align-items: center;
   justify-content: center;
-  gap: 5em;
+  gap: 3em;
 
-  padding-top: 8em;
+  padding-top: 4em;
+  text-align: center;
+}
+
+.msg-container {
+  display: flex;
+  flex-flow: column;
+  padding: 4em 0;
   text-align: center;
 }
 

@@ -5,7 +5,7 @@ import { DayOfWeek } from '../class/workoutPerDay';
   name: 'dayOfWeek',
 })
 export class DayOfWeekPipe implements PipeTransform {
-  transform(dayOfWeek: DayOfWeek, ...args: unknown[]): unknown {
+  transform(dayOfWeek: DayOfWeek, ...args: unknown[]): string {
     const days = [
       'Monday',
       'Tuesday',

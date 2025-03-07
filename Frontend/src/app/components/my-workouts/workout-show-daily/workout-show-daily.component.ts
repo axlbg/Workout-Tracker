@@ -11,6 +11,7 @@ import {
   trigger,
 } from '@angular/animations';
 import { DailyCardComponent } from '../daily-card/daily-card.component';
+import { CustomDateFormatPipe } from '../../../pipes/custom-date-format.pipe';
 
 @Component({
   selector: 'app-workout-show-daily',
@@ -19,6 +20,7 @@ import { DailyCardComponent } from '../daily-card/daily-card.component';
     CardModule,
     DirectionArrowButtonComponentComponent,
     DailyCardComponent,
+    CustomDateFormatPipe,
   ],
   templateUrl: './workout-show-daily.component.html',
   styleUrl: './workout-show-daily.component.css',

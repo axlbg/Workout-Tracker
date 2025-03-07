@@ -1,12 +1,12 @@
 <div class="page-container">
   <app-direction-arrow-button-component
-    [message]="message"
+    [message]="message | customDateFormat : false"
     (changeMsg)="eventChangeMsg($event)"
   ></app-direction-arrow-button-component>
   <div [@messageChange]="currentIndex">
     <app-daily-card
       [day]="workout.workoutPerDays[currentIndex]"
-      [header]="workout.workoutPerDays[currentIndex].dayOfWeek.toString()"
+      [header]="workout.workoutPerDays[currentIndex].date | customDateFormat"
     ></app-daily-card>
   </div>
 </div>

@@ -21,3 +21,8 @@
 .p-select {
   width: 100%;
 }
+
+.p-card {
+  position: relative;
+  z-index: 5000;
+}

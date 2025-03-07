@@ -27,11 +27,16 @@ export class DailyComponent {
 
   findWorkouts() {
     this.toastService.showLoading();
-    this.apiWorkout.getWorkouts().subscribe((workouts) => {
-      if (workouts) this.day = this.filterByToday(workouts);
+    this.apiWorkout.getWorkouts().subscribe(
+      (workouts) => {
+        if (workouts) this.day = this.filterByToday(workouts);
 
-      this.toastService.hideLoading();
-    });
+        this.toastService.hideLoading();
+      },
+      (error) => {
+        this.toastService.hideLoading();
+      }
+    );
   }
 
   markAllExercisesAsCompleted() {

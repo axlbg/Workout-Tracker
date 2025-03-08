@@ -38,7 +38,7 @@
 }
 
 .step-container .panel .img {
-  height: auto;
+  height: 250px;
   width: 100%;
 }
 
@@ -53,11 +53,9 @@
     opacity: 1;
   }
 }
-
 .animate-enter-left {
   animation: slideInFromLeft 1s ease forwards;
 }
-
 @keyframes slideInFromRight {
   0% {
     transform: translateX(8%);
@@ -68,11 +66,9 @@
     opacity: 1;
   }
 }
-
 .animate-enter-right {
   animation: slideInFromRight 1s ease forwards;
 }
-
 @keyframes animate-enter {
   0% {
     opacity: 0;
@@ -83,7 +79,6 @@
     transform: scale(1);
   }
 }
-
 .animate-enter {
   animation: animate-enter 1s ease forwards;
 }

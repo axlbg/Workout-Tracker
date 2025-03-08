@@ -69,7 +69,7 @@ export class HomeComponent {
     },
     {
       header: 'Check it daily',
-      image: '/images/step-2.png',
+      image: '/images/step-4.png',
       text: 'Check your daily exercise routine and track your progress',
     },
   ];

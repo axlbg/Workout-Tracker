@@ -1,8 +1,15 @@
-<div class="page-container">
+<div class="container">
+  <p-select
+    [options]="monthsOptions"
+    [(ngModel)]="selectedMonthIndex"
+    placeholder="Select a Month"
+    [style]="{ width: '350px' }"
+  >
+  </p-select>
   <p-table
-    [value]="workout.workoutPerDays"
+    [value]="months[selectedMonthIndex]"
     [resizableColumns]="true"
-    [tableStyle]="{ width: '1000px' }"
+    [tableStyle]="{ width: '1000px', margin: '10px auto' }"
     rowGroupMode="rowspan"
     groupRowsBy="dayOfWeek"
     sortField="dayOfWeek"
@@ -20,7 +27,7 @@
     <ng-template #body let-day let-rowgroup="rowgroup" let-rowspan="rowspan">
       <tr>
         <td *ngIf="rowgroup" [attr.rowspan]="rowspan">{{ day.dayOfWeek }}</td>
-        <td>{{ day.date }}</td>
+        <td>{{ day.date | date }}</td>
         <td>
           <p-table
             [value]="day.exercises"

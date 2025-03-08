@@ -3,14 +3,5 @@
 }
 
 .header {
-  display: flex;
-  justify-content: space-between;
-}
-
-@media (min-width: 1024px) {
-  .header {
-    display: flex;
-    justify-content: space-between;
-    width: 1000px;
-  }
+  text-align: right;
 }

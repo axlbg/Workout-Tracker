@@ -1,9 +1,12 @@
 <div class="page-container">
-  <div class="week-selector">
-    <button *ngFor="let week of weeks; let i = index" (click)="selectWeek(i)">
-      Week {{ i + 1 }} ({{ weeks[i][0].date | date : "dd/MM/yyyy" }} -
-      {{ weeks[i][weeks[i].length - 1].date | date : "dd/MM/yyyy" }})
-    </button>
+  <div class="select">
+    <p-select
+      [options]="weeksOptions"
+      [(ngModel)]="selectedWeekIndex"
+      placeholder="Select a Week"
+      [style]="{ width: '350px' }"
+    >
+    </p-select>
   </div>
   <div class="days-container">
     <div *ngFor="let day of weeks[selectedWeekIndex]" class="day-card">

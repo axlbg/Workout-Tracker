@@ -1,6 +1,12 @@
 .page-container {
-  width: 1250px;
   margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-flow: column;
+  gap: 10px;
+}
+
+.select {
   text-align: center;
 }
 

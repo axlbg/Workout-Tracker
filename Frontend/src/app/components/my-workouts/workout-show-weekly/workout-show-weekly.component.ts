@@ -1,9 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Workout } from '../../../class/workout';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { DailyCardComponent } from '../daily-card/daily-card.component';
 import { WorkoutPerDay } from '../../../class/workoutPerDay';
 import { CustomDateFormatPipe } from '../../../pipes/custom-date-format.pipe';
+import { FormsModule } from '@angular/forms';
+import { SelectModule } from 'primeng/select';
 
 @Component({
   selector: 'app-workout-show-weekly',
@@ -13,7 +15,10 @@ import { CustomDateFormatPipe } from '../../../pipes/custom-date-format.pipe';
     CommonModule,
     DailyCardComponent,
     CustomDateFormatPipe,
+    SelectModule,
+    FormsModule,
   ],
+  providers: [DatePipe],
   templateUrl: './workout-show-weekly.component.html',
   styleUrl: './workout-show-weekly.component.css',
 })
@@ -23,11 +28,18 @@ export class WorkoutShowWeeklyComponent implements OnInit {
   weeks: WorkoutPerDay[][] = [];
   selectedWeekIndex = 0;
 
+  selectedWeek: number | null = null;
+
+  weeksOptions: any;
+
+  constructor(private datePipe: DatePipe) {}
+
   ngOnInit(): void {
     this.workout.workoutPerDays.sort(
       (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
     ); // Sort by day
     this.splitWeeks();
+    this.weeksOptions = this.generateWeekOptions();
   }
 
   splitWeeks(): void {
@@ -60,5 +72,18 @@ export class WorkoutShowWeeklyComponent implements OnInit {
 
   selectWeek(index: number): void {
     this.selectedWeekIndex = index;
+  }
+
+  private generateWeekOptions() {
+    return this.weeks.map((week, i) => ({
+      label: `Week ${i + 1} (${this.datePipe.transform(
+        week[0].date,
+        'dd/MM/yyyy'
+      )} - ${this.datePipe.transform(
+        week[week.length - 1].date,
+        'dd/MM/yyyy'
+      )})`,
+      value: i,
+    }));
   }
 }

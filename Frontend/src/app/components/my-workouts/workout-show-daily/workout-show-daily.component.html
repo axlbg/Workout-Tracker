@@ -1,6 +1,6 @@
 <div class="page-container">
   <app-direction-arrow-button-component
-    [message]="message | customDateFormat : false"
+    [message]="messageDate | customDateFormat : false"
     (changeMsg)="eventChangeMsg($event)"
   ></app-direction-arrow-button-component>
   <div [@messageChange]="currentIndex">

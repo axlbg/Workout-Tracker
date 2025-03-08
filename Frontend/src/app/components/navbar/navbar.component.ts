@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, HostListener, inject } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { MenuItem } from 'primeng/api';
@@ -7,6 +7,7 @@ import { MenuModule } from 'primeng/menu';
 import { SplitButtonModule } from 'primeng/splitbutton';
 import { ToolbarModule } from 'primeng/toolbar';
 import { ButtonModule } from 'primeng/button';
+import { TieredMenuModule } from 'primeng/tieredmenu';
 
 @Component({
   selector: 'app-navbar',
@@ -17,6 +18,7 @@ import { ButtonModule } from 'primeng/button';
     SplitButtonModule,
     ToolbarModule,
     ButtonModule,
+    TieredMenuModule,
   ],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css',
@@ -48,6 +50,13 @@ export class NavbarComponent {
 
   username: string | null = '';
   isLoggedIn: boolean = false;
+
+  isDesktop: boolean = window.innerWidth >= 960;
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.isDesktop = window.innerWidth >= 960;
+  }
 
   public readonly router = inject(Router);
   constructor(private authService: AuthService) {

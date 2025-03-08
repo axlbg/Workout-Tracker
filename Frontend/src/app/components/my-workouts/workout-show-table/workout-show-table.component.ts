@@ -7,11 +7,21 @@ import { FormsModule } from '@angular/forms';
 import { Exercise } from '../../../class/exercise';
 import { ButtonModule } from 'primeng/button';
 import { WorkoutPerDay } from '../../../class/workoutPerDay';
+import { FloatLabelModule } from 'primeng/floatlabel';
+import { CustomDateFormatPipe } from '../../../pipes/custom-date-format.pipe';
 
 @Component({
   selector: 'app-workout-show-table',
   standalone: true,
-  imports: [TableModule, CommonModule, SelectModule, FormsModule, ButtonModule],
+  imports: [
+    TableModule,
+    CommonModule,
+    SelectModule,
+    FormsModule,
+    ButtonModule,
+    FloatLabelModule,
+    CustomDateFormatPipe,
+  ],
   templateUrl: './workout-show-table.component.html',
   providers: [DatePipe],
   styleUrl: './workout-show-table.component.css',
@@ -24,6 +34,12 @@ export class WorkoutShowTableComponent implements OnInit {
       'background-color': exercise.completed ? 'green' : '',
     };
   }
+
+  sortBy: number = 1;
+  sortOptions = [
+    { value: 0, label: 'Day' },
+    { value: 1, label: 'Date' },
+  ];
 
   months: WorkoutPerDay[][] = [];
   selectedMonthIndex = 0;
@@ -68,11 +84,6 @@ export class WorkoutShowTableComponent implements OnInit {
     if (currentMonth.length > 0) {
       this.months.push(currentMonth);
     }
-    console.log(this.months);
-    console.log('-------------------------');
-    console.log('-------------------------');
-    console.log('-------------------------');
-    console.log(this.workout.workoutPerDays);
   }
 
   selectMonth(index: number): void {

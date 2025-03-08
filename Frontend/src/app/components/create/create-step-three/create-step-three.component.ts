@@ -4,7 +4,6 @@ import { CreateDailyComponent } from '../create-daily/create-daily.component';
 import { CarouselModule } from 'primeng/carousel';
 import { CommonModule } from '@angular/common';
 import { CreateDailyMobileComponent } from '../create-daily-mobile/create-daily-mobile.component';
-import { DayOfWeekPipe } from '../../../pipes/day-of-week.pipe';
 
 @Component({
   selector: 'app-create-step-three',

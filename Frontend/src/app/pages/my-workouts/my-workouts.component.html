@@ -13,7 +13,7 @@
 <p-divider />
 
 @if(workouts.length === 0) {
-<p-panel>
+<p-panel [style]="{ 'max-width': '600px', margin: 'auto' }">
   <div class="msg-container">
     Ready to crush your goals? 💥 <br /><br />
     <a class="clickeable" routerLink="/create"

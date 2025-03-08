@@ -5,7 +5,10 @@
 ></app-exercise-edit-card
 >} @else { @if( day != null){
 
-<p-panel header="  {{ day.date | customDateFormat : true }}" class="p-card">
+<p-panel header=" " [style]="{ 'max-width': '600px', margin: '0 auto' }">
+  <ng-template #header>
+    {{ day.date | customDateFormat : true }}
+  </ng-template>
   <div *ngFor="let exercise of day.exercises">
     <app-exercise-card
       [exercise]="exercise"
@@ -25,7 +28,7 @@
   </ng-template>
 </p-panel>
 } @else {
-<p-panel>
+<p-panel class="p-card" [style]="{ 'max-width': '600px', margin: 'auto' }">
   <div class="msg-container">
     No workouts today — it’s rest day! 💪 <br /><br />
     Remember, muscles grow when you rest, not just when you train. Enjoy it!

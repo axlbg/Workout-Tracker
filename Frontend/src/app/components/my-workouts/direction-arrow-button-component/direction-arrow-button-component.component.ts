@@ -16,16 +16,16 @@ import { Component, Input, output } from '@angular/core';
     trigger('messageChange', [
       transition(':increment', [
         sequence([
-          animate('0.2s ease-out', style({ transform: 'translateX(-100%)' })),
+          animate('0.1s ease-out', style({ transform: 'translateX(-100%)' })),
           style({ transform: 'translateX(100%)' }),
-          animate('0.2s ease-in', style({ transform: 'translateX(0)' })),
+          animate('0.1s ease-in', style({ transform: 'translateX(0)' })),
         ]),
       ]),
       transition(':decrement', [
         sequence([
-          animate('0.2s ease-out', style({ transform: 'translateX(100%)' })),
+          animate('0.1s ease-out', style({ transform: 'translateX(100%)' })),
           style({ transform: 'translateX(-100%)' }),
-          animate('0.2s ease-in', style({ transform: 'translateX(0)' })),
+          animate('0.1s ease-in', style({ transform: 'translateX(0)' })),
         ]),
       ]),
     ]),

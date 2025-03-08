@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import { Component, Input, output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { WorkoutPerDay } from '../../class/workoutPerDay';
-import { DayOfWeekPipe } from '../../pipes/day-of-week.pipe';
 import { ButtonModule } from 'primeng/button';
 import { ExerciseCardComponent } from '../shared/exercise-card/exercise-card.component';
 import { CardModule } from 'primeng/card';

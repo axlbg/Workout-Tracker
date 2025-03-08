@@ -28,16 +28,16 @@ import { CustomDateFormatPipe } from '../../../pipes/custom-date-format.pipe';
     trigger('messageChange', [
       transition(':increment', [
         sequence([
-          animate('0.2s ease-out', style({ transform: 'translateX(-100%)' })),
+          animate('0.1s ease-out', style({ transform: 'translateX(-100%)' })),
           style({ transform: 'translateX(100%)' }),
-          animate('0.2s ease-in', style({ transform: 'translateX(0)' })),
+          animate('0.1s ease-in', style({ transform: 'translateX(0)' })),
         ]),
       ]),
       transition(':decrement', [
         sequence([
-          animate('0.2s ease-out', style({ transform: 'translateX(100%)' })),
+          animate('0.1s ease-out', style({ transform: 'translateX(100%)' })),
           style({ transform: 'translateX(-100%)' }),
-          animate('0.2s ease-in', style({ transform: 'translateX(0)' })),
+          animate('0.1s ease-in', style({ transform: 'translateX(0)' })),
         ]),
       ]),
     ]),
@@ -46,13 +46,13 @@ import { CustomDateFormatPipe } from '../../../pipes/custom-date-format.pipe';
 export class WorkoutShowDailyComponent implements OnInit {
   @Input({ required: true, alias: 'workoutToShow' }) workout!: Workout;
 
-  currentIndex = 0;
-  message = '';
+  currentIndex: number = 0;
+  messageDate: string = '';
 
   constructor() {}
 
   ngOnInit() {
-    this.message =
+    this.messageDate =
       this.workout.workoutPerDays[this.currentIndex].date?.toString();
 
     this.workout.workoutPerDays.sort(
@@ -70,7 +70,7 @@ export class WorkoutShowDailyComponent implements OnInit {
       if (newIndex < this.workout.workoutPerDays.length)
         this.currentIndex = newIndex;
     }
-    this.message =
+    this.messageDate =
       this.workout.workoutPerDays[this.currentIndex].date.toString();
   }
 }

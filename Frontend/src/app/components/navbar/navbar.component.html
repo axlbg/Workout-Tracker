@@ -1,5 +1,5 @@
 <div class="menubar-container">
-  <p-menubar [model]="itemsNav">
+  <p-menubar [model]="itemsNav" [style]="{ 'max-height': '68px' }">
     <ng-template #start>
       <img
         src="favicon.ico"
@@ -17,6 +17,8 @@
         [model]="itemsLogged"
         severity="secondary"
         text
+        [style]="{ 'max-height': '50px' }"
+        [attr.dir]="isDesktop ? 'ltr' : 'rtl'"
       />
     </ng-template>
     } @else {

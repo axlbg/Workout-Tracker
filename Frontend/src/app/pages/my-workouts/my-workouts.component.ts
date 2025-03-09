@@ -1,13 +1,10 @@
 import { Component, inject } from '@angular/core';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
-import { ApiWorkoutService } from '../../services/api-workout.service';
 import { Workout } from '../../class/workout';
 import { CommonModule } from '@angular/common';
 import { ShowWorkoutComponent } from '../../components/my-workouts/show-workout/show-workout.component';
-import { IconService } from '../../services/icon.service';
 import { CardModule } from 'primeng/card';
 import { DividerModule } from 'primeng/divider';
-import { ToastService } from '../../services/toast.service';
 import { PanelModule } from 'primeng/panel';
 import { SelectWorkoutComponent } from '../../components/shared/select-workout/select-workout.component';
 

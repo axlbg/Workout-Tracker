@@ -5,7 +5,6 @@ import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { ApiWorkoutService } from '../../services/api-workout.service';
 import { Workout } from '../../class/workout';
 import { DividerModule } from 'primeng/divider';
-import { Exercise } from '../../class/exercise';
 import { ToastService } from '../../services/toast.service';
 
 @Component({

@@ -1,0 +1,13 @@
+.page-container {
+  width: 100%;
+  padding: 5rem 0 0;
+  text-align: end;
+}
+.p {
+  color: var(--p-divider-border-color);
+  padding: 1rem;
+  cursor: default;
+}
+.p:hover {
+  color: var(--p-text-color);
+}

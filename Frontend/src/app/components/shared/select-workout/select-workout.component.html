@@ -1,0 +1,30 @@
+<p>
+  <span [ngClass]="showWorkout ? 'clickeable' : ''" (click)="closeWorkout()">
+    {{ title }} </span
+  >@if (showWorkout) {<i class="pi pi-chevron-right"></i>
+  {{ workoutToShow.name }}}
+</p>
+
+<p-divider />
+
+@if(workouts.length === 0) {
+<p-panel [style]="{ 'max-width': '600px', margin: 'auto' }">
+  <div class="msg-container">
+    Ready to crush your goals? 💥 <br /><br />
+    <a class="clickeable" routerLink="/create"
+      ><u>
+        Click here to create your first workout and take the first step!</u
+      ></a
+    >
+  </div>
+</p-panel>
+} @else {
+<div class="container" *ngIf="!showWorkout">
+  <p-card class="card" *ngFor="let w of workouts" (click)="openWorkout(w)">
+    <div class="card-content">
+      <img [src]="iconService.getIconUrl(w.icon)" alt="icon" class="img-icon" />
+      {{ w.name }}
+    </div>
+  </p-card>
+</div>
+}

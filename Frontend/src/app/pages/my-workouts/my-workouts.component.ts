@@ -8,8 +8,8 @@ import { IconService } from '../../services/icon.service';
 import { CardModule } from 'primeng/card';
 import { DividerModule } from 'primeng/divider';
 import { ToastService } from '../../services/toast.service';
-import { RouterLink } from '@angular/router';
 import { PanelModule } from 'primeng/panel';
+import { SelectWorkoutComponent } from '../../components/shared/select-workout/select-workout.component';
 
 @Component({
   selector: 'app-my-workouts',
@@ -20,41 +20,22 @@ import { PanelModule } from 'primeng/panel';
     ShowWorkoutComponent,
     CardModule,
     DividerModule,
-    RouterLink,
     PanelModule,
+    SelectWorkoutComponent,
   ],
   templateUrl: './my-workouts.component.html',
-  styleUrls: ['./my-workouts.component.css', '../../styles/icon.css'],
+  styleUrl: './my-workouts.component.css',
 })
 export class MyWorkoutsComponent {
-  workouts: Workout[] = [];
   workoutToShow!: Workout;
   showOneWorkout = false;
 
-  public iconService = inject(IconService);
-  constructor(
-    private apiWorkout: ApiWorkoutService,
-    private toastService: ToastService
-  ) {
-    this.findWorkouts();
-  }
-
-  findWorkouts() {
-    this.toastService.showLoading();
-    this.apiWorkout.getWorkouts().subscribe(
-      (data) => {
-        this.workouts = data;
-        this.toastService.hideLoading();
-      },
-      (error) => {
-        console.error('Error:', error);
-        this.toastService.hideLoading();
-      }
-    );
-  }
-
-  openWorkout(workout: Workout) {
+  eventShowWorkout(workout: Workout) {
     this.workoutToShow = workout;
     this.showOneWorkout = true;
+  }
+
+  eventCloseWorkout() {
+    this.showOneWorkout = false;
   }
 }

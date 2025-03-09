@@ -38,4 +38,11 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./pages/daily/daily.component').then((c) => c.DailyComponent),
   },
+  {
+    path: 'statistics',
+    loadComponent: () =>
+      import('./pages/statistics/statistics.component').then(
+        (c) => c.StatisticsComponent
+      ),
+  },
 ];

@@ -3,8 +3,8 @@
 <app-select-workout
   (eventShowWorkout)="eventShowWorkout($event)"
   (eventCloseWorkout)="eventCloseWorkout()"
-  [title]="'My Workouts'"
+  [title]="'Statistics'"
 ></app-select-workout>
 <div *ngIf="showOneWorkout">
-  <app-show-workout [workoutToShow]="workoutToShow"></app-show-workout>
+  <app-show-statistics [workout]="workoutToShow"></app-show-statistics>
 </div>

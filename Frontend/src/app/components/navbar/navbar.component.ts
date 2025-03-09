@@ -29,7 +29,7 @@ export class NavbarComponent {
     { label: 'Create', routerLink: '/create' },
     { label: 'My Workouts', routerLink: '/my-workouts' },
     { label: 'Daily', routerLink: '/daily' },
-    { label: 'Statistics', routerLink: '/statistics', disabled: true },
+    { label: 'Statistics', routerLink: '/statistics' },
   ];
 
   itemsLogged = [

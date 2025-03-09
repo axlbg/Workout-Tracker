@@ -1,0 +1,42 @@
+.container {
+  display: flex;
+  flex-flow: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 3em;
+
+  padding-top: 4em;
+  text-align: center;
+}
+
+.msg-container {
+  display: flex;
+  flex-flow: column;
+  padding: 4em 0;
+  text-align: center;
+}
+
+.card {
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: scale(110%);
+}
+.card-content {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+
+  height: 250px;
+  width: 210px;
+
+  gap: 2rem;
+}
+
+.img-icon {
+  width: 100px;
+  height: 100px;
+  border: 2px solid;
+}

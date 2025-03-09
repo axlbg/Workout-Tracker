@@ -5,6 +5,7 @@ import { MuscleGroup } from '../../../class/exercise';
 
 @Component({
   selector: 'app-show-statistics',
+  standalone: true,
   imports: [ChartModule],
   templateUrl: './show-statistics.component.html',
   styleUrl: './show-statistics.component.css',

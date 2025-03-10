@@ -9,6 +9,7 @@ import com.workout.tracker.mapper.WorkoutMapper;
 import com.workout.tracker.repository.WorkoutRepository;
 import com.workout.tracker.security.entity.UserEntity;
 import com.workout.tracker.security.repository.UserRepository;
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -73,6 +74,16 @@ public class WorkoutService {
         workout.setWorkoutPerDays(workoutPerDayList);
 
         return WorkoutMapper.toWorkoutDto(workoutRepository.save(workout));
+    }
+
+    public List<WorkoutDto> findByUser(@RequestHeader("Authorization") String token){
+        String jwtToken = token.replace("Bearer ", "");
+        UserEntity user = authService.getUserFromToken(jwtToken);
+        List<Workout> workoutList = workoutRepository.findByUser(user);
+
+        return workoutList.stream()
+                .map(WorkoutMapper::toWorkoutDto)
+                .collect(Collectors.toList());
     }
 
     public List<WorkoutDto> findAllWorkouts() {

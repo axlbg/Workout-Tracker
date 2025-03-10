@@ -2,11 +2,8 @@ package com.workout.tracker.controllers;
 
 import com.workout.tracker.dto.CreateWorkoutRequest;
 import com.workout.tracker.dto.WorkoutDto;
-import com.workout.tracker.entity.Workout;
 import com.workout.tracker.services.WorkoutService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,7 +22,10 @@ public class WorkoutController {
     }
 
     @GetMapping
-    public List<WorkoutDto> getAllWorkouts() {
-        return workoutService.findAllWorkouts();
+    public List<WorkoutDto> getWorkoutsByUser(@RequestHeader("Authorization") String token) {
+        return workoutService.findByUser(token);
     }
+
+//    @GetMapping
+//    public List<WorkoutDto> getAllWorkouts() { return workoutService.findAllWorkouts(); }
 }

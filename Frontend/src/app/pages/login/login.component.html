@@ -1,5 +1,7 @@
-<div class="login-container">
-  @if(showLoading){<app-loading></app-loading>} @else {
+<div class="page-container">
+  @if(showLoading){
+  <div class="loading"><app-loading></app-loading></div>
+  } @else {
 
   <p-card [@bounce]="isBounce ? 'bounce' : 'normal'">
     <div class="login-card">

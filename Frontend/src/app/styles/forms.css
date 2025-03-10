@@ -2,11 +2,15 @@
   font-family: "Poppins", sans-serif;
 }
 
-.login-container {
+.page-container {
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 5rem;
+}
+
+.loading {
+  height: 90vh;
 }
 
 .login-card {

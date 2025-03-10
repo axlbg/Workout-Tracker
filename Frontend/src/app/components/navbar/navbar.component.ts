@@ -68,13 +68,12 @@ export class NavbarComponent {
     if (this.username != null) {
       this.isLoggedIn = true;
     }
+    this.changeThemeLabel(themeService.getCurrentTheme());
   }
 
-  toggleDarkMode() {
-    const newTheme =
-      this.themeService.getCurrentTheme() === 'dark' ? 'light' : 'dark';
+  private changeThemeLabel(theme: string) {
     if (this.itemsLogged[2] != undefined) {
-      if (newTheme === 'dark') {
+      if (theme === 'dark') {
         this.itemsLogged[2].icon = 'pi pi-sun';
         this.itemsLogged[2].label = 'Light mode';
       } else {
@@ -82,7 +81,12 @@ export class NavbarComponent {
         this.itemsLogged[2].label = 'Dark mode';
       }
     }
-    console.log(newTheme);
+  }
+
+  toggleDarkMode() {
+    const theme = this.themeService.getCurrentTheme();
+    const newTheme = theme === 'dark' ? 'light' : 'dark';
+    this.changeThemeLabel(theme);
     this.themeService.setTheme(newTheme);
   }
 

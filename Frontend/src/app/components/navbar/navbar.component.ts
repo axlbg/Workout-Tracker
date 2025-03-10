@@ -8,6 +8,7 @@ import { SplitButtonModule } from 'primeng/splitbutton';
 import { ToolbarModule } from 'primeng/toolbar';
 import { ButtonModule } from 'primeng/button';
 import { TieredMenuModule } from 'primeng/tieredmenu';
+import { ThemeService } from '../../services/theme.service';
 
 @Component({
   selector: 'app-navbar',
@@ -59,7 +60,10 @@ export class NavbarComponent {
   }
 
   public readonly router = inject(Router);
-  constructor(private authService: AuthService) {
+  constructor(
+    private authService: AuthService,
+    private themeService: ThemeService
+  ) {
     this.getUsername();
     if (this.username != null) {
       this.isLoggedIn = true;
@@ -67,16 +71,19 @@ export class NavbarComponent {
   }
 
   toggleDarkMode() {
-    const element: HTMLElement = document.documentElement;
+    const newTheme =
+      this.themeService.getCurrentTheme() === 'dark' ? 'light' : 'dark';
     if (this.itemsLogged[2] != undefined) {
-      if (element.classList.toggle('my-app-dark')) {
-        this.itemsLogged[2].icon = 'pi pi-moon';
-        this.itemsLogged[2].label = 'Dark mode';
-      } else {
+      if (newTheme === 'dark') {
         this.itemsLogged[2].icon = 'pi pi-sun';
         this.itemsLogged[2].label = 'Light mode';
+      } else {
+        this.itemsLogged[2].icon = 'pi pi-moon';
+        this.itemsLogged[2].label = 'Dark mode';
       }
     }
+    console.log(newTheme);
+    this.themeService.setTheme(newTheme);
   }
 
   getUsername() {

@@ -9,10 +9,6 @@
   padding: 5rem;
 }
 
-.loading {
-  height: 90vh;
-}
-
 .login-card {
   background: var(--surface-50);
   border-radius: 8px;

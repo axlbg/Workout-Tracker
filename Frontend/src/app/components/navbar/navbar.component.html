@@ -22,18 +22,36 @@
       />
     </ng-template>
     } @else {
-    <p-button
-      label="Log in"
-      [raised]="true"
-      size="large"
-      (click)="router.navigateByUrl('/login')"
-    />&nbsp;
-    <p-button
-      label="Sign up"
-      severity="secondary"
-      variant="outlined"
-      (click)="router.navigateByUrl('/signup')"
-    />
+    <div *ngIf="isGuestMode()">
+      <p-button
+        label="Leave guest mode"
+        severity="secondary"
+        variant="outlined"
+        size="small"
+        (click)="leaveGuestMode()"
+      />
+    </div>
+    <div *ngIf="!isGuestMode()">
+      <p-button
+        label="Join as a guest"
+        severity="secondary"
+        variant="outlined"
+        size="small"
+        (click)="joinAsGuest()"
+      />
+      &nbsp;
+      <p-button
+        label="Log in"
+        [raised]="true"
+        size="large"
+        (click)="router.navigateByUrl('/login')"
+      />&nbsp;
+      <p-button
+        label="Sign up"
+        severity="secondary"
+        (click)="router.navigateByUrl('/signup')"
+      />
+    </div>
     }
   </p-menubar>
 </div>

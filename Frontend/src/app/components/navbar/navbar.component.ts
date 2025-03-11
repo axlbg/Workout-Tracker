@@ -9,6 +9,8 @@ import { ToolbarModule } from 'primeng/toolbar';
 import { ButtonModule } from 'primeng/button';
 import { TieredMenuModule } from 'primeng/tieredmenu';
 import { ThemeService } from '../../services/theme.service';
+import { GuestService } from '../../services/guest.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-navbar',
@@ -20,6 +22,7 @@ import { ThemeService } from '../../services/theme.service';
     ToolbarModule,
     ButtonModule,
     TieredMenuModule,
+    CommonModule,
   ],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css',
@@ -28,7 +31,7 @@ export class NavbarComponent {
   itemsNav: MenuItem[] = [
     { label: 'Home', routerLink: '/home' },
     { label: 'Create', routerLink: '/create' },
-    { label: 'My Workouts', routerLink: '/my-workouts' },
+    { label: 'My workouts', routerLink: '/my-workouts' },
     { label: 'Daily', routerLink: '/daily' },
     { label: 'Statistics', routerLink: '/statistics' },
   ];
@@ -62,13 +65,34 @@ export class NavbarComponent {
   public readonly router = inject(Router);
   constructor(
     private authService: AuthService,
-    private themeService: ThemeService
+    private themeService: ThemeService,
+    private guestService: GuestService
   ) {
-    this.getUsername();
+    this.username = authService.getUsernameFromToken();
     if (this.username != null) {
+      this.initializeMenuDefault();
       this.isLoggedIn = true;
+    } else if (!guestService.isGuestMode()) {
+      this.initializeMenuLogout();
     }
     this.changeThemeLabel(themeService.getCurrentTheme());
+  }
+
+  private initializeMenuDefault() {
+    this.itemsNav = [
+      { label: 'Home', routerLink: '/home' },
+      { label: 'Create', routerLink: '/create', disabled: false },
+      { label: 'My workouts', routerLink: '/my-workouts', disabled: false },
+      { label: 'Daily', routerLink: '/daily', disabled: false },
+      { label: 'Statistics', routerLink: '/statistics', disabled: false },
+    ];
+  }
+
+  private initializeMenuLogout() {
+    this.itemsNav = [
+      { label: 'Home', routerLink: '/home' },
+      { label: 'My workouts', routerLink: '/my-workouts', disabled: true },
+    ];
   }
 
   private changeThemeLabel(theme: string) {
@@ -90,13 +114,24 @@ export class NavbarComponent {
     this.themeService.setTheme(newTheme);
   }
 
-  getUsername() {
-    this.username = this.authService.getUsernameFromToken();
-  }
-
   signOut() {
     this.authService.signout();
     this.isLoggedIn = false;
+    this.initializeMenuLogout();
     this.router.navigateByUrl('/home');
+  }
+
+  joinAsGuest() {
+    this.initializeMenuDefault();
+    this.guestService.enableGuestMode();
+  }
+
+  leaveGuestMode() {
+    this.initializeMenuLogout();
+    this.guestService.disableGuestMode();
+  }
+
+  isGuestMode() {
+    return this.guestService.isGuestMode();
   }
 }

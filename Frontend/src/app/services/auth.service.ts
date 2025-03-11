@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { jwtDecode } from 'jwt-decode';
 import { catchError, Observable, throwError } from 'rxjs';
+import { GuestService } from './guest.service';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +11,7 @@ export class AuthService {
   private apiUrl = 'http://localhost:8080/auth';
   private tokenName = 'workoutTrackerJwt';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private guestService: GuestService) {}
 
   login(postData: any): Observable<any> {
     return this.http
@@ -45,6 +46,7 @@ export class AuthService {
   }
 
   saveToken(token: string): void {
+    this.guestService.disableGuestMode();
     localStorage.setItem(this.tokenName, token);
   }
 

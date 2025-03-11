@@ -1,0 +1,14 @@
+<p-drawer
+  header="Guest Mode Activated"
+  position="bottom"
+  [(visible)]="visible"
+  [style]="{ height: '30%' }"
+  class="p-drawer"
+>
+  <p>
+    You are now exploring the application in guest mode. Your data and changes
+    will not be saved. For a full experience, please
+    <a class="a" routerLink="/signup">create an account</a> or
+    <a class="a" routerLink="/login">log in.</a>
+  </p>
+</p-drawer>

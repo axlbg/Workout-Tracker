@@ -11,6 +11,7 @@ import { TieredMenuModule } from 'primeng/tieredmenu';
 import { ThemeService } from '../../services/theme.service';
 import { GuestService } from '../../services/guest.service';
 import { CommonModule } from '@angular/common';
+import { GuestWarningComponent } from '../guest/guest-warning/guest-warning.component';
 
 @Component({
   selector: 'app-navbar',
@@ -23,18 +24,13 @@ import { CommonModule } from '@angular/common';
     ButtonModule,
     TieredMenuModule,
     CommonModule,
+    GuestWarningComponent,
   ],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css',
 })
 export class NavbarComponent {
-  itemsNav: MenuItem[] = [
-    { label: 'Home', routerLink: '/home' },
-    { label: 'Create', routerLink: '/create' },
-    { label: 'My workouts', routerLink: '/my-workouts' },
-    { label: 'Daily', routerLink: '/daily' },
-    { label: 'Statistics', routerLink: '/statistics' },
-  ];
+  itemsNav: MenuItem[] = [];
 
   itemsLogged = [
     { label: 'Profile', icon: 'pi pi-user', disabled: true },
@@ -55,6 +51,8 @@ export class NavbarComponent {
   username: string | null = '';
   isLoggedIn: boolean = false;
 
+  showGuestWarning: boolean = false;
+
   isDesktop: boolean = window.innerWidth >= 960;
 
   @HostListener('window:resize', ['$event'])
@@ -72,7 +70,10 @@ export class NavbarComponent {
     if (this.username != null) {
       this.initializeMenuDefault();
       this.isLoggedIn = true;
-    } else if (!guestService.isGuestMode()) {
+    } else if (guestService.isGuestMode()) {
+      this.initializeMenuDefault();
+      this.showGuestWarning = true;
+    } else {
       this.initializeMenuLogout();
     }
     this.changeThemeLabel(themeService.getCurrentTheme());
@@ -124,11 +125,13 @@ export class NavbarComponent {
   joinAsGuest() {
     this.initializeMenuDefault();
     this.guestService.enableGuestMode();
+    this.showGuestWarning = true;
   }
 
   leaveGuestMode() {
     this.initializeMenuLogout();
     this.guestService.disableGuestMode();
+    this.router.navigateByUrl('/home');
   }
 
   isGuestMode() {

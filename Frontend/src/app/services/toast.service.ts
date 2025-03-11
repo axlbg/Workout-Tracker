@@ -28,4 +28,13 @@ export class ToastService {
       sticky: false,
     });
   }
+
+  showError(message: string) {
+    this.messageService.add({
+      key: 'toasty',
+      severity: 'error',
+      summary: message,
+      sticky: false,
+    });
+  }
 }

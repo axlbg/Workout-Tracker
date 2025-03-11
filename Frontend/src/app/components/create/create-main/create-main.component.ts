@@ -19,6 +19,7 @@ import { CreateStepThreeComponent } from '../create-step-three/create-step-three
 import { LoadingComponent } from '../../shared/loading/loading.component';
 import { ToastService } from '../../../services/toast.service';
 import { PanelModule } from 'primeng/panel';
+import { GuestService } from '../../../services/guest.service';
 
 @Component({
   selector: 'app-create-main',
@@ -64,7 +65,8 @@ export class CreateMainComponent {
   private readonly router = inject(Router);
   constructor(
     private apiWorkout: ApiWorkoutService,
-    private toastService: ToastService
+    private toastService: ToastService,
+    private guestService: GuestService
   ) {
     this.workout = new Workout('', []);
   }
@@ -161,6 +163,11 @@ export class CreateMainComponent {
   }
 
   finishCreate(): void {
+    if (this.guestService.isGuestMode()) {
+      this.toastService.showError('Changes cannot be saved in guest mode.');
+      return;
+    }
+
     this.showLoading = true;
     this.toastService.showLoading();
     // Create request

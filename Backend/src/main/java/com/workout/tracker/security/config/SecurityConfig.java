@@ -1,5 +1,6 @@
-package com.workout.tracker.security;
+package com.workout.tracker.security.config;
 
+import com.workout.tracker.security.CustomAuthenticationEntryPoint;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -33,7 +34,6 @@ public class SecurityConfig {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/public").permitAll()
                         .requestMatchers("/auth/login", "/auth/signup").permitAll()
                         .requestMatchers("OPTIONS", "/**").permitAll()
                         .requestMatchers("/api/workout").authenticated()

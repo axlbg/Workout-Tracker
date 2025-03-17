@@ -9,7 +9,7 @@ import { environment } from '../../environments/environment';
   providedIn: 'root',
 })
 export class AuthService {
-  private apiUrl = environment.apiUrl + '/api';
+  private apiUrl = environment.apiUrl + '/auth';
   private tokenName = 'workoutTrackerJwt';
 
   constructor(private http: HttpClient, private guestService: GuestService) {}

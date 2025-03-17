@@ -4,7 +4,8 @@ COPY . /app
 WORKDIR /app
 
 RUN chmod +x mvnw
-RUN ./mvnw package -DskipTests
+RUN ./mvnw dependency:go-offline -e -X
+RUN ./mvnw package -DskipTests -e -X -Dmaven.compiler.memory=512m -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn
 RUN mv -f target/*.jar app.jar
 
 FROM eclipse-temurin:21-jre

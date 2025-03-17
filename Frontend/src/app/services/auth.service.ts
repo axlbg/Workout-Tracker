@@ -3,12 +3,13 @@ import { Injectable } from '@angular/core';
 import { jwtDecode } from 'jwt-decode';
 import { catchError, Observable, throwError } from 'rxjs';
 import { GuestService } from './guest.service';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:8080/auth';
+  private apiUrl = environment.apiUrl + '/api';
   private tokenName = 'workoutTrackerJwt';
 
   constructor(private http: HttpClient, private guestService: GuestService) {}

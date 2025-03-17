@@ -4,12 +4,13 @@ import { Observable, of } from 'rxjs';
 import { AuthService } from './auth.service';
 import { Exercise } from '../class/exercise';
 import { GuestService } from './guest.service';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ApiWorkoutService {
-  private apiUrl = 'http://localhost:8080/api';
+  private apiUrl = environment.apiUrl + '/api';
 
   constructor(
     private http: HttpClient,
